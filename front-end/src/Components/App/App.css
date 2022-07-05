@@ -2,17 +2,6 @@
   text-align: center;
 }
 
-/* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -39,21 +28,21 @@
 
 .Gallery {
   display: flex;
-  flex-direction: column;
-  /* animation: rollout 1s; */
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .GalleryImage {
   display: flex;
   flex-direction: row;
-  animation: rollout 1s;
+  animation: fadeIn 4s;
 }
 
 .GalleryImage > img {
   width: 300px;
 }
 
-@keyframes rollout {
-  0% { transform: translateX(-300px); }
-  100% { transform: none; }
+@keyframes fadeIn {
+  from {opacity: 0}
+  to {opacity: 1}
 }

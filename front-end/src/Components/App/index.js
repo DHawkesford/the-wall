@@ -1,24 +1,9 @@
 import './App.css';
+import stub from '../../data.js'
 import { useState } from 'react';
 
 function App() {
-  const [images, setImages] = useState([
-    {
-      id: 0,
-      url: "https://i.imgur.com/MdxZj97.jpeg",
-      votes: 1,
-    },
-    {
-      id: 1,
-      url: "https://i.imgur.com/DMclSEf.jpeg",
-      votes: 1
-    },
-    {
-      id: 2,
-      url: "https://i.imgur.com/Bt5kkYN.jpeg",
-      votes: 3
-    }
-  ].sort((a, b) => b.votes - a.votes));
+  const [images, setImages] = useState(stub.sort((a, b) => b.votes - a.votes));
 
   function vote(id) {
     for (let i = 0; i < images.length; i++) {
@@ -36,16 +21,26 @@ function App() {
     console.log(images);
   }
 
+  function voteImproved(idOfVotedItem) {
+    setImages((previousState) => {
+      return previousState.map((image) => {
+        return image.id !== idOfVotedItem
+          ? image
+          : { ...image, votes: image.votes + 1 };
+      }).sort((a, b) => b.votes - a.votes);
+    });
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <div className="Gallery">
           {
             images.map((image, index) => 
-            <div className="GalleryImage" key={index}>
-              <img src={image.url} alt="A forest" />
+            <div className="GalleryImage" key={[image.id, index]}>
+              <img src={image.url} alt="Alt text" />
               <p>Votes: {image.votes}</p>
-              <button onClick={() => {vote(image.id)}}>Vote</button>
+              <button onClick={() => {voteImproved(image.id)}}>Vote</button>
             </div>
             )
           }
