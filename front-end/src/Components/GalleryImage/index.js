@@ -1,11 +1,6 @@
-import { useState } from "react";
-import stub from "../../data.js";
-
-const GalleryImage = () => {
-  const [images, setImages] = useState(stub.sort((a, b) => b.votes - a.votes));
-
+const GalleryImage = ({ galleryImages, setImagesFn }) => {
   function vote(idOfVotedItem) {
-    setImages((previousState) => {
+    setImagesFn((previousState) => {
       return previousState
         .map((image) => {
           return image.id !== idOfVotedItem
@@ -18,7 +13,7 @@ const GalleryImage = () => {
 
   return (
     <div className="Gallery">
-      {images.map((image, index) => (
+      {galleryImages.map((image, index) => (
         <div className="GalleryImage" key={[image.id, index]}>
           <img src={image.url} alt="Nature photographs" />
           <p>Votes: {image.votes}</p>
