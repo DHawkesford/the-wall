@@ -40,10 +40,6 @@ nav {
   flex-wrap: wrap;
 }
 
-.GalleryImage > button {
-  width: 5em;
-}
-
 .GalleryImage {
   display: flex;
   flex-direction: column;
@@ -52,6 +48,10 @@ nav {
 
 .GalleryImage > img {
   width: 500px;
+}
+
+.GalleryImage > button {
+  width: 5em;
 }
 
 @keyframes fadeIn {
