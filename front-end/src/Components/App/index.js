@@ -1,7 +1,7 @@
 import "./App.css";
 import stub from "../../data.js";
 import { useState } from "react";
-import GalleryImage from "../GalleryImage";
+import Gallery from "../Gallery";
 import NavBar from "../NavBar/index";
 
 
@@ -27,8 +27,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <NavBar handleClick={addImageToGallery} handleChange={inputChange} newImageURL={newImageURL} />
-        <GalleryImage galleryImages={images} setImagesFn={setImages} />
       </header>
+      <main>
+        <Gallery galleryImages={images} setImagesFn={setImages} />
+      </main>
     </div>
   );
 }
