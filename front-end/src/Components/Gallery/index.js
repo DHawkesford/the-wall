@@ -1,3 +1,5 @@
+import GalleryImage from "../GalleryImage";
+
 const Gallery = ({ galleryImages, setImagesFn }) => {
   function vote(idOfVotedItem) {
     setImagesFn((previousState) => {
@@ -13,21 +15,7 @@ const Gallery = ({ galleryImages, setImagesFn }) => {
 
   return (
     <div className="Gallery">
-      {galleryImages.map((image, index) => (
-        <div className="GalleryImage" key={[image.id, index]}>
-          <img src={image.url} alt="Nature photographs"></img>
-          <div className="voteBar">
-            <p>Votes: {image.votes}</p>
-            <button
-              onClick={() => {
-                vote(image.id);
-              }}
-            >
-              Vote
-            </button>
-          </div>
-        </div>
-      ))}
+      {galleryImages.map((image, index) => <GalleryImage image={image} index={index} vote={vote} />)}
     </div>
   );
 };
