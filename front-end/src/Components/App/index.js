@@ -1,11 +1,10 @@
 import "./App.css";
-import stub from "../../data.js";
 import { useEffect, useState } from "react";
 import Gallery from "../Gallery";
 import NavBar from "../NavBar/index";
 
 function App() {
-  const [images, setImages] = useState(stub.sort((a, b) => b.votes - a.votes));
+  const [images, setImages] = useState([]);
   const [newImageURL, setNewImageURL] = useState('');
 
   function inputChange(e) {
@@ -24,9 +23,9 @@ function App() {
 
   useEffect(() => {
     async function getImages() {
-      const data = await fetch('localhost:3000/images');
-      const payload = await data.json();
-      console.log(payload);
+      const response = await fetch('https://the-wall-dan-blake.herokuapp.com/images');
+      const data = await response.json();
+      setImages(data.payload);
     }
 
     getImages();

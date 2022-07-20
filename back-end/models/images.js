@@ -1,7 +1,7 @@
 import db from "../db/connection.js";
 
 export async function getAllImages() {
-  const result = await db.query(`SELECT * FROM images;`);
+  const result = await db.query(`SELECT * FROM images ORDER BY votes DESC;`);
   return result.rows;
 }
 
