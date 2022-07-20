@@ -33,6 +33,16 @@ const images = [
       id: 6,
       url: "https://i.imgur.com/v80xKl7.jpeg",
       votes: 12
+    },
+    {
+      id: 7,
+      url: "https://i.imgur.com/v80xKl7.jpeg",
+      votes: 12
+    },
+    {
+      id: 8,
+      url: "https://natureconservancy-h.assetsadobe.com/is/image/content/dam/tnc/nature/en/photos/Zugpsitze_mountain.jpg",
+      votes: 1
     }
 ];
 
