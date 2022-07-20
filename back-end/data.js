@@ -28,10 +28,6 @@ const images = [
       votes: 12
     },
     {
-      url: "https://i.imgur.com/v80xKl7.jpeg",
-      votes: 12
-    },
-    {
       url: "https://natureconservancy-h.assetsadobe.com/is/image/content/dam/tnc/nature/en/photos/Zugpsitze_mountain.jpg",
       votes: 1
     }
