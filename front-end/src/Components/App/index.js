@@ -11,14 +11,27 @@ function App() {
     setNewImageURL(e.target.value);
   }
 
-  function addImageToGallery() {
+  async function addImageToGallery() {
+    // Update the page with the new image
     const newImage = {
-      id: Math.random() * 500,
       url: newImageURL,
-      votes: 0
+      votes: 1
     }
     setImages([...images, newImage])
+
+    // Clear the input field 
     setNewImageURL('');
+
+    // Post the new image to the server
+    await fetch('https://the-wall-dan-blake.herokuapp.com/images', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        url: newImageURL
+      })
+    })
   }
 
   useEffect(() => {
