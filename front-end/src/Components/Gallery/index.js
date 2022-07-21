@@ -1,7 +1,7 @@
 import GalleryImage from "../GalleryImage";
 
 const Gallery = ({ galleryImages, setImagesFn }) => {
-  function vote(idOfVotedItem) {
+  async function vote(idOfVotedItem) {
     setImagesFn((previousState) => {
       return previousState
         .map((image) => {
@@ -10,6 +10,13 @@ const Gallery = ({ galleryImages, setImagesFn }) => {
             : { ...image, votes: image.votes + 1 };
         })
         .sort((a, b) => b.votes - a.votes);
+    });
+
+    await fetch(`https://the-wall-dan-blake.herokuapp.com/images/${idOfVotedItem}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
     });
   }
 

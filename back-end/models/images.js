@@ -10,3 +10,9 @@ export async function postNewImage(url) {
   const result = await db.query(sqlString, [url]);
   return result.rows;
 }
+
+export async function voteForImage(id) {
+  const sqlString = `UPDATE images SET votes = votes + 1 WHERE id = $1 RETURNING *;`;
+  const result = await db.query(sqlString, [id]);
+  return result.rows;
+}

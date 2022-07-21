@@ -63,14 +63,14 @@ main {
   flex-direction: row;
   align-items: flex-end;
   flex-wrap: wrap;
-  width: 90%;
-  margin-left: 100px;
+  width: 95%;
 }
 
 .GalleryImage {
   display: flex;
   animation: fadeIn 4s;
-  width: 31%;
+  /* width: 31%; */
+  height: 300px;
   position: relative;
   z-index: 1;
   margin: 5px;
