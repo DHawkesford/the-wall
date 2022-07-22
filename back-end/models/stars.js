@@ -11,11 +11,11 @@ export async function getUsersStars(id) {
   return result.rows;
 }
 
-// export async function postNewImage(url) {
-//   const sqlString = `INSERT INTO images (url, votes) VALUES ($1, 1) RETURNING *;`;
-//   const result = await db.query(sqlString, [url]);
-//   return result.rows;
-// }
+export async function postNewVote(userID, imageID) {
+  const sqlString = `INSERT INTO stars (userID, imageID) VALUES ($1, $2) RETURNING *;`;
+  const result = await db.query(sqlString, [userID, imageID]);
+  return result.rows;
+}
 
 // export async function voteForImage(id) {
 //   const sqlString = `UPDATE images SET votes = votes + 1 WHERE id = $1 RETURNING *;`;

@@ -1,23 +1,36 @@
+import { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import GalleryImage from "../GalleryImage";
 
 const Gallery = ({ galleryImages, setImagesFn }) => {
-  async function vote(idOfVotedItem) {
-    setImagesFn((previousState) => {
-      return previousState
-        .map((image) => {
-          return image.id !== idOfVotedItem
-            ? image
-            : { ...image, votes: image.votes + 1 };
-        })
-        .sort((a, b) => b.votes - a.votes);
-    });
+  const { user, isAuthenticated } = useAuth0();
 
-    await fetch(`https://the-wall-dan-blake.herokuapp.com/images/${idOfVotedItem}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    });
+  async function vote(idOfVotedItem) {
+    if (isAuthenticated) {
+      setImagesFn((previousState) => {
+        return previousState
+          .map((image) => {
+            return image.id !== idOfVotedItem
+              ? image
+              : { ...image, votes: image.votes + 1 };
+          })
+          .sort((a, b) => b.votes - a.votes);
+      });
+  
+      await fetch(`https://the-wall-dan-blake.herokuapp.com/images/${idOfVotedItem}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+      
+      await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfVotedItem}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+    }
   }
 
   return (
