@@ -1,7 +1,8 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import Gallery from "../Gallery";
-import NavBar from "../NavBar/index";
+import NavBar from "../NavBar/";
+import Stars from "../Stars/";
 
 function App() {
   const [images, setImages] = useState([]);
@@ -50,6 +51,7 @@ function App() {
         <NavBar handleClick={addImageToGallery} handleChange={inputChange} newImageURL={newImageURL} />
       </header>
       <main>
+        <Stars />
         <Gallery galleryImages={images} setImagesFn={setImages} />
       </main>
     </div>

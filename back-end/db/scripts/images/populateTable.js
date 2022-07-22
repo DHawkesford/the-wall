@@ -1,5 +1,5 @@
 import db from "../../connection.js";
-import stub from '../../../data.js';
+import stub from '../../../libs/imagesData.js';
 
 async function populateTable() {
   for (let i = 0; i < stub.length; i++) {

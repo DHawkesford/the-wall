@@ -9,6 +9,10 @@
     "db:populateimages": "node -r dotenv/config ./db/scripts/images/populateTable.js",
     "db:dropimages": "node -r dotenv/config ./db/scripts/images/dropTable.js",
     "db:resetimages": "npm run db:dropimages && npm run db:createimages && npm run db:populateimages",
+    "db:createstars": "node -r dotenv/config ./db/scripts/stars/createTable.js",
+    "db:populatestars": "node -r dotenv/config ./db/scripts/stars/populateTable.js",
+    "db:dropstars": "node -r dotenv/config ./db/scripts/stars/dropTable.js",
+    "db:resetstars": "npm run db:dropstars && npm run db:createstars && npm run db:populatestars",
     "dev": "nodemon -r dotenv/config ./bin/www.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
@@ -17,13 +21,14 @@
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "express-oauth2-jwt-bearer": "^1.1.0",
     "morgan": "~1.9.1",
     "pg": "^8.7.1"
   },
   "devDependencies": {
     "dotenv": "^10.0.0",
-    "nodemon": "^2.0.15",
     "jest": "^27.4.5",
+    "nodemon": "^2.0.15",
     "supertest": "^6.1.6"
   }
 }
