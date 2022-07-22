@@ -48,9 +48,9 @@ function Stars() {
         },
       });
 
-      const { users_stars } = await starsResponse.json();
+      const users_stars = await starsResponse.json();
       
-      console.log(users_stars);
+      console.log(users_stars.payload);
       setUsersStars(users_stars.payload);
     } catch (e) {
       console.log(e.message);
@@ -62,7 +62,7 @@ function Stars() {
       <div>
         <button onClick={getUsersStars}>Get user's stars</button>
         {usersStars ? (
-          usersStars.map(star => <p>{star.userID}, {star.imageID}</p>)
+          usersStars.map(star => <p>{star.userid}, {star.imageid}</p>)
         ) : (
           "No user's stars defined"
         )}

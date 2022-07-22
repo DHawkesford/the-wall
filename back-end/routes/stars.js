@@ -16,7 +16,7 @@ router.get("/", async function (req, res, next) {
 });
 
 // GET a listing of a user's starred images
-router.get("/:id", checkJwt, requiredScopes('read:current_users_stars'), async function(req, res, next) {
+router.get("/:id", checkJwt, requiredScopes('read:current_user_stars'), async function(req, res, next) {
   const id = Number(req.params.id);
   const data = await getUsersStars(id);
   res.json({ success: true, payload: data })

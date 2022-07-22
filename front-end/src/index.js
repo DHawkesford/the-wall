@@ -13,7 +13,7 @@ root.render(
       clientId="CUQhOhStf6ezJ7ECMjHuRtW1KjJigfO0"
       redirectUri={window.location.origin}
       audience="https://the-wall-dan-blake.herokuapp.com"
-      scope="update:current_user_stars"
+      scope="read:current_user_stars"
     >
       <App />
     </Auth0Provider>
