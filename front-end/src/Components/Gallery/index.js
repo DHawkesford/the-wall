@@ -16,14 +16,27 @@ const Gallery = ({ galleryImages, setImagesFn, usersStars, setUsersStars }) => {
       })
       const data = await response.json();
       
+      // If the user has already starred this image, grey the button, decrement the stars, and update the database
       if (data.payload.length === 0) {
         setUsersStars(usersStars.filter(star => star !== idOfStarredItem));
+        
         await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json'
           }
         })
+
+        setImagesFn((previousState) => {
+          return previousState
+            .map((image) => {
+              return image.id !== idOfStarredItem
+                ? image
+                : { ...image, stars: image.stars - 1 };
+            })
+            .sort((a, b) => b.stars - a.stars);
+        });
+
         return;
       }
       
