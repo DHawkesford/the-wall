@@ -12,7 +12,7 @@ function Stars() {
         scope: "read:current_user_stars",
       });
 
-      const userStarsByIDURL = `https://the-wall-dan-blake.herokuapp.com/stars/1`;
+      const userStarsByIDURL = `https://the-wall-dan-blake.herokuapp.com/stars/Dan1`;
 
       const starsResponse = await fetch(userStarsByIDURL, {
         headers: {
