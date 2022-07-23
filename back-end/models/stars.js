@@ -12,9 +12,14 @@ export async function getUsersStars(id) {
 }
 
 export async function postNewVote(userID, imageID) {
-  const sqlString = `INSERT INTO stars (userID, imageID) VALUES ($1, $2) RETURNING *;`;
-  const result = await db.query(sqlString, [userID, imageID]);
-  return result.rows;
+  try {
+    const sqlString = `INSERT INTO stars (userID, imageID) VALUES ($1, $2) ON CONFLICT DO NOTHING RETURNING *;`;
+    const result = await db.query(sqlString, [userID, imageID]);
+    console.log(result);
+    return result.rows;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 // export async function voteForImage(id) {

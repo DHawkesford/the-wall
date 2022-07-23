@@ -27,7 +27,7 @@ router.post("/:userID/:imageID", async function(req, res, next) {
   const userID = req.params.userID;
   const imageID = req.params.imageID;
   const data = await postNewVote(userID, imageID);
-  next();
+  res.json({ success: true, payload: data })
 })
 
 // router.patch("/:id", async function(req, res, next) {
