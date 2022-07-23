@@ -11,13 +11,6 @@ import starsRouter  from './routes/stars.js';
 
 const app = express();
 
-// app.use((req, res, next) => {
-//   res.append('Access-Control-Allow-Origin', ['*']);
-//   res.append('Access-Control-Allow-Methods', 'PUT,PATCH,POST,DELETE');
-//   res.append('Access-Control-Allow-Headers', 'Content-Type');
-//   console.log('response headers set')
-//   next();
-// });
 app.use(logger('dev'));
 app.use(cors());
 app.use(express.json());

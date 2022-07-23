@@ -6,7 +6,7 @@ export async function getAllStars() {
 }
 
 export async function getUsersStars(id) {
-  const sqlString = `SELECT * FROM stars WHERE UserID = $1 ORDER BY ImageID ASC;`;
+  const sqlString = `SELECT * FROM stars WHERE UserID = ${id} ORDER BY ImageID ASC;`;
   const result = await db.query(sqlString, [id]);
   return result.rows;
 }
