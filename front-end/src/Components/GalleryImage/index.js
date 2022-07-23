@@ -1,12 +1,16 @@
-const GalleryImage = ({ image, index, star }) => {
+  const GalleryImage = ({ image, index, star, usersStars }) => {
     return( 
         <div className="GalleryImage" key={[image.id, index]}>
           <img src={image.url} alt="Nature photographs" />
           <div className="starBar">
             <p>Stars: {image.stars}</p>
-            <button onClick={() => {star(image.id)}}>
-              Star
-            </button>
+            {usersStars 
+            ?
+              usersStars.includes(image.id)
+              ? <button className="starButtonStarred" onClick={() => {star(image.id)}} />
+              : <button className="starButtonNotStarred" onClick={() => {star(image.id)}} />
+            : null
+            }
           </div>
         </div>
     );

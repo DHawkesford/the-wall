@@ -23,3 +23,13 @@ export async function addStarToUserID(userID, imageID) {
     console.error(error);
   }
 }
+export async function deleteStarFromUserID(userID, imageID) {
+  try {
+    const sqlString = `DELETE FROM stars WHERE userID = $1 AND imageID = $2 RETURNING *;`;
+    const result = await db.query(sqlString, [userID, imageID]);
+    console.log(result);
+    return result.rows;
+  } catch (error) {
+    console.error(error);
+  }
+}

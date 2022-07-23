@@ -99,10 +99,22 @@ main {
   border: white solid 2px;
 }
 
-.starBar > button {
-  width: 30%; 
-  height: 70%;
+.starButtonStarred {
+  width: 15px; 
+  height: 15px;
   font-size: 10px;
+  cursor: pointer;
+  border: none;
+  background: url(../GalleryImage/star_icon_gold.svg) no-repeat;
+}
+
+.starButtonNotStarred {
+  width: 15px; 
+  height: 15px;
+  font-size: 10px;
+  cursor: pointer;
+  border: none;
+  background: url(../GalleryImage/star_icon_grey.svg) no-repeat;
 }
 
 .starBar > p {

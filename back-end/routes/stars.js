@@ -1,7 +1,6 @@
-import express, { query } from "express";
+import express from "express";
 import { auth, requiredScopes } from 'express-oauth2-jwt-bearer';
-import { getAllStars, getUsersStars, addStarToUserID } from "../models/stars.js";
-import cors from 'cors';
+import { getAllStars, getUsersStars, addStarToUserID , deleteStarFromUserID } from "../models/stars.js";
 
 const router = express.Router();
 
@@ -27,6 +26,13 @@ router.post("/:userID/:imageID", async function(req, res, next) {
   const userID = req.params.userID;
   const imageID = req.params.imageID;
   const data = await addStarToUserID(userID, imageID);
+  res.json({ success: true, payload: data })
+})
+
+router.delete("/:userID/:imageID", async function(req, res, next) {
+  const userID = req.params.userID;
+  const imageID = req.params.imageID;
+  const data = await deleteStarFromUserID(userID, imageID);
   res.json({ success: true, payload: data })
 })
 
