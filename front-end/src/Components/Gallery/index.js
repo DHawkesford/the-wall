@@ -6,6 +6,19 @@ const Gallery = ({ galleryImages, setImagesFn }) => {
 
   async function vote(idOfVotedItem) {
     if (isAuthenticated) {
+      const response = await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfVotedItem}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      const data = await response.json();
+      
+      if (data.payload.length === 0) {
+        console.log("You have already starred this image.");
+        return;
+      }
+      
       setImagesFn((previousState) => {
         return previousState
           .map((image) => {
@@ -15,19 +28,12 @@ const Gallery = ({ galleryImages, setImagesFn }) => {
           })
           .sort((a, b) => b.votes - a.votes);
       });
-  
+      
       await fetch(`https://the-wall-dan-blake.herokuapp.com/images/${idOfVotedItem}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
         },
-      })
-      
-      await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfVotedItem}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        }
       })
     }
   }
