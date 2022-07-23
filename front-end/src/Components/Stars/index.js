@@ -12,11 +12,12 @@ function Stars() {
         scope: "read:current_user_stars",
       });
 
-      const userStarsByIDURL = `https://the-wall-dan-blake.herokuapp.com/stars/Dan1`;
+      const userStarsByIDURL = `https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}`;
 
       const starsResponse = await fetch(userStarsByIDURL, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json'
         },
       });
 
@@ -31,12 +32,14 @@ function Stars() {
   return (
     isAuthenticated && (
       <div>
-        <button onClick={getUsersStars}>Get user's stars</button>
-        {usersStars ? (
-          usersStars.map(star => <p>{star.userid}, {star.imageid}</p>)
-        ) : (
-          "No user's stars defined"
-        )}
+        <button onClick={getUsersStars}>Get your stars</button>
+        <p>
+          {usersStars ? (
+            usersStars.map(star => <>{star.imageid}, </>)
+          ) : (
+            "No user's stars defined"
+          )}
+        </p>
       </div>
     )
   );
