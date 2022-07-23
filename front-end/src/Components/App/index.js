@@ -6,9 +6,9 @@ import NavBar from "../NavBar/";
 // import Stars from "../Stars/";
 
 function App() {
+  const { user, isAuthenticated, getAccessTokenWithPopup } = useAuth0();
   const [images, setImages] = useState([]);
   const [newImageURL, setNewImageURL] = useState('');
-  const { user, isAuthenticated, getAccessTokenWithPopup } = useAuth0();
   const [usersStars, setUsersStars] = useState(null);
 
   const getUsersStars = async () => {
@@ -34,6 +34,7 @@ function App() {
       for (let i = 0; i < users_stars.payload.length; i++ ) {
         starredImageIDs.push(users_stars.payload[i].imageid)
       }
+      
       setUsersStars(starredImageIDs);
     } catch (e) {
       console.log(e.message);
@@ -89,7 +90,7 @@ function App() {
           <button onClick={getUsersStars}>Get your stars</button>
           <p>
             {usersStars ? (
-              usersStars.map(star => <>{star.imageid}, </>)
+              usersStars.map(star => <>{star}, </>)
             ) : (
               "No user's stars defined"
             )}
