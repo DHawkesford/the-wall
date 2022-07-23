@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllImages, postNewImage, voteForImage } from "../models/images.js";
+import { getAllImages, postNewImage, incrementStarsByImageID } from "../models/images.js";
 
 const router = express.Router();
 
@@ -17,7 +17,7 @@ router.post("/", async function(req, res, next) {
 
 router.patch("/:id", async function(req, res, next) {
   const id = Number(req.params.id);
-  const data = await voteForImage(id);
+  const data = await incrementStarsByImageID(id);
   res.json({ success: true, payload: data })
 })
 

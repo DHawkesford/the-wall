@@ -2,7 +2,7 @@ import db from "../../connection.js";
 
 async function createTable() {
   const response = await db.query(
-    `CREATE TABLE IF NOT EXISTS images (id SERIAL PRIMARY KEY, url TEXT, votes INT);`
+    `CREATE TABLE IF NOT EXISTS images (id SERIAL PRIMARY KEY, url TEXT, stars INT);`
   );
   
   console.log(response);

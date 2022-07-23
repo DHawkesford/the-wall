@@ -1,6 +1,6 @@
 import express, { query } from "express";
 import { auth, requiredScopes } from 'express-oauth2-jwt-bearer';
-import { getAllStars, getUsersStars, postNewVote } from "../models/stars.js";
+import { getAllStars, getUsersStars, addStarToUserID } from "../models/stars.js";
 import cors from 'cors';
 
 const router = express.Router();
@@ -26,14 +26,8 @@ router.get("/:id", checkJwt, requiredScopes('read:current_user_stars'), async fu
 router.post("/:userID/:imageID", async function(req, res, next) {
   const userID = req.params.userID;
   const imageID = req.params.imageID;
-  const data = await postNewVote(userID, imageID);
+  const data = await addStarToUserID(userID, imageID);
   res.json({ success: true, payload: data })
 })
-
-// router.patch("/:id", async function(req, res, next) {
-  // const id = Number(req.params.id);
-  // const data = await voteForImage(id);
-//   res.json({ success: true, payload: data })
-// })
 
 export default router;

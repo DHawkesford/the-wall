@@ -1,11 +1,11 @@
-const GalleryImage = ({ image, index, vote }) => {
+const GalleryImage = ({ image, index, star }) => {
     return( 
         <div className="GalleryImage" key={[image.id, index]}>
           <img src={image.url} alt="Nature photographs" />
-          <div className="voteBar">
-            <p>Votes: {image.votes}</p>
-            <button onClick={() => {vote(image.id)}}>
-              Vote
+          <div className="starBar">
+            <p>Stars: {image.stars}</p>
+            <button onClick={() => {star(image.id)}}>
+              Star
             </button>
           </div>
         </div>

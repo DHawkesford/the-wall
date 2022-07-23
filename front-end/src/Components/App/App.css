@@ -81,7 +81,7 @@ main {
   width: 100%;
 }
 
-.voteBar {
+.starBar {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -99,13 +99,13 @@ main {
   border: white solid 2px;
 }
 
-.voteBar > button {
+.starBar > button {
   width: 30%; 
   height: 70%;
   font-size: 10px;
 }
 
-.voteBar > p {
+.starBar > p {
   width: 60%;
   font-size: 10px;
 }

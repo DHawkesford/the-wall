@@ -16,7 +16,7 @@ function App() {
     // Update the page with the new image
     const newImage = {
       url: newImageURL,
-      votes: 1
+      stars: 1
     }
     setImages([...images, newImage])
 

@@ -4,9 +4,9 @@ import GalleryImage from "../GalleryImage";
 const Gallery = ({ galleryImages, setImagesFn }) => {
   const { user, isAuthenticated } = useAuth0();
 
-  async function vote(idOfVotedItem) {
+  async function star(idOfStarredItem) {
     if (isAuthenticated) {
-      const response = await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfVotedItem}`, {
+      const response = await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -22,14 +22,14 @@ const Gallery = ({ galleryImages, setImagesFn }) => {
       setImagesFn((previousState) => {
         return previousState
           .map((image) => {
-            return image.id !== idOfVotedItem
+            return image.id !== idOfStarredItem
               ? image
-              : { ...image, votes: image.votes + 1 };
+              : { ...image, stars: image.stars + 1 };
           })
-          .sort((a, b) => b.votes - a.votes);
+          .sort((a, b) => b.stars - a.stars);
       });
       
-      await fetch(`https://the-wall-dan-blake.herokuapp.com/images/${idOfVotedItem}`, {
+      await fetch(`https://the-wall-dan-blake.herokuapp.com/images/${idOfStarredItem}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
@@ -40,7 +40,7 @@ const Gallery = ({ galleryImages, setImagesFn }) => {
 
   return (
     <div className="Gallery">
-      {galleryImages.map((image, index) => <GalleryImage image={image} index={index} vote={vote} />)}
+      {galleryImages.map((image, index) => <GalleryImage image={image} index={index} star={star} />)}
     </div>
   );
 };
