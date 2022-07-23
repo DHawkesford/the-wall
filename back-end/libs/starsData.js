@@ -1,58 +1,58 @@
 const stars = [
     {
-      userID: 1,
+      userID: "Dan1",
       imageID: 1,
     },
     {
-      userID: 1,
+      userID: "Dan1",
       imageID: 2,
     },
     {
-      userID: 1,
+      userID: "Dan1",
       imageID: 4,
     },
     {
-      userID: 2,
+      userID: "Dan2",
       imageID: 1,
     },
     {
-      userID: 2,
+      userID: "Dan2",
       imageID: 5,
     },
     {
-      userID: 2,
+      userID: "Dan2",
       imageID: 2,
     },
     {
-      userID: 3,
+      userID: "Dan3",
       imageID: 1,
     },
     {
-      userID: 3,
+      userID: "Dan3",
       imageID: 3,
     },
     {
-      userID: 3,
+      userID: "Dan3",
       imageID: 4,
     },
     {
-      userID: 4,
+      userID: "Dan4",
       imageID: 1,
     },
     {
-      userID: 4,
+      userID: "Dan4",
       imageID: 2,
     },
     {
-      userID: 5,
+      userID: "Dan5",
       imageID: 1,
     },
     {
-      userID: 5,
+      userID: "Dan5",
       imageID: 2,
     },
     {
-      userID: 5,
+      userID: "Dan5",
       imageID: 3,
     }
 ];
