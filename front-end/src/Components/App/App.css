@@ -74,11 +74,11 @@ main {
   position: relative;
   z-index: 1;
   margin: 5px;
-  border: solid rgb(175, 175, 175) 1px;
 }
 
 .GalleryImage > img {
   width: 100%;
+  outline: solid rgb(175, 175, 175) 1px;
 }
 
 .starBar {
