@@ -74,11 +74,11 @@ main {
   position: relative;
   z-index: 1;
   margin: 5px;
-  border: solid rgb(175, 175, 175) 1px;
 }
 
 .GalleryImage > img {
   width: 100%;
+  outline: solid rgb(175, 175, 175) 1px;
 }
 
 .starBar {
@@ -91,7 +91,7 @@ main {
   right: 1%;
   background-color: darkblue;
   opacity: 0.8;
-  width: 100px;
+  width: 70px;
   color: white;
   font-size: 10px;
   border-radius: 5px;
@@ -99,10 +99,22 @@ main {
   border: white solid 2px;
 }
 
-.starBar > button {
-  width: 30%; 
-  height: 70%;
+.starButtonStarred {
+  width: 15px; 
+  height: 15px;
   font-size: 10px;
+  cursor: pointer;
+  border: none;
+  background: url(../GalleryImage/star_icon_gold.svg) no-repeat;
+}
+
+.starButtonNotStarred {
+  width: 15px; 
+  height: 15px;
+  font-size: 10px;
+  cursor: pointer;
+  border: none;
+  background: url(../GalleryImage/star_icon_grey.svg) no-repeat;
 }
 
 .starBar > p {

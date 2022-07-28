@@ -22,7 +22,8 @@ function Stars() {
       });
 
       const users_stars = await starsResponse.json();
-      
+      console.log(users_stars);
+      console.log('users_stars');
       setUsersStars(users_stars.payload);
     } catch (e) {
       console.log(e.message);
