@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Gallery from "../Gallery";
 import NavBar from "../NavBar/";
-// import Stars from "../Stars/";
 
 function App() {
   const { user, isAuthenticated, getAccessTokenWithPopup } = useAuth0();
