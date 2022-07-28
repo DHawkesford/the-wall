@@ -15,10 +15,4 @@ router.post("/", async function(req, res, next) {
   res.json({ success: true, payload: data })
 })
 
-router.patch("/:id", async function(req, res, next) {
-  const id = Number(req.params.id);
-  const data = await incrementStarsByImageID(id);
-  res.json({ success: true, payload: data })
-})
-
 export default router;

@@ -1,6 +1,6 @@
-  const GalleryImage = ({ image, index, star, usersStars }) => {
+  const GalleryImage = ({ image, star, usersStars }) => {
     return( 
-        <div className="GalleryImage" key={[image.id, index]}>
+        <div className="GalleryImage">
           <img src={image.url} alt="Nature photographs" />
           <div className="starBar">
             <p>Stars: {image.stars}</p>

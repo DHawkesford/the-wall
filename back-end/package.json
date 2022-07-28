@@ -13,6 +13,7 @@
     "db:populatestars": "node -r dotenv/config ./db/scripts/stars/populateTable.js",
     "db:dropstars": "node -r dotenv/config ./db/scripts/stars/dropTable.js",
     "db:resetstars": "npm run db:dropstars && npm run db:createstars && npm run db:populatestars",
+    "db:resetdb": "npm run db:resetstars && npm run db:resetimages",
     "dev": "nodemon -r dotenv/config ./bin/www.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
