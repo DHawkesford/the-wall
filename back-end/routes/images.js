@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllImages, postNewImage, incrementStarsByImageID } from "../models/images.js";
+import { getAllImages, postNewImage } from "../models/images.js";
 
 const router = express.Router();
 
