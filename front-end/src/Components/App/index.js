@@ -5,7 +5,7 @@ import Gallery from "../Gallery";
 import NavBar from "../NavBar/";
 
 function App() {
-  const { user, isAuthenticated, getAccessTokenWithPopup } = useAuth0();
+  const { user, getAccessTokenWithPopup } = useAuth0();
   const [images, setImages] = useState([]);
   const [newImageURL, setNewImageURL] = useState('');
   const [usersStars, setUsersStars] = useState(null);
@@ -80,24 +80,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <NavBar handleClick={addImageToGallery} handleChange={inputChange} newImageURL={newImageURL} />
+        <NavBar handleClick={addImageToGallery} handleChange={inputChange} newImageURL={newImageURL} usersStars={usersStars} getUsersStars={getUsersStars} />
       </header>
       <main>
-        {isAuthenticated
-        ? (
-        <div>
-          <button onClick={getUsersStars}>Get your stars</button>
-          <p>
-            {usersStars ? (
-              usersStars.map(star => <>{star}, </>)
-            ) : (
-              "No user's stars defined"
-            )}
-          </p>
-        </div>
-        )
-        : null
-        }
         <Gallery galleryImages={images} setImagesFn={setImages} usersStars={usersStars} setUsersStars={setUsersStars} />
       </main>
     </div>
