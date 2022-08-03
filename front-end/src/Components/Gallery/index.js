@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import GalleryImage from "../GalleryImage";
+import GalleryImage from "./GalleryImage";
 
 const Gallery = ({ galleryImages, setImagesFn, usersStars, setUsersStars }) => {
   const { user, isAuthenticated } = useAuth0();

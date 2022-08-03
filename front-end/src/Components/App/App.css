@@ -105,7 +105,7 @@ main {
   font-size: 10px;
   cursor: pointer;
   border: none;
-  background: url(../GalleryImage/star_icon_gold.svg) no-repeat;
+  background: url(../Gallery/GalleryImage/star_icon_gold.svg) no-repeat;
 }
 
 .starButtonNotStarred {
@@ -114,7 +114,7 @@ main {
   font-size: 10px;
   cursor: pointer;
   border: none;
-  background: url(../GalleryImage/star_icon_grey.svg) no-repeat;
+  background: url(../Gallery/GalleryImage/star_icon_grey.svg) no-repeat;
 }
 
 .starBar > p {
