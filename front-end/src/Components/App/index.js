@@ -3,12 +3,15 @@ import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Gallery from "../Gallery";
 import NavBar from "../NavBar/";
+import GalleryImageModal from '../GalleryImageModal';
 
 function App() {
   const { user, getAccessTokenWithPopup } = useAuth0();
   const [images, setImages] = useState([]);
   const [newImageURL, setNewImageURL] = useState('');
   const [usersStars, setUsersStars] = useState(null);
+  const [displayModal, setDisplayModal] = useState(false);
+  const [modalImage, setModalImage] = useState(null);
 
   const getUsersStars = async () => {
     try {
@@ -67,6 +70,11 @@ function App() {
     })
   }
 
+  function showModal(src) {
+    setDisplayModal(true);
+    setModalImage(src);
+  }
+
   useEffect(() => {
     async function getImages() {
       const response = await fetch('https://the-wall-dan-blake.herokuapp.com/images');
@@ -83,8 +91,9 @@ function App() {
         <NavBar handleClick={addImageToGallery} handleChange={inputChange} newImageURL={newImageURL} usersStars={usersStars} getUsersStars={getUsersStars} />
       </header>
       <main>
-        <Gallery galleryImages={images} setImagesFn={setImages} usersStars={usersStars} setUsersStars={setUsersStars} />
+        <Gallery galleryImages={images} setImagesFn={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal}/>
       </main>
+      <GalleryImageModal setDisplayModal={setDisplayModal} modalImage={modalImage} displayModal={displayModal} />
     </div>
   );
 }

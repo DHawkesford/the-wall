@@ -1,20 +1,11 @@
-import GalleryImageModal from '../GalleryImageModal';
-import { useState } from 'react';
 import zoomIn from './zoom_in_icon.svg';
 
-const GalleryImage = ({ image, star, usersStars }) => {
-  const [showModal, setShowModal] = useState(false);
-
+const GalleryImage = ({ image, star, usersStars, showModal }) => {
   return( 
     <div className="GalleryImage">
-      <a>
-        <img className="zoomIn" src={zoomIn} alt="A magnifying glass with a plus sign over the lens" />
-      </a>
+      <img className="zoomIn" src={zoomIn} onClick={() => {showModal(image.url)}} alt="A magnifying glass with a plus sign over the lens" />
       <img className="photo" src={image.url} alt="Nature photographs" />
       <div className="starBar">
-        {/* <GalleryImageModal showModal={showModal} handleClose={() => setShowModal(false)}>
-          <p>Test</p>
-        </GalleryImageModal> */}
         <p>Stars: {image.stars}</p>
         {usersStars 
         ?
