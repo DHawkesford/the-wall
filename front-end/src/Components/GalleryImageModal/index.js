@@ -1,5 +1,5 @@
 const GalleryImageModal = ({ displayModal, setDisplayModal, modalImage }) => {
-  const showOrHideClassName = displayModal ? "modal display-block" : "modal display-none";
+  const showOrHideClassName = displayModal ? "modal show-modal" : "modal hide-modal";
 
   return (
     <div className={showOrHideClassName}>

@@ -168,16 +168,17 @@ main {
   transform: translate(-50%,-50%);
   overflow: scroll;
   cursor: zoom-out;
+  outline: solid rgb(175, 175, 175) 3px;
 }
 
 .modal-main > img {
   min-width: 100%;
 }
 
-.display-block {
-  display: block;
+.show-modal {
+  visibility: visible;
 }
 
-.display-none {
-  display: none;
+.hide-modal {
+  visibility: hidden;
 }
