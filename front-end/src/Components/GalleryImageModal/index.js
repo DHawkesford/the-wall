@@ -4,7 +4,7 @@ const GalleryImageModal = ({ displayModal, setDisplayModal, modalImage }) => {
   return (
     <div className={showOrHideClassName}>
       <section className="modal-main">
-        <img src={modalImage} onClick={() => setDisplayModal(false)}/>
+        <img src={modalImage.url} onClick={() => setDisplayModal(false)} alt={modalImage.alt || 'No alt text available'}/>
       </section>
     </div>
   );

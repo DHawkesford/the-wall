@@ -3,8 +3,8 @@ import zoomIn from './zoom_in_icon.svg';
 const GalleryImage = ({ image, star, usersStars, showModal }) => {
   return( 
     <div className="GalleryImage">
-      <img className="zoomIn" src={zoomIn} onClick={() => {showModal(image.url)}} alt="A magnifying glass with a plus sign over the lens" />
-      <img className="photo" src={image.url} alt="Nature photographs" />
+      <img className="zoomIn" src={zoomIn} onClick={() => {showModal(image)}} alt="A magnifying glass with a plus sign over the lens" />
+      <img className="photo" src={image.url} alt={image.alt || 'No alt text available'} />
       <div className="starBar">
         <p>Stars: {image.stars}</p>
         {usersStars 
