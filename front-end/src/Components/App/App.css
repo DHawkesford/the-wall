@@ -184,5 +184,5 @@ main {
 .hide-modal {
   visibility: hidden;
   opacity: 0%;
-  transition: opacity 1s, visibility 1s 1s;
+  transition: opacity 1s, visibility 1s;
 }
