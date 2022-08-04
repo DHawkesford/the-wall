@@ -177,8 +177,12 @@ main {
 
 .show-modal {
   visibility: visible;
+  opacity: 100%;
+  transition: opacity 1s;
 }
 
 .hide-modal {
   visibility: hidden;
+  opacity: 0%;
+  transition: opacity 1s, visibility 1s 1s;
 }
