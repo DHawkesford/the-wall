@@ -4,11 +4,8 @@ const GalleryImageModal = ({ displayModal, setDisplayModal, modalImage }) => {
   return (
     <div className={showOrHideClassName}>
       <section className="modal-main">
-        <img src={modalImage} />
+        <img src={modalImage} onClick={() => setDisplayModal(false)}/>
       </section>
-      <button type="button" onClick={() => setDisplayModal(false)}>
-        Close
-      </button>
     </div>
   );
 };
