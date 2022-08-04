@@ -167,12 +167,13 @@ main {
   left:50%;
   transform: translate(-50%,-50%);
   overflow: scroll;
-  cursor: zoom-out;
+  overflow-x: auto;
   outline: solid rgb(175, 175, 175) 3px;
 }
 
 .modal-main > img {
   min-width: 100%;
+  cursor: zoom-out;
 }
 
 .show-modal {
@@ -184,5 +185,22 @@ main {
 .hide-modal {
   visibility: hidden;
   opacity: 0%;
-  transition: opacity 1s, visibility 0.7s; /* play with visiblity timer to reduce lag */
+  transition: opacity 1s, visibility 0.7s;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3d434f;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #282c34;
 }
