@@ -206,9 +206,8 @@ main {
   position: fixed;
   top: 5vh;
   width: 25vw;
-  opacity: 0%;
   transform: translateX(-100%);
-  transition: opacity 0.1s, transform 0.5s; /* The opacity transition prevents the hide animation from running on page load */
+  transition: transform 0.5s; 
 }
 
 .show-hamburger-menu {
@@ -217,9 +216,4 @@ main {
 
 .hide-hamburger-menu {
   transform: translateX(-100%);
-}
-
-/* Prevents the hide animation from running on page load */
-.navbar:hover .hamburger-menu {
-  opacity: 100%;
 }
