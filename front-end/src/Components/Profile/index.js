@@ -9,7 +9,7 @@ const Profile = () => {
 
   return (
     isAuthenticated && (
-      <div>
+      <div className="profile">
         Hello, {user.name}
       </div>
     )

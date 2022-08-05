@@ -13,7 +13,7 @@ const NavBar = ({ handleClick, handleChange, newImageURL, usersStars, getUsersSt
 
   return (
     <nav className="navbar">
-      <img src={hamburgerIcon} onClick={() => {setDisplayHamburgerMenu(!displayHamburgerMenu)}} alt="A hamburger menu icon, which is three horizontal lines in a column." />
+      <img src={hamburgerIcon} className="hamburger-icon" onClick={() => {setDisplayHamburgerMenu(!displayHamburgerMenu)}} alt="A hamburger menu icon, which is three horizontal lines in a column." />
       <div className={hamburgerMenuClasses}>
         <input type="text" className="input" onChange={handleChange} value={newImageURL}/>
         <button className="submit" onClick={handleClick}>submit</button>

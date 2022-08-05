@@ -190,22 +190,30 @@ main {
   background: #282c34;
 }
 
+.hamburger-icon {
+  height: 70%;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
 .hamburger-menu {
   display: flex;
   flex-direction: column;
-  border: solid red 1px;
   position: fixed;
   top: 5vh;
+  width: 25vw;
 }
 
 .show-hamburger-menu {
-  visibility: visible;
-  opacity: 100%;
-  transition: opacity 1s;
+  left: 0vw;
+  transition: 1s
 }
 
 .hide-hamburger-menu {
-  visibility: hidden;
-  opacity: 0%;
-  transition: opacity 1s, visibility 0.7s;
+  left: -25vw;
+  transition: 1s
+}
+
+.profile {
+  word-wrap: break-word
 }
