@@ -36,22 +36,6 @@ nav {
   border-bottom: solid white 1px;
 }
 
-nav > input {
-  width: 30%;
-  height: 50%;
-  margin-left: 10px;
-}
-
-nav > button {
-  width: 5%;  
-  height: 58%;
-  margin-left: 0.5%;
-  font-size: 1.2vw;
-  line-height: 58%;
-  /* display:   inline-flex;
-  align-items: center;  */
-}
-
 main {
   margin-top: 5vh;
 }
@@ -204,6 +188,14 @@ main {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #282c34;
+}
+
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  border: solid red 1px;
+  position: fixed;
+  top: 5vh;
 }
 
 .show-hamburger-menu {

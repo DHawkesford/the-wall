@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 const NavBar = ({ handleClick, handleChange, newImageURL, usersStars, getUsersStars }) => {
   const [displayHamburgerMenu, setDisplayHamburgerMenu] = useState(false);
-  const hamburgerMenuClasses = displayHamburgerMenu ? "hamburgerMenu show-hamburger-menu" : "hamburgerMenu hide-hamburger-menu";
+  const hamburgerMenuClasses = displayHamburgerMenu ? "hamburger-menu show-hamburger-menu" : "hamburger-menu hide-hamburger-menu";
 
   const { isAuthenticated } = useAuth0();
 
