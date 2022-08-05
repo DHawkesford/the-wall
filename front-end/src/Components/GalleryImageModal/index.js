@@ -8,8 +8,7 @@ const GalleryImageModal = ({ displayModal, setDisplayModal, modalImage }) => {
       // Does not set displayModal to be false if the user is clicking on the zoom in icon (this would negate the effect of zooming in)
       if (!e.target.closest(".modal-main") && !e.target.closest('.zoomIn')) {
         setDisplayModal(false);
-      }
-    }
+      }}
   )
   
   return (
