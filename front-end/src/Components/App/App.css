@@ -205,3 +205,15 @@ main {
 ::-webkit-scrollbar-thumb:hover {
   background: #282c34;
 }
+
+.show-hamburger-menu {
+  visibility: visible;
+  opacity: 100%;
+  transition: opacity 1s;
+}
+
+.hide-hamburger-menu {
+  visibility: hidden;
+  opacity: 0%;
+  transition: opacity 1s, visibility 0.7s;
+}
