@@ -207,27 +207,19 @@ main {
   top: 5vh;
   width: 25vw;
   opacity: 0%;
-  transition: opacity 1s;
   transform: translateX(-100%);
+  transition: opacity 0.1s, transform 0.5s; /* The opacity transition prevents the hide animation from running on page load */
 }
 
 .show-hamburger-menu {
-  animation: slide-in 0.5s forwards;
-}
-
-@keyframes slide-in {
-  100% { transform: translateX(0%); }
-}
-
-.navbar:hover .hamburger-menu {
-  opacity: 100%;
+  transform: translateX(0%);
 }
 
 .hide-hamburger-menu {
-  animation: slide-out 0.5s forwards;
+  transform: translateX(-100%);
 }
 
-@keyframes slide-out {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
+/* Prevents the hide animation from running on page load */
+.navbar:hover .hamburger-menu {
+  opacity: 100%;
 }
