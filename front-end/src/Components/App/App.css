@@ -190,6 +190,10 @@ main {
   background: #282c34;
 }
 
+.profile {
+  word-wrap: break-word
+}
+
 .hamburger-icon {
   height: 70%;
   margin-left: 10px;
@@ -202,18 +206,28 @@ main {
   position: fixed;
   top: 5vh;
   width: 25vw;
+  opacity: 0%;
+  transition: opacity 1s;
+  transform: translateX(-100%);
 }
 
 .show-hamburger-menu {
-  left: 0vw;
-  transition: 1s
+  animation: slide-in 0.5s forwards;
+}
+
+@keyframes slide-in {
+  100% { transform: translateX(0%); }
+}
+
+.navbar:hover .hamburger-menu {
+  opacity: 100%;
 }
 
 .hide-hamburger-menu {
-  left: -25vw;
-  transition: 1s
+  animation: slide-out 0.5s forwards;
 }
 
-.profile {
-  word-wrap: break-word
+@keyframes slide-out {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
 }
