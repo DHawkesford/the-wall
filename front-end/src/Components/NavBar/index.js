@@ -11,6 +11,17 @@ const NavBar = ({ handleClick, handleChange, newImageURL, usersStars, getUsersSt
 
   const { isAuthenticated } = useAuth0();
 
+  // Closes the hamburger menu when clicking outside of it by setting the displayHamburgerMenu boolean to be false
+  document.addEventListener(
+    "click",
+    (e) => {
+      // Does not set displayHamburgerMenu to be false if the user is clicking on the hamburger icon (this would negate the effect of opening the menu)
+      if (!e.target.closest(".hamburger-menu") && !e.target.closest('.hamburger-icon')) {
+        setDisplayHamburgerMenu(false);
+      }
+    }
+  )
+
   return (
     <nav className="navbar">
       <img src={hamburgerIcon} className="hamburger-icon" onClick={() => {setDisplayHamburgerMenu(!displayHamburgerMenu)}} alt="A hamburger menu icon, which is three horizontal lines in a column." />
