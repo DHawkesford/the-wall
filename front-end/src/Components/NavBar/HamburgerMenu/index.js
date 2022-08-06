@@ -2,6 +2,7 @@ import LoginButton from "../../LoginButton";
 import LogoutButton from "../../LogoutButton";
 import Profile from "../../Profile";
 import hamburgerIcon from './hamburger_icon.svg';
+import newPhotoIcon from './new_photo_icon.png';
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from 'react';
 
@@ -25,25 +26,39 @@ const HamburgerMenu = ({ handleClick, handleChange, newImageURL, usersStars, get
         <>
             <img src={hamburgerIcon} className="hamburger-icon" onClick={() => {setDisplayHamburgerMenu(!displayHamburgerMenu)}} alt="A hamburger menu icon, which is three horizontal lines in a column." />
             <div className={hamburgerMenuClasses}>
-                <input type="text" className="input" onChange={handleChange} value={newImageURL}/>
-                <button className="submit" onClick={handleClick}>submit</button>
-                <LoginButton />
-                <LogoutButton />
-                <Profile />
-                {isAuthenticated ? (
-                <div>
-                    <button onClick={getUsersStars}>Get your stars</button>
-                    <p>
-                    {usersStars ? (
-                        usersStars.map(star => <>{star}, </>)
-                    ) : (
-                        "No user's stars defined"
-                    )}
-                    </p>
+                <div className="hamburger-links">
+                    <a>
+                        <img src={newPhotoIcon} className="hamburger-link-icon" alt="A simple square illustration of mountains under a clear sky. In the bottom-right corner there is a circle containing a plus sign." />
+                        {/* <input type="text" className="input" onChange={handleChange} value={newImageURL} />
+                        <button className="submit" onClick={handleClick}>submit</button> */}
+                    </a>
+                    <a>
+                        <Profile />
+                    </a>
+                    <a>
+                        {isAuthenticated ? (
+                        <>
+                            <button onClick={getUsersStars}>Get your stars</button>
+                            <p>
+                            {usersStars ? (
+                                usersStars.map(star => <>{star}, </>)
+                            ) : (
+                                "No user's stars defined"
+                            )}
+                            </p>
+                        </>
+                        )
+                        : null
+                        }
+                    </a>
+                    <a>
+                        {isAuthenticated ? (
+                            <LogoutButton />
+                        ) : (
+                            <LoginButton />
+                        )}
+                    </a>
                 </div>
-                )
-                : null
-                }
             </div>
         </>
     )
