@@ -18,3 +18,5 @@ Icon by <a href="https://freeicons.io/profile/714">Raj Dev</a> on <a href="https
 <!-- Photographer icon -->
 <a href="https://www.flaticon.com/free-icons/photographer" title="photographer icons">Photographer icons created by Eucalyp - Flaticon</a>
                                 
+<!-- Close icons (light and dark) -->
+<a href="https://www.flaticon.com/free-icons/close" title="close icons">Close icons created by Tanah Basah - Flaticon</a>

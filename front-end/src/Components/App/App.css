@@ -306,6 +306,14 @@ main {
   text-decoration: underline;
 }
 
+.close-icon {
+  height: 30px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
 .info-modal-open-menu-wrapper {
   display: flex;
   flex-direction: column;
