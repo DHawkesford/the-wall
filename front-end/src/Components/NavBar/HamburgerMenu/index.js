@@ -4,10 +4,8 @@ import Profile from "../../Profile";
 import hamburgerIcon from './hamburger_icon.svg';
 import newPhotoIcon from './new_photo_icon.png';
 import { useAuth0 } from "@auth0/auth0-react";
-import { useState } from 'react';
 
-const HamburgerMenu = ({ handleClick, handleChange, newImageURL, usersStars, getUsersStars }) => {
-    const [displayHamburgerMenu, setDisplayHamburgerMenu] = useState(false);
+const HamburgerMenu = ({ handleClick, handleChange, newImageURL, usersStars, getUsersStars, setDisplayHamburgerMenu, displayHamburgerMenu }) => {
     const hamburgerMenuClasses = displayHamburgerMenu ? "hamburger-menu show-hamburger-menu" : "hamburger-menu hide-hamburger-menu";
   
     const { isAuthenticated } = useAuth0();
@@ -16,8 +14,8 @@ const HamburgerMenu = ({ handleClick, handleChange, newImageURL, usersStars, get
     document.addEventListener(
         "click",
         (e) => {
-        // Does not set displayHamburgerMenu to be false if the user is clicking on the hamburger icon (this would negate the effect of opening the menu)
-        if (!e.target.closest(".hamburger-menu") && !e.target.closest('.hamburger-icon')) {
+        // Does not set displayHamburgerMenu to be false if the user is clicking on the hamburger icon or open menu button (this would negate the effect of opening the menu)
+        if (!e.target.closest(".hamburger-menu") && !e.target.closest('.hamburger-icon') && !e.target.closest('.info-modal-open-menu-button')) {
             setDisplayHamburgerMenu(false);
         }}
     )
