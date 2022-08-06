@@ -11,10 +11,6 @@ body {
   text-align: center;
 }
 
-/* .App-link {
-  color: #61dafb;
-} */
-
 nav {
   background-color: #282c34;
   color: white;
@@ -42,7 +38,6 @@ main {
 }
 
 .Gallery {
-  /* margin-top: 35px; */
   padding: 5px 0 0 5px;
   display: flex;
   flex-direction: row;
@@ -54,7 +49,6 @@ main {
 .GalleryImage {
   display: flex;
   animation: fadeIn 4s;
-  /* width: 31%; */
   height: 300px;
   width: auto;
   position: relative;
