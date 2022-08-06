@@ -140,7 +140,7 @@ main {
   }
 }
 
-.modal {
+.modal-darken-background {
   position: fixed;
   top: 0;
   left: 0;
@@ -150,7 +150,7 @@ main {
   z-index: 5;
 }
 
-.modal-main {
+.image-modal {
   z-index: 5;
   position:fixed;
   width: 90vw;
@@ -164,18 +164,18 @@ main {
   outline: solid rgb(175, 175, 175) 3px;
 }
 
-.modal-main > img {
+.image-modal > img {
   min-width: 100%;
   cursor: zoom-out;
 }
 
-.show-modal {
+.show-image-modal {
   visibility: visible;
   opacity: 100%;
   transition: opacity 1s;
 }
 
-.hide-modal {
+.hide-image-modal {
   visibility: hidden;
   opacity: 0%;
   transition: opacity 1s, visibility 0.7s;
@@ -241,4 +241,43 @@ main {
   list-style: none;
   display: flex;
   flex-direction: row;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+}
+
+.info-icon {
+  height: 70%;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.info-modal {
+  z-index: 5;
+  position:fixed;
+  width: 90vw;
+  height: 90vh;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  overflow: scroll;
+  overflow-x: auto;
+  overflow-y: auto;
+  outline: solid rgb(175, 175, 175) 3px;
+}
+
+.show-info-modal {
+  visibility: visible;
+  opacity: 100%;
+  transition: opacity 1s;
+}
+
+.hide-info-modal {
+  visibility: hidden;
+  opacity: 0%;
+  transition: opacity 1s, visibility 0.7s;
 }
