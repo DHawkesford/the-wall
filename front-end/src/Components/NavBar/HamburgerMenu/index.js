@@ -24,7 +24,9 @@ const HamburgerMenu = ({ handleClick, handleChange, newImageURL, usersStars, get
 
     return (
         <>
-            <img src={hamburgerIcon} className="hamburger-icon" onClick={() => {setDisplayHamburgerMenu(!displayHamburgerMenu)}} alt="A hamburger menu icon, which is three horizontal lines in a column." />
+            <div className="hamburger-icon-wrapper">
+                <img src={hamburgerIcon} className="hamburger-icon" onClick={() => {setDisplayHamburgerMenu(!displayHamburgerMenu)}} alt="A hamburger menu icon, which is three horizontal lines in a column." />
+            </div>
             <div className={hamburgerMenuClasses}>
                 <div className="hamburger-links">
                     <a>

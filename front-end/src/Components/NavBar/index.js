@@ -5,7 +5,7 @@ const NavBar = ({ handleClick, handleChange, newImageURL, usersStars, getUsersSt
   return (
     <nav>
       <HamburgerMenu handleClick={handleClick} handleChange={handleChange} newImageURL={newImageURL} usersStars={usersStars} getUsersStars={getUsersStars} />
-      <p>Nature</p>
+      <p className="theme">Nature</p>
       <Information />
     </nav>
   );

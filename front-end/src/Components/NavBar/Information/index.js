@@ -21,7 +21,7 @@ const Information = () => {
             <span>The Wall</span>
             <div className={infoClasses}>
                 <section className="info-modal">
-                    <div>Hello</div>
+                    <div>.</div>
                 </section>
             </div>
         </div>
