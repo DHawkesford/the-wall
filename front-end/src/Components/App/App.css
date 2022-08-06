@@ -31,6 +31,16 @@ nav {
   flex-grow: 2;
   text-align: center;
   font-size: 18pt;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-icon {
+  height: 30px;
+  margin-left: 5px;
 }
 
 main {

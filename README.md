@@ -14,4 +14,7 @@ Zoom In Icon by <a href="https://freeicons.io/profile/714">Raj Dev</a> on <a hre
 
 <!-- Info icon -->
 Icon by <a href="https://freeicons.io/profile/714">Raj Dev</a> on <a href="https://freeicons.io">freeicons.io</a>
+
+<!-- Photographer icon -->
+<a href="https://www.flaticon.com/free-icons/photographer" title="photographer icons">Photographer icons created by Eucalyp - Flaticon</a>
                                 
