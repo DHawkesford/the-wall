@@ -34,7 +34,10 @@ const HamburgerMenu = ({ handleClick, handleChange, newImageURL, usersStars, get
                     <CloseButton handleClick={() => setDisplayHamburgerMenu(false)} uniqueId="close-button-hamburger-menu" />
                 </div>
                 <div className="hamburger-menu-items">
-                    <HamburgerMenuItem handleClick={() => setDisplayUploadFormModal(true)} imageSrc={newPhotoIcon} imageAlt="A simple square illustration of mountains under a clear sky. In the bottom-right corner there is a circle containing a plus sign." itemText="Submit a photo" redirectIfNotAuthenticated={true}/>
+                    <HamburgerMenuItem handleClick={() => {
+                        setDisplayUploadFormModal(true);
+                        setDisplayHamburgerMenu(false)
+                        }} imageSrc={newPhotoIcon} imageAlt="A simple square illustration of mountains under a clear sky. In the bottom-right corner there is a circle containing a plus sign." itemText="Submit a photo" redirectIfNotAuthenticated={true}/>
                     {/* <div className="hamburger-menu-item-wrapper" onClick={() => console.log('test')}>
                         <input type="text" className="input" onChange={handleChange} value={newImageURL} />
                         <button className="submit" onClick={handleClick}>submit</button>
