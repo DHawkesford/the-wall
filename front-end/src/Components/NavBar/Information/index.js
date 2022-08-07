@@ -25,7 +25,6 @@ const Information = ({ setDisplayHamburgerMenu }) => {
 
     function hover() {
         const element = document.getElementsByClassName('close-icon')
-        console.log(element);
         element[0].src = closeIconHover;
     }
       
