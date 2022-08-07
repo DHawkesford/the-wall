@@ -71,8 +71,8 @@ function App() {
   }
 
   function showModal(image) {
-    setDisplayModal(true);
     setModalImage(image);
+    setDisplayModal(true);
   }
 
   useEffect(() => {
