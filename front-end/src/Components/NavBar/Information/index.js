@@ -1,8 +1,7 @@
 import infoIcon from './info_icon.svg';
 import hamburgerIconDark from './hamburger_icon_dark.svg';
-import closeIconNormal from './close_icon_normal.png';
-import closeIconHover from './close_icon_hover.png';
 import { useState } from 'react';
+import CloseButton from '../../CloseButton';
 
 const Information = ({ setDisplayHamburgerMenu }) => {
     const [displayInfo, setDisplayInfo] = useState(false);
@@ -23,16 +22,6 @@ const Information = ({ setDisplayHamburgerMenu }) => {
         setDisplayHamburgerMenu(true);
     }
 
-    function hover() {
-        const element = document.getElementsByClassName('close-icon')
-        element[0].src = closeIconHover;
-    }
-      
-    function unhover() {
-        const element = document.getElementsByClassName('close-icon')
-        element[0].src = closeIconNormal;
-    }
-
     return (
         <>
             <div className="info">
@@ -41,7 +30,7 @@ const Information = ({ setDisplayHamburgerMenu }) => {
             </div>
             <div className={infoClasses}>
                 <p className="info-modal-title">The Wall</p>
-                <img src={closeIconNormal} className="close-icon" onClick={() => setDisplayInfo(false)} onMouseOver={hover} onMouseOut={unhover} alt="An uppercase letter X." />
+                <CloseButton handleClick={() => setDisplayInfo(false)} />
                 <p>The purpose of The Wall is to help encourage you to keep active by giving you a fun goal to focus on during your walk, run, cycle, or any other activity you like that involves moving around your local surroundings.</p>
                 <p>Each day, a new theme will appear at the top of the page. When you're out on your walk or other activity, try to find something in your local area that matches that day's theme. Submit your photo once home (mobile site coming soon..), and check out what other users have posted, and vote on your favourites!</p>
                 <div className="info-modal-open-menu-wrapper">
