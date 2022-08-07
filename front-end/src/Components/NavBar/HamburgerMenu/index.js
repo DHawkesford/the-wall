@@ -27,7 +27,7 @@ const HamburgerMenu = ({ handleClick, handleChange, newImageURL, usersStars, get
                 <img src={hamburgerIcon} className="hamburger-icon" onClick={() => {setDisplayHamburgerMenu(!displayHamburgerMenu)}} alt="A hamburger menu icon, which is three horizontal lines in a column." />
             </div>
             <div className={hamburgerMenuClasses}>
-                <CloseButton handleClick={() => setDisplayHamburgerMenu(false)} />
+                <CloseButton handleClick={() => setDisplayHamburgerMenu(false)} uniqueId="close-button-hamburger-menu" />
                 <div className="hamburger-links">
                     <a>
                         <img src={newPhotoIcon} className="hamburger-link-icon" alt="A simple square illustration of mountains under a clear sky. In the bottom-right corner there is a circle containing a plus sign." />

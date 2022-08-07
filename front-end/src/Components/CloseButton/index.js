@@ -1,19 +1,19 @@
 import closeIconNormal from './close_icon_normal.png';
 import closeIconHover from './close_icon_hover.png';
 
-const CloseButton = ({ handleClick }) => {
+const CloseButton = ({ handleClick, uniqueId }) => {
     function hover() {
-        const element = document.getElementsByClassName('close-icon')
-        element[0].src = closeIconHover;
+        const element = document.getElementById(uniqueId)
+        element.src = closeIconHover;
     }
       
     function unhover() {
-        const element = document.getElementsByClassName('close-icon')
-        element[0].src = closeIconNormal;
+        const element = document.getElementById(uniqueId)
+        element.src = closeIconNormal;
     }
 
     return (
-        <img src={closeIconNormal} className="close-icon" onClick={() => {handleClick()}} onMouseOver={hover} onMouseOut={unhover} alt="An uppercase letter X." />
+        <img src={closeIconNormal} id={uniqueId} className="close-icon" onClick={() => {handleClick()}} onMouseOver={hover} onMouseOut={unhover} alt="An uppercase letter X." />
     )
 };
 
