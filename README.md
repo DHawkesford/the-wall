@@ -20,3 +20,9 @@ Icon by <a href="https://freeicons.io/profile/714">Raj Dev</a> on <a href="https
                                 
 <!-- Close icons (light and dark) -->
 <a href="https://www.flaticon.com/free-icons/close" title="close icons">Close icons created by Tanah Basah - Flaticon</a>
+
+<!-- Log out icon -->
+<a href="https://www.flaticon.com/free-icons/logout" title="logout icons">Logout icons created by Freepik - Flaticon</a>
+
+<!-- Log in icon -->
+<a href="https://www.flaticon.com/free-icons/entrance" title="entrance icons">Entrance icons created by Freepik - Flaticon</a>
