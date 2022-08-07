@@ -397,39 +397,30 @@ main {
 }
 
 .upload-form-modal {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  position: fixed;
   z-index: 4;
-  top: 41px;
-  right: 0px;
-  width: 600px;
-  min-height: 60vh;
-  background-color: #3d434f;
-  color: white;
-  border-left: solid white 1px;
-  border-bottom: solid white 1px;
+  position:fixed;
+  width: 500px;
+  height: 600px;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
   overflow: scroll;
   overflow-x: auto;
   overflow-y: auto;
-  font-size: 14pt;
-  padding: 0 10px;
-  transform: translateX(100%);
-  opacity: 0;
+  outline: solid rgb(175, 175, 175) 3px;
+  background-color: #3d434f;
 }
 
 .show-upload-form-modal {
-  transform: translateX(0%);
-  opacity: 1;
-  transition: opacity 0.4s, transform 0.4s;
+  visibility: visible;
+  opacity: 100%;
+  transition: opacity 1s;
 }
 
 .hide-upload-form-modal {
-  transform: translateX(100%);
-  opacity: 0;
-  transition: opacity 0.4s ease-in, transform 0.4s;
+  visibility: hidden;
+  opacity: 0%;
+  transition: opacity 1s, visibility 0.7s;
 }
 
 .upload-form-modal-title {
