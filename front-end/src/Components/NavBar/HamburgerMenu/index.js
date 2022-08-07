@@ -1,15 +1,18 @@
 import CloseButton from '../../CloseButton';
 import HamburgerMenuItem from "./HamburgerMenuItem";
 import Profile from "../../Profile";
+import UploadFormModal from '../../UploadFormModal';
 import hamburgerIcon from './hamburger_icon.svg';
 import newPhotoIcon from './new_photo_icon.png';
 import starIconGold from '../../Gallery/GalleryImage/star_icon_gold.svg';
 import logoutIcon from './logout_icon.png';
 import loginIcon from './login_icon.png';
 import { useAuth0 } from "@auth0/auth0-react";
+import { useState } from 'react';
 
 const HamburgerMenu = ({ handleClick, handleChange, newImageURL, usersStars, getUsersStars, setDisplayHamburgerMenu, displayHamburgerMenu }) => {
     const hamburgerMenuClasses = displayHamburgerMenu ? "hamburger-menu show-hamburger-menu" : "hamburger-menu hide-hamburger-menu";
+    const [displayUploadFormModal, setDisplayUploadFormModal] = useState(false);
   
     const { isAuthenticated, logout, loginWithRedirect } = useAuth0();
 
@@ -34,7 +37,8 @@ const HamburgerMenu = ({ handleClick, handleChange, newImageURL, usersStars, get
                     <CloseButton handleClick={() => setDisplayHamburgerMenu(false)} uniqueId="close-button-hamburger-menu" />
                 </div>
                 <div className="hamburger-menu-items">
-                    <HamburgerMenuItem handleClick={null} imageSrc={newPhotoIcon} imageAlt="A simple square illustration of mountains under a clear sky. In the bottom-right corner there is a circle containing a plus sign." itemText="Submit a photo" redirectIfNotAuthenticated={true}/>
+                    <HamburgerMenuItem handleClick={() => setDisplayUploadFormModal(true)} imageSrc={newPhotoIcon} imageAlt="A simple square illustration of mountains under a clear sky. In the bottom-right corner there is a circle containing a plus sign." itemText="Submit a photo" redirectIfNotAuthenticated={true}/>
+                    <UploadFormModal displayUploadFormModal={displayUploadFormModal} setDisplayUploadFormModal={setDisplayUploadFormModal} />
                     {/* <div className="hamburger-menu-item-wrapper" onClick={() => console.log('test')}>
                         <input type="text" className="input" onChange={handleChange} value={newImageURL} />
                         <button className="submit" onClick={handleClick}>submit</button>

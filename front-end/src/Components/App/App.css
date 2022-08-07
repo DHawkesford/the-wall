@@ -395,3 +395,43 @@ main {
 .info-modal-open-menu-button:hover > span {
   color: white;
 }
+
+.upload-form-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  z-index: 4;
+  top: 41px;
+  right: 0px;
+  width: 600px;
+  min-height: 60vh;
+  background-color: #3d434f;
+  color: white;
+  border-left: solid white 1px;
+  border-bottom: solid white 1px;
+  overflow: scroll;
+  overflow-x: auto;
+  overflow-y: auto;
+  font-size: 14pt;
+  padding: 0 10px;
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.show-upload-form-modal {
+  transform: translateX(0%);
+  opacity: 1;
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.hide-upload-form-modal {
+  transform: translateX(100%);
+  opacity: 0;
+  transition: opacity 0.4s ease-in, transform 0.4s;
+}
+
+.upload-form-modal-title {
+  text-decoration: underline;
+}
