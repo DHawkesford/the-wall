@@ -8,11 +8,12 @@ const Profile = () => {
   }
 
   return (
-    isAuthenticated && (
-      <div>
-        Hello, {user.name}
-      </div>
-    )
+    <div className="profile">
+      {isAuthenticated ? (
+        <span>Hello, {user.nickname}</span>
+      ) : <span>The Wall</span>
+      }
+    </div>
   );
 };
 

@@ -1,32 +1,19 @@
-import LoginButton from "../LoginButton";
-import LogoutButton from "../LogoutButton";
-import Profile from "../Profile";
-import { useAuth0 } from "@auth0/auth0-react";
+import HamburgerMenu from './HamburgerMenu';
+import Information from './Information';
+import photographer from './photographer.png';
+import { useState } from 'react';
 
 const NavBar = ({ handleClick, handleChange, newImageURL, usersStars, getUsersStars }) => {
-  const { isAuthenticated } = useAuth0();
+  const [displayHamburgerMenu, setDisplayHamburgerMenu] = useState(false);
 
   return (
-    <nav className="navbar">
-      <input type="text" className="input" onChange={handleChange} value={newImageURL}/>
-      <button className="submit" onClick={handleClick}>submit</button>
-      <LoginButton />
-      <LogoutButton />
-      <Profile />
-      {isAuthenticated ? (
-        <div>
-          <button onClick={getUsersStars}>Get your stars</button>
-          <p>
-            {usersStars ? (
-              usersStars.map(star => <>{star}, </>)
-            ) : (
-              "No user's stars defined"
-            )}
-          </p>
-        </div>
-        )
-        : null
-      }
+    <nav>
+      <HamburgerMenu displayHamburgerMenu={displayHamburgerMenu} setDisplayHamburgerMenu={setDisplayHamburgerMenu} handleClick={handleClick} handleChange={handleChange} newImageURL={newImageURL} usersStars={usersStars} getUsersStars={getUsersStars} />
+      <p className="theme">
+        <span>Today's theme is.. Nature!</span>
+        <img src={photographer} className="theme-icon" alt="An illustration of a person with a camera on a strap around their neck." />
+      </p>
+      <Information setDisplayHamburgerMenu={setDisplayHamburgerMenu} />
     </nav>
   );
 };
