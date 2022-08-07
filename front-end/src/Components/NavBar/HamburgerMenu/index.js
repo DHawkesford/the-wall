@@ -28,16 +28,16 @@ const HamburgerMenu = ({ handleClick, handleChange, newImageURL, usersStars, get
             </div>
             <div className={hamburgerMenuClasses}>
                 <CloseButton handleClick={() => setDisplayHamburgerMenu(false)} uniqueId="close-button-hamburger-menu" />
-                <div className="hamburger-links">
-                    <a>
+                <div className="hamburger-menu-items">
+                    <div className="hamburger-menu-item-wrapper">
+                        <Profile />
+                    </div>
+                    <div className="hamburger-menu-item-wrapper">
                         <img src={newPhotoIcon} className="hamburger-link-icon" alt="A simple square illustration of mountains under a clear sky. In the bottom-right corner there is a circle containing a plus sign." />
                         {/* <input type="text" className="input" onChange={handleChange} value={newImageURL} />
                         <button className="submit" onClick={handleClick}>submit</button> */}
-                    </a>
-                    <a>
-                        <Profile />
-                    </a>
-                    <a>
+                    </div>
+                    <div className="hamburger-menu-item-wrapper">
                         {isAuthenticated ? (
                         <>
                             <button onClick={getUsersStars}>Get your stars</button>
@@ -52,14 +52,14 @@ const HamburgerMenu = ({ handleClick, handleChange, newImageURL, usersStars, get
                         )
                         : null
                         }
-                    </a>
-                    <a>
+                    </div>
+                    <div className="hamburger-menu-item-wrapper">
                         {isAuthenticated ? (
                             <LogoutButton />
                         ) : (
                             <LoginButton />
                         )}
-                    </a>
+                    </div>
                 </div>
             </div>
         </>

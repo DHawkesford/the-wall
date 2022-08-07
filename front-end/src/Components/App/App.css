@@ -216,7 +216,7 @@ main {
 .hamburger-menu {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   position: fixed;
   top: 41px;
   left: 0px;
@@ -240,15 +240,24 @@ main {
   transition: opacity 0.3s ease-in, transform 0.3s;
 }
 
-.hamburger-links > a {
-  /* color: rgb(0, 0, 0); */
-  margin: 5px 0;
-  width: 80%;
-  text-decoration: none;
-  font-size: 17px;
-  list-style: none;
+.hamburger-menu-items {
+  width: 100%;
+}
+
+.hamburger-menu-item-wrapper {
+  width: calc(100% - 5px);
+  cursor: pointer;
+  height: 50px;
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2px 0px 2px 5px;
+  font-size: 12pt;
+}
+
+.hamburger-menu-item-wrapper:hover {
+  background-color: #7c9ee1;
 }
 
 .info {
