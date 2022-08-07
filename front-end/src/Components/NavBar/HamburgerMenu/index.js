@@ -1,5 +1,3 @@
-import LoginButton from "../../LoginButton";
-import LogoutButton from "../../LogoutButton";
 import CloseButton from '../../CloseButton';
 import HamburgerMenuItem from "./HamburgerMenuItem";
 import Profile from "../../Profile";
