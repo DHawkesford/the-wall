@@ -4,6 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Gallery from "../Gallery";
 import NavBar from "../NavBar/";
 import GalleryImageModal from '../GalleryImageModal';
+import UploadFormModal from '../UploadFormModal';
 
 function App() {
   const { user, getAccessTokenWithPopup } = useAuth0();
@@ -11,6 +12,7 @@ function App() {
   const [newImageURL, setNewImageURL] = useState('');
   const [usersStars, setUsersStars] = useState(null);
   const [displayModal, setDisplayModal] = useState(false);
+  const [displayUploadFormModal, setDisplayUploadFormModal] = useState(false);
   const [modalImage, setModalImage] = useState(null);
 
   const getUsersStars = async () => {
@@ -87,11 +89,12 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar handleClick={addImageToGallery} handleChange={inputChange} newImageURL={newImageURL} usersStars={usersStars} getUsersStars={getUsersStars} />
+      <NavBar handleClick={addImageToGallery} handleChange={inputChange} newImageURL={newImageURL} usersStars={usersStars} getUsersStars={getUsersStars} setDisplayUploadFormModal={setDisplayUploadFormModal} />
       <main>
         <Gallery galleryImages={images} setImagesFn={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal}/>
       </main>
       <GalleryImageModal setDisplayModal={setDisplayModal} modalImage={modalImage} displayModal={displayModal} />
+      <UploadFormModal displayUploadFormModal={displayUploadFormModal} setDisplayUploadFormModal={setDisplayUploadFormModal} />
     </div>
   );
 }
