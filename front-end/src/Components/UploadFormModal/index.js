@@ -74,7 +74,7 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) =>
                         <img className="upload-form-image" src={image} alt="A preview of what you have selected to upload."/>
                     ) : (
                         <div className="upload-form-image-placeholder-wrapper">
-                            <p className="upload-form-image-placeholder">A preview of what you have selected to upload.</p>
+                            <p className="upload-form-image-placeholder">A preview of what you have selected to upload will appear here.</p>
                         </div>
                     )}
                 </div>
