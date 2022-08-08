@@ -74,7 +74,7 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) =>
                 </div>
                 <div className="form-field">
                     <label htmlFor="alt-text-textarea">Add alt text:</label>
-                    <textarea maxlength="140" rows="4" cols="35" id="alt-text-textarea" {...register("altText", { required: true })} />
+                    <textarea maxLength="140" rows="4" cols="35" id="alt-text-textarea" {...register("altText", { required: true })} />
                     {errors.altText && <span>This field is required</span>}
                 </div>
                 <div className="upload-form-button-wrapper">
