@@ -21,7 +21,7 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) =>
         await postImageToCloudinaryAndSetUrl();
 
         const newUpload = { ...data, url: url };
-        const response = await fetch('https://the-wall-dan-blake.herokuapp.com/images', {
+        await fetch('https://the-wall-dan-blake.herokuapp.com/images', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newUpload)
