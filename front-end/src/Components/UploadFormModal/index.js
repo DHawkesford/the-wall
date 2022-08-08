@@ -5,11 +5,12 @@ import { useState } from 'react';
 
 const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) => {
     const [image, setImage] = useState(null);
-    const [url, setUrl] = useState(null);
     const [isPending, setIsPending] = useState(false);
     // TODO: add a pending state for the image loading also
     // TODO: add check to make sure object is correct before console logging (sending to db eventually)
     
+    let url = null;
+
     const uploadFormModalClasses = displayUploadFormModal ? "modal-darken-background show-upload-form-modal" : "modal-darken-background hide-upload-form-modal";
 
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -46,7 +47,7 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) =>
 
         const data = await response.json();
 
-        setUrl(data.secure_url);
+        url = data.secure_url;
     }
 
     return (
@@ -58,8 +59,8 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) =>
                 </p>
                 <form className="upload-form" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-field">
-                        <span>Upload image:</span>
-                        <div className="cloudinary-upload" method="post">
+                        <label htmlFor="cloudinary-upload">Upload image:</label>
+                        <div className="cloudinary-upload">
                             <input onChange={setImageAndShowOnPage} type="file" name="file" />
                             <img className="upload-form-image" src={image} alt="A preview of what you have selected to upload."/>
                         </div>
