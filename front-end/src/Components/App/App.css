@@ -155,14 +155,13 @@ main {
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
-  overflow: scroll;
-  overflow-x: auto;
-  overflow-y: auto;
-  outline: solid rgb(175, 175, 175) 3px;
 }
 
-.image-modal > img {
-  min-width: 100%;
+.image-modal-image {
+  max-width: 100%;
+  max-height: 100%;
+  outline: solid rgb(175, 175, 175) 3px;
+  object-fit: contain;
   cursor: zoom-out;
 }
 
