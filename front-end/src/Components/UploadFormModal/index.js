@@ -1,6 +1,5 @@
 import CloseButton from '../CloseButton';
 import { useForm } from "react-hook-form";
-import UploadToCloudinary from '../UploadToCloudinary';
 import { useState } from 'react';
 
 
@@ -8,6 +7,8 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) =>
     const [image, setImage] = useState(null);
     const [url, setUrl] = useState(null);
     const [isPending, setIsPending] = useState(false);
+    // TODO: add a pending state for the image loading also
+    // TODO: add check to make sure object is correct before console logging (sending to db eventually)
     
     const uploadFormModalClasses = displayUploadFormModal ? "modal-darken-background show-upload-form-modal" : "modal-darken-background hide-upload-form-modal";
 
@@ -60,7 +61,7 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) =>
                         <span>Upload image:</span>
                         <div className="cloudinary-upload" method="post">
                             <input onChange={setImageAndShowOnPage} type="file" name="file" />
-                            <img className="upload-form-image" src={image} />
+                            <img className="upload-form-image" src={image} alt="A preview of what you have selected to upload."/>
                         </div>
                     </div>
                     <div className="form-field">
