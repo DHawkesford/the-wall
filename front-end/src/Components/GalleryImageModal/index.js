@@ -1,7 +1,7 @@
 const GalleryImageModal = ({ displayModal, setDisplayModal, modalImage }) => {
   const showOrHideClassName = displayModal ? "modal-darken-background show-image-modal" : "modal-darken-background hide-image-modal";
 
-  const modalImageResizedUrl = (imageUrl) => imageUrl.slice(0, imageUrl.indexOf('upload') + 7) + 'c_scale,h_1000/' + imageUrl.slice(imageUrl.indexOf('upload') + 7);
+  const modalImageResizedUrl = (imageUrl) => imageUrl.slice(0, imageUrl.indexOf('upload') + 7) + 'f_webp/c_scale,h_1000/' + imageUrl.slice(imageUrl.indexOf('upload') + 7);
   
   // Closes the modal when clicking outside of it by setting the displayModal boolean to be false
   document.addEventListener(
