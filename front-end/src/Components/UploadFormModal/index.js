@@ -1,14 +1,52 @@
 import CloseButton from '../CloseButton';
 import { useForm } from "react-hook-form";
 import UploadToCloudinary from '../UploadToCloudinary';
-import React from "react";
+import { useState } from 'react';
 
 
 const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) => {
+    const [image, setImage] = useState(null);
+    const [url, setUrl] = useState(null);
+    const [isPending, setIsPending] = useState(false);
+    
     const uploadFormModalClasses = displayUploadFormModal ? "modal-darken-background show-upload-form-modal" : "modal-darken-background hide-upload-form-modal";
 
-    const { register, handleSubmit, formState: { errors }, setValue } = useForm();
-    const onSubmit = data => console.log(data);
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const onSubmit = async (data) => {
+        setIsPending(true);
+        await postImageToCloudinaryAndSetUrl();
+        console.log({ ...data, url: url });
+        setIsPending(false);
+    }
+
+    function setImageAndShowOnPage(event) {
+        const reader = new FileReader();
+
+        reader.onload = function (onLoadEvent) {
+            setImage(onLoadEvent.target.result);
+        };
+
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+    async function postImageToCloudinaryAndSetUrl() {
+        const response = await fetch('https://api.cloudinary.com/v1_1/ddmilnqpc/image/upload', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                file: image,
+                upload_preset: 'gallery',
+            }),
+        });
+
+        const data = await response.json();
+
+        setUrl(data.secure_url);
+    }
 
     return (
         <div className={uploadFormModalClasses}>
@@ -18,14 +56,24 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) =>
                     <CloseButton handleClick={() => setDisplayUploadFormModal(false)} uniqueId="close-upload-form-modal" />
                 </p>
                 <form className="upload-form" onSubmit={handleSubmit(onSubmit)}>
-                    <UploadToCloudinary setValue={setValue} />
+                    <div className="form-field">
+                        <span>Upload image:</span>
+                        <div className="cloudinary-upload" method="post">
+                            <input onChange={setImageAndShowOnPage} type="file" name="file" />
+                            <img className="upload-form-image" src={image} />
+                        </div>
+                    </div>
                     <div className="form-field">
                         <label>Add alt text:</label>
                         <input {...register("altText", { required: true })} />
                         {errors.altText && <span>This field is required</span>}
                     </div>
                     <div className="form-field">
-                        <button>Submit</button>
+                        {isPending ? (
+                            <button disabled>Submit</button>
+                        ) : (
+                            <button>Submit</button>
+                        )}
                     </div>
                 </form>
             </section>
