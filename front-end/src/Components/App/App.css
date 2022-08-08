@@ -386,6 +386,7 @@ main {
 
 .info-modal-open-menu-button > span {
   margin-left: 5px;
+  color: #3d434f;
 }
 
 .info-modal-open-menu-button:hover {
@@ -394,23 +395,6 @@ main {
 
 .info-modal-open-menu-button:hover > span {
   color: white;
-}
-
-.upload-form-modal {
-  z-index: 4;
-  position:fixed;
-  width: 500px;
-  height: 600px;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
-  overflow: scroll;
-  overflow-x: auto;
-  overflow-y: auto;
-  outline: solid rgb(175, 175, 175) 3px;
-  background-color: #3d434f;
-  color: white;
-  font-size: 14pt;
 }
 
 .show-upload-form-modal {
@@ -427,6 +411,10 @@ main {
 
 .upload-form-modal-title {
   text-decoration: underline;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .upload-form {
@@ -434,21 +422,95 @@ main {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 500px;
+  z-index: 4;
+  position:fixed;
+  width: 500px;
+  height: 650px;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  overflow: scroll;
+  overflow-x: auto;
+  overflow-y: auto;
+  outline: solid rgb(175, 175, 175) 3px;
+  background-color: #3d434f;
+  color: white;
+  font-size: 14pt;
 }
 
 .form-field {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
-.upload-form-image {
-  width: 300px;
-}
-
-.cloudinary-upload {
+.upload-image {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+}
+
+.upload-form-image {
+  width: 80%;
+  outline: solid 1px white;
+  height: 300px;
+  object-fit: contain;
+}
+
+.upload-form-button {
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 14pt;
+  cursor: pointer;  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: white;
+  color: #3d434f;
+}
+
+.upload-form-button:hover {
+  background-color: #7c9ee1;
+  color: white;
+}
+
+#url-input {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+#url-input + label {
+  color: #3d434f;
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 14pt;
+  cursor: pointer;  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+#url-input + label:hover {
+  background-color: #7c9ee1;
+  color: white;
+}
+
+#alt-text-textarea {
+  /* width: 450px; */
+  resize: none;
+  font-size: 11pt;
 }

@@ -52,33 +52,29 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) =>
 
     return (
         <div className={uploadFormModalClasses}>
-            <section className="upload-form-modal">
+            <form className="upload-form" onSubmit={handleSubmit(onSubmit)}>
                 <p className="upload-form-modal-title">
                     Submit a photo
                     <CloseButton handleClick={() => setDisplayUploadFormModal(false)} uniqueId="close-upload-form-modal" />
                 </p>
-                <form className="upload-form" onSubmit={handleSubmit(onSubmit)}>
-                    <div className="form-field">
-                        <label htmlFor="cloudinary-upload">Upload image:</label>
-                        <div className="cloudinary-upload">
-                            <input onChange={setImageAndShowOnPage} type="file" name="file" />
-                            <img className="upload-form-image" src={image} alt="A preview of what you have selected to upload."/>
-                        </div>
-                    </div>
-                    <div className="form-field">
-                        <label>Add alt text:</label>
-                        <input {...register("altText", { required: true })} />
-                        {errors.altText && <span>This field is required</span>}
-                    </div>
-                    <div className="form-field">
-                        {isPending ? (
-                            <button disabled>Submit</button>
-                        ) : (
-                            <button>Submit</button>
-                        )}
-                    </div>
-                </form>
-            </section>
+                <div className="form-field upload-image">
+                    <input id="url-input" onChange={setImageAndShowOnPage} type="file" name="file" />
+                    <label htmlFor="url-input">Upload image</label>
+                    <img className="upload-form-image" src={image} alt="A preview of what you have selected to upload."/>
+                </div>
+                <div className="form-field">
+                    <label htmlFor="alt-text-textarea">Add alt text:</label>
+                    <textarea maxlength="140" rows="4" cols="35" id="alt-text-textarea" {...register("altText", { required: true })} />
+                    {errors.altText && <span>This field is required</span>}
+                </div>
+                <div className="upload-form-button-wrapper">
+                    {isPending ? (
+                        <button className="upload-form-button" disabled>Submit</button>
+                    ) : (
+                        <button className="upload-form-button">Submit</button>
+                    )}
+                </div>
+            </form>
         </div>
     )
 };
