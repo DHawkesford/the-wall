@@ -1,7 +1,11 @@
+import { useState, useEffect } from 'react';
+
 const GalleryImageModal = ({ displayModal, setDisplayModal, modalImage }) => {
   const showOrHideClassName = displayModal ? "modal-darken-background show-image-modal" : "modal-darken-background hide-image-modal";
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  const modalImageResizedUrl = (imageUrl) => imageUrl.slice(0, imageUrl.indexOf('upload') + 7) + 'f_webp/c_scale,h_1000/' + imageUrl.slice(imageUrl.indexOf('upload') + 7);
+  // TODO: Change height back
+  const modalImageResizedUrl = (imageUrl) => imageUrl.slice(0, imageUrl.indexOf('upload') + 7) + 'f_webp/c_scale,h_2800/' + imageUrl.slice(imageUrl.indexOf('upload') + 7);
   
   // Closes the modal when clicking outside of it by setting the displayModal boolean to be false
   document.addEventListener(
@@ -13,13 +17,25 @@ const GalleryImageModal = ({ displayModal, setDisplayModal, modalImage }) => {
       }}
   )
   
+  useEffect(() => {
+    setIsLoaded(false);
+  }, [modalImage])
+
   return (
     <div className={showOrHideClassName}>
       <section className="image-modal">
-        {modalImage
-        ? <img className="image-modal-image" src={modalImageResizedUrl(modalImage.url)} onClick={() => setDisplayModal(false)} alt={modalImage.alt || 'No alt text available'}/>
-        : null
-        }
+        {isLoaded ? (
+          null
+        ) : (
+          /* TODO: Change image here */
+          <img className="image-modal-image" src="https://i.stack.imgur.com/SXuSR.png" alt="A speech bubble that says 'It's magick'." />
+        )}
+        {modalImage ? ( 
+          /* TODO: Look at changing display here */
+          <img className="image-modal-image" src={modalImageResizedUrl(modalImage.url)} onClick={() => {setDisplayModal(false);}} alt={modalImage.alt || 'No alt text available'} onLoad={() => setIsLoaded(true)} style={isLoaded ? {} : {display: 'none'}  } />
+        ) : (
+          null
+        )}
       </section>
     </div>
   );
