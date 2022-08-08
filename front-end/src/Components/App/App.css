@@ -453,9 +453,23 @@ main {
 
 .upload-form-image {
   width: 80%;
-  outline: solid 1px white;
   height: 300px;
+  outline: solid 1px white;
   object-fit: contain;
+}
+
+.upload-form-image-placeholder-wrapper {
+  height: 300px;
+  width: 80%;
+  outline: solid 1px white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-form-image-placeholder {
+  width: 80%;
 }
 
 .upload-form-button {

@@ -70,7 +70,13 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) =>
                 <div className="form-field upload-image">
                     <input id="url-input" onChange={setImageAndShowOnPage} type="file" name="file" />
                     <label htmlFor="url-input">Upload image</label>
-                    <img className="upload-form-image" src={image} alt="A preview of what you have selected to upload."/>
+                    {image ? (
+                        <img className="upload-form-image" src={image} alt="A preview of what you have selected to upload."/>
+                    ) : (
+                        <div className="upload-form-image-placeholder-wrapper">
+                            <p className="upload-form-image-placeholder">A preview of what you have selected to upload.</p>
+                        </div>
+                    )}
                 </div>
                 <div className="form-field">
                     <label htmlFor="alt-text-textarea">Add alt text:</label>
