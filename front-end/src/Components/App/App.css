@@ -472,11 +472,28 @@ main {
   border: none;
   background-color: white;
   color: #3d434f;
+  cursor: pointer;
 }
 
 .upload-form-button:hover {
   background-color: #7c9ee1;
   color: white;
+}
+
+.upload-form-button-disabled {
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 14pt;
+  cursor: pointer;  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: rgb(159, 159, 159);
+  color: #3d434f;
+  cursor: default;
 }
 
 #url-input {

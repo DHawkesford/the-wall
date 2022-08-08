@@ -17,8 +17,18 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) =>
 
     const onSubmit = async (data) => {
         setIsPending(true);
+
         await postImageToCloudinaryAndSetUrl();
-        console.log({ ...data, url: url });
+
+        const newUpload = { ...data, url: url };
+        const response = await fetch('https://the-wall-dan-blake.herokuapp.com/images', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newUpload)
+        });
+
+        alert('Upload successful!');
+        window.location.reload(true);
         setIsPending(false);
     }
 
@@ -69,7 +79,7 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) =>
                 </div>
                 <div className="upload-form-button-wrapper">
                     {isPending ? (
-                        <button className="upload-form-button" disabled>Submit</button>
+                        <button className="upload-form-button-disabled" disabled>Submit</button>
                     ) : (
                         <button className="upload-form-button">Submit</button>
                     )}
