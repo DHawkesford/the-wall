@@ -5,7 +5,6 @@ import Gallery from "../Gallery";
 import NavBar from "../NavBar/";
 import GalleryImageModal from '../GalleryImageModal';
 import UploadFormModal from '../UploadFormModal';
-import Loading from "../Loading";
 
 function App() {
   const { user, getAccessTokenWithPopup } = useAuth0();
