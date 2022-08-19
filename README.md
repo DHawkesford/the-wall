@@ -6,8 +6,6 @@ The Wall is an app for encouraging users to keep active by giving them a fun goa
 
 Each day, a new theme appears at the top of the page, such as 'Nature' or 'Statues'. The idea being that during the user's exercise, they try to find and photograph something that matches that day's theme. They can then submit their photo to the website, view other users' posts, and vote on their favourites.
 
----
-
 ## Contents
 
 1. [Purpose](#purpose)
@@ -20,8 +18,6 @@ Each day, a new theme appears at the top of the page, such as 'Nature' or 'Statu
 
 5. [Acknowledgements](#acknowledgements)
 
----
-
 ## Purpose
 
 With this project, the app itself (a photography sharing / fitness motivator website) was not hugely important. My goal with this project was to try to create commonly used features from scratch, in order to better understand how they work. For example, I had often implemented hamburger menus in past projects by importing them from component libraries such as MUI, but I wanted to try writing such a menu myself.   
@@ -29,8 +25,6 @@ With this project, the app itself (a photography sharing / fitness motivator web
 In the [*Features & lessons learned*](#features--lessons-learned) section below, I've detailed the features I've been able to add to the app so far, how they were implemented, any difficulties I ran into, any useful links to resources I found helpful when trying to implement the feature, and any takeaways for the future.
 
 [Back to top](#-the-wall)
-
----
 
 ## Tech stack
 
@@ -40,11 +34,9 @@ Back-end: Node/Express
 
 [Back to top](#-the-wall)
 
----
-
 ## Features & lessons learned:
 
-### Markdown section links
+#### Markdown section links
 
 - https://gist.github.com/asabaylus/3071099
 
@@ -74,8 +66,6 @@ Back-end: Node/Express
 
 [Back to top](#-the-wall)
 
----
-
 ## Future plans
 
 - Each image has a counter for how many users have 'starred' (favourited) it. I would like to figure out the best way to make this a live figure. I could imagine that sending a fetch request to the server every few seconds would be a possible solution. 
@@ -84,8 +74,6 @@ Back-end: Node/Express
 - Create a page for showing the user's favourited images
 
 [Back to top](#-the-wall)
-
----
 
 ## Acknowledgements
 
