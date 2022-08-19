@@ -40,27 +40,27 @@ Back-end: Node/Express
 
 - https://gist.github.com/asabaylus/3071099
 
-### Sticky navbar
+#### Sticky navbar
 
 - 
 
-### Hamburger menu
+#### Hamburger menu
 
 - 
 
-### Image modal
+#### Image modal
 
 - 
 
-### Loading animation
+#### Loading animation
 
 -
 
-### Getting images in different sizes, to increase performance
+#### Getting images in different sizes, to increase performance
 
 - 
 
-### Counting 'likes' (i.e. tracking favourites)
+#### Counting 'likes' (i.e. tracking favourites)
 
 -
 
