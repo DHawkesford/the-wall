@@ -179,15 +179,16 @@ main {
 
 ::-webkit-scrollbar {
   width: 10px;
-  height: 10px;
+  /* height: 10px; */
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  visibility: hidden;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #7c9ee1;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
