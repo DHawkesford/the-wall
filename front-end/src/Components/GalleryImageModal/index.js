@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
+import Loading from '../Loading';
 
 const GalleryImageModal = ({ displayModal, setDisplayModal, modalImage }) => {
   const showOrHideClassName = displayModal ? "modal-darken-background show-image-modal" : "modal-darken-background hide-image-modal";
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // TODO: Change height back
-  const modalImageResizedUrl = (imageUrl) => imageUrl.slice(0, imageUrl.indexOf('upload') + 7) + 'f_webp/c_scale,h_2800/' + imageUrl.slice(imageUrl.indexOf('upload') + 7);
+  // Uses the transform tool in Cloudinary to obtain a scaled version of the image for the modal, which is always 1200px in height
+  const modalImageResizedUrl = (imageUrl) => imageUrl.slice(0, imageUrl.indexOf('upload') + 7) + 'f_webp/c_scale,h_1200/' + imageUrl.slice(imageUrl.indexOf('upload') + 7);
   
   // Closes the modal when clicking outside of it by setting the displayModal boolean to be false
   document.addEventListener(
@@ -27,12 +28,10 @@ const GalleryImageModal = ({ displayModal, setDisplayModal, modalImage }) => {
         {isLoaded ? (
           null
         ) : (
-          /* TODO: Change image here */
-          <img className="image-modal-image" src="https://i.stack.imgur.com/SXuSR.png" alt="A speech bubble that says 'It's magick'." />
+          <Loading />
         )}
         {modalImage ? ( 
-          /* TODO: Look at changing display here */
-          <img className="image-modal-image" src={modalImageResizedUrl(modalImage.url)} onClick={() => {setDisplayModal(false);}} alt={modalImage.alt || 'No alt text available'} onLoad={() => setIsLoaded(true)} style={isLoaded ? {} : {display: 'none'}  } />
+          <img className="image-modal-image" src={modalImageResizedUrl(modalImage.url)} onClick={() => {setDisplayModal(false)}} alt={modalImage.alt || 'No alt text available'} onLoad={() => setIsLoaded(true)} style={isLoaded ? {} : {visibility: 'hidden'}} />
         ) : (
           null
         )}
