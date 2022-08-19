@@ -26,3 +26,6 @@ Icon by <a href="https://freeicons.io/profile/714">Raj Dev</a> on <a href="https
 
 <!-- Log in icon -->
 <a href="https://www.flaticon.com/free-icons/entrance" title="entrance icons">Entrance icons created by Freepik - Flaticon</a>
+
+<!-- Tab title icon -->
+<a href="https://freeicons.io/profile/2257">
