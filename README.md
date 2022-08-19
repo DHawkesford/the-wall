@@ -9,10 +9,7 @@ Each day, a new theme appears at the top of the page, such as 'Nature' or 'Statu
 ---
 
 ## Contents
-<!-- 
-why you created it
-how it works
- -->
+
 1. [Purpose](#purpose)
 
 2. [Tech stack](#tech-stack)
@@ -41,11 +38,15 @@ Front-end: React (CRA)
 
 Back-end: Node/Express
 
-[Back to top](#)
+[Back to top](#-the-wall)
 
 ---
 
 ## Features & lessons learned:
+
+### Markdown section links
+
+- https://gist.github.com/asabaylus/3071099
 
 ### Sticky navbar
 
@@ -71,7 +72,7 @@ Back-end: Node/Express
 
 -
 
-[Back to top](#)
+[Back to top](#-the-wall)
 
 ---
 
@@ -82,7 +83,7 @@ Back-end: Node/Express
 - Incorporate lazy loading of the images, or pagination, or some such alternative to reduce the initial page load time 
 - Create a page for showing the user's favourited images
 
-[Back to top](#)
+[Back to top](#-the-wall)
 
 ---
 
@@ -100,4 +101,4 @@ Back-end: Node/Express
 - [Log in icon](https://www.flaticon.com/free-icons/entrance) by [Freepik - Flaticon](https://www.flaticon.com/authors/freepik)
 - Favicon by [www.wishforge.games](https://freeicons.io/profile/2257) on [freeicons.io](https://freeicons.io)
 
-[Back to top](#)
+[Back to top](#-the-wall)
