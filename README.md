@@ -31,7 +31,7 @@ With this project, the app itself (a photography sharing / fitness motivator web
 
 In the [*Features & lessons learned*](#features--lessons-learned) section below, I've detailed the features I've been able to add to the app so far, how they were implemented, any difficulties I ran into, any useful links to resources I found helpful when trying to implement the feature, and any takeaways for the future.
 
-[Back to top](#)
+[Back to top](#-the-wall)
 
 ---
 
