@@ -74,7 +74,27 @@ Back-end: Node/Express
 
 #### Sticky navbar:
 
-- 
+- The app is designed for users to scroll down the page to see more photos, so it made sense to include a sticky navbar for quick access
+- It turns out there are many ways to do this, but I think the simplest way (and sufficient in this case) was to style the `nav` and `main` tags as follows:
+
+        nav {
+            position: fixed;
+            height: 40px;
+        }
+
+        main {
+            margin-top: 40px;
+        }
+
+    This was made easy due to the HTML structure of the app:
+
+        <div class="App">
+            <nav>..</nav>
+            <main>..</main>
+        </div>
+
+- A takeaway I had from looking into this was that when you understand how other developers have implemented a feature previously, it's not too difficult to adapt it for your project, and to account for any changes that may be desirable or needed. For example, the W3Schools guide below uses JS, but I was able to implement this here just with CSS.
+- [W3Schools HowTo Sticky/Affix Navbar](https://www.w3schools.com/howto/howto_js_navbar_sticky.asp)
 
 [Back to top](#-the-wall)
 
