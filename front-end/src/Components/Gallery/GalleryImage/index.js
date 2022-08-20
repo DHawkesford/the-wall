@@ -1,7 +1,7 @@
 import zoomIn from './zoom_in_icon.svg';
 
 const GalleryImage = ({ image, star, usersStars, showModal }) => {
-  const smallImageUrl = image.url.slice(0, image.url.indexOf('upload') + 7) + 'c_scale,h_300/' + image.url.slice(image.url.indexOf('upload') + 7);
+  const smallImageUrl = image.url.slice(0, image.url.indexOf('upload') + 7) + 'f_webp/c_scale,h_300/' + image.url.slice(image.url.indexOf('upload') + 7);
 
   return( 
     <div className="GalleryImage">

@@ -174,13 +174,33 @@ Back-end: Node/Express
 
 - I then looked into how others have made 'loaders', and saw [a guide from W3Schools](https://www.w3schools.com/howto/howto_css_loader.asp) that has a really nice way of making the loader just with CSS. I love neat solutions like this. And of course, people have made all sorts of amazing loaders purely with CSS. I'd like to try designing and making one of these myself at some point.
 
+- [Single element CSS spinners by Luke Haas](https://projects.lukehaas.me/css-loaders/)
+
+- [SpinKit by Tobias Ahlin](https://tobiasahlin.com/spinkit/)
+
 [Back to top](#-the-wall)
 
 ---
 
 ### Getting images in different sizes, to increase performance:
 
-- 
+- I quickly noticed the page had a long load time. After running a Lighthouse check, I saw this was mainly down to the images it was loading. This made sense, as although the images are styled to a `height` of `300px`, I was still loading the full-sized images from the Cloudinary library where they're stored.
+
+- Fortunately, I learned that Cloudinary has a really useful 'transform' tool, which allows you to obtain scaled down versions of an image. As such, rather than obtaining the full-sized image and then styling it down to `300px`, I could just obtain a `300px` `height` version of the image from Cloudinary:
+
+        // Where 'image.url' is the full-sized image URL
+        const smallImageUrl = image.url.slice(0, image.url.indexOf('upload') + 7) + 'c_scale,h_300/' + image.url.slice(image.url.indexOf('upload') + 7);
+
+- This had the effect of significantly reducing the page load time.
+
+- I've also used this for setting a `height` limit on the image obtained for the magnified modal of `1200px`. 
+
+        // Where 'imageURL' is the full-sized image URL
+        const modalImageResizedUrl = (imageUrl) => imageUrl.slice(0, imageUrl.indexOf('upload') + 7) + 'f_webp/c_scale,h_1200/' + imageUrl.slice(imageUrl.indexOf('upload') + 7);
+
+- The `f_webp` part of the strings above is another Cloudinary transformation that delivers the images in WebP format, which I have read is more efficient. 
+
+- [Cloudinary image optimization](https://cloudinary.com/documentation/image_optimization)
 
 [Back to top](#-the-wall)
 
