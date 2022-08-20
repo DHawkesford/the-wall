@@ -106,9 +106,9 @@ Back-end: Node/Express
 
 - Similar to the sticky navbar I added a hamburger menu that is fixed in place. Its visibility depends on its classes, which are toggled using state. 
 - The main 'new thing' I was trying here was to figure out how to make the menu close when a user clicks outside of it 
-- I did this by adding a 'click' event listener to the document, and checking which CSS selectors the event occured closest to (i.e. if it wasn't closest to the hamburger-menu class, then that should cause the menu to become hidden). 
-- This involved learning about event bubbling, event target selectors, and the closest() method of the event target object
-- I later learned that in some cases it may be preferable to conditionally render something rather than simply using CSS to toggle its visibility. However for something that may be toggled often, the CSS route may have less cost. From Vue's docs: "*Generally speaking, v-if has higher toggle costs while v-show has higher initial render costs. So prefer v-show if you need to toggle something very often, and prefer v-if if the condition is unlikely to change at runtime.*"
+- I did this by adding a `click` event listener to the document, and checking which CSS selectors the event occured closest to (i.e. if it wasn't closest to the `hamburger-menu` class, then that should cause the menu to become hidden). 
+- This involved learning about event bubbling, event target selectors, and the `closest()` method of the event target object
+- I later learned that in some cases it may be preferable to conditionally render something rather than simply using CSS to toggle its visibility. However for something that may be toggled often, the CSS route may have less cost. From Vue's docs: *"Generally speaking, v-if has higher toggle costs while v-show has higher initial render costs. So prefer v-show if you need to toggle something very often, and prefer v-if if the condition is unlikely to change at runtime."*
 - [W3Schools HowTo Mobile Navigation Menu](https://www.w3schools.com/howto/howto_js_mobile_navbar.asp)
 - [MDN Web Docs Using CSS Transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions)
 - [DelftStack Slide in From Left Transition in CSS](https://www.delftstack.com/howto/css/slide-in-from-left-transition-in-css/)
