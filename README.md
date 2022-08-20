@@ -20,7 +20,7 @@ Each day, a new theme appears at the top of the page, such as 'Nature' or 'Statu
 
 ## Purpose
 
-With this project, the app itself (a photography sharing / fitness motivator website) was not hugely important. My goal with this project was to try to create commonly used features from scratch, in order to better understand how they work. For example, I had often implemented hamburger menus in past projects by importing them from component libraries such as MUI, but I wanted to try writing such a menu myself.   
+With this project, the app itself (a photography sharing / fitness motivator website) was not hugely important. My goal with this project was to try to create commonly used features from scratch, in order to better understand how they work. For example, I've implemented hamburger menus in past projects by importing them from component libraries such as MUI, but I wanted to try writing such a menu myself.   
 
 In the [*Features & lessons learned*](#features--lessons-learned) section below, I've detailed the features I've been able to add to the app so far, how they were implemented, any difficulties I ran into, any useful links to resources I found helpful when trying to implement the feature, and any takeaways for the future.
 
@@ -36,31 +36,41 @@ Back-end: Node/Express
 
 ## Features & lessons learned:
 
-#### Markdown section links
+#### Markdown anchors:
 
-- https://gist.github.com/asabaylus/3071099
+- I wanted to include a 'Back to top' link after each section in this README, and in GitHub flavoured markdown this would usually be done here with:
 
-#### Sticky navbar
+        # The Wall
+        .
+        .
+        .
+        [Back to top](#the-wall)
+
+    However (as you can check in the raw markdown) I've included an image in the main header, so the anchor above wouldn't work in this case, and it was difficult to determine what the anchor needed to be. 
+- It turns out GitHub has a tool for showing you what the anchor should be. Simply open the README file in GitHub, hover over the header you want to link to, and a hyperlink icon will appear. Then hover over the icon, and you'll see the correct anchor tag in the URL in the status bar (at least in Chrome).
+- Props to [@Cavitedev](https://github.com/Cavitedev) for his answer [here](https://gist.github.com/asabaylus/3071099?permalink_comment_id=3528884#gistcomment-3528884)
+
+#### Sticky navbar:
 
 - 
 
-#### Hamburger menu
+#### Hamburger menu:
 
 - 
 
-#### Image modal
+#### Image modal:
 
 - 
 
-#### Loading animation
+#### Loading animation:
 
 -
 
-#### Getting images in different sizes, to increase performance
+#### Getting images in different sizes, to increase performance:
 
 - 
 
-#### Counting 'likes' (i.e. tracking favourites)
+#### Counting 'likes' (i.e. tracking favourites):
 
 -
 
