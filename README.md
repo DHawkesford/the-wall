@@ -47,7 +47,16 @@ Back-end: Node/Express
         [Back to top](#the-wall)
 
     However (as you can check in the raw markdown) I've included an image in the main header, so the anchor above wouldn't work in this case, and it was difficult to determine what the anchor needed to be. 
-- It turns out GitHub has a tool for showing you what the anchor should be. Simply open the README file in GitHub, hover over the header you want to link to, and a hyperlink icon will appear. Then hover over the icon, and you'll see the correct anchor tag in the URL in the status bar (at least in Chrome).
+- It turns out GitHub has a tool for showing you what the anchor should be. Simply open the README file in GitHub, hover over the header you want to link to, and a hyperlink icon will appear. Then hover over the icon, and you'll see the correct anchor tag in the URL in the status bar (at least in Chrome):
+![A screenshot summarising the above step.](./markdown_anchors.png)
+- This shows the anchor to use here was:
+
+        # ![A simple illustration of a brick wall.](./front-end/public/favicon.png) The Wall
+        .
+        .
+        .
+        [Back to top](#-the-wall)
+
 - Props to [@Cavitedev](https://github.com/Cavitedev) for his answer [here](https://gist.github.com/asabaylus/3071099?permalink_comment_id=3528884#gistcomment-3528884)
 
 #### Sticky navbar:
