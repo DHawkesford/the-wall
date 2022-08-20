@@ -68,7 +68,7 @@ Back-end: Node/Express
         [Back to top](#-the-wall)
 
 - A takeaway from this: markdown files don't always look or behave the same in VS Code as they do in GitHub! Header links may not work in the VS Code README preview, but will still work fine in GitHub. 
-- Props to [@Cavitedev](https://github.com/Cavitedev) for his answer [here](https://gist.github.com/asabaylus/3071099?permalink_comment_id=3528884#gistcomment-3528884)
+- Props to [@Cavitedev](https://github.com/Cavitedev) for his answer [here](https://gist.github.com/asabaylus/3071099?permalink_comment_id=3528884#gistcomment-3528884).
 
 [Back to top](#-the-wall)
 
@@ -76,7 +76,7 @@ Back-end: Node/Express
 
 #### Sticky navbar:
 
-- The app is designed for users to scroll down the page to see more photos, so it made sense to include a sticky navbar for quick access
+- The app is designed for users to scroll down the page to see more photos, so it made sense to include a sticky navbar for quick access.
 - It turns out there are many ways to do this, but I think the simplest way (and sufficient in this case) was to style the `nav` and `main` tags as follows:
 
         nav {
@@ -105,7 +105,7 @@ Back-end: Node/Express
 #### Hamburger menu:
 
 - Similar to the sticky navbar I added a hamburger menu that is fixed in place. Its visibility depends on its classes, which are toggled using state. 
-- The main 'new thing' I was trying here was to figure out how to make the menu close when a user clicks outside of it 
+- The main 'new thing' I was trying here was to figure out how to make the menu close when a user clicks outside of it. 
 - I did this by adding a `click` event listener to the document, and checking which CSS selectors the event occured closest to (i.e. if it wasn't closest to the `hamburger-menu` class, then that should cause the menu to become hidden). 
 - This involved learning about event bubbling, event target selectors, and the `closest()` method of the event target object
 - I later learned that in some cases it may be preferable to conditionally render something rather than simply using CSS to toggle its visibility. However for something that may be toggled often, the CSS route may have less cost. From Vue's docs: *"Generally speaking, v-if has higher toggle costs while v-show has higher initial render costs. So prefer v-show if you need to toggle something very often, and prefer v-if if the condition is unlikely to change at runtime."*
