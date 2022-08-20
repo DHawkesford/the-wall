@@ -44,7 +44,7 @@ Back-end: Node/Express
 
 ## Features & lessons learned:
 
-#### Markdown anchors:
+### Markdown anchors:
 
 - I wanted to include a 'Back to top' link after each section in this README, and in GitHub flavoured markdown this would usually be done here with:
 
@@ -74,7 +74,7 @@ Back-end: Node/Express
 
 ---
 
-#### Sticky navbar:
+### Sticky navbar:
 
 - The app is designed for users to scroll down the page to see more photos, so it made sense to include a sticky navbar for quick access.
 - It turns out there are many ways to do this, but I think the simplest way (and sufficient in this case) was to style the `nav` and `main` tags as follows:
@@ -102,7 +102,7 @@ Back-end: Node/Express
 
 ---
 
-#### Hamburger menu:
+### Hamburger menu:
 
 - Similar to the sticky navbar I added a hamburger menu that is fixed in place. Its visibility depends on its classes, which are toggled using state. 
 - The main 'new thing' I was trying here was to figure out how to make the menu close when a user clicks outside of it. 
@@ -121,15 +121,29 @@ Back-end: Node/Express
 
 ---
 
-#### Image modal:
+### Image modal:
 
-- 
+- I wanted users to be able click on an image and see a larger version as a modal.
+- This involved figuring out how to have a magnifying glass icon appear over the centre of an image when the user hovers over it, and to open a modal containing that image when the icon is clicked. So far, this was similar to the implementation of the hamburger menu.
+- The issue I had here was that when a user magnified an image, the image would take time to load. So I could either:
+
+    1. Have the modal open instantly, but they would then see the previous image that had been magnified, and after a few seconds this would change to the new image they had just clicked on (once it had loaded), ***or***
+
+    2. Have the new image load first **before** opening the modal, so they would only see the magnified image once it was ready, but then this meant a few seconds of delay where the user couldn't see anything happening.
+
+- I decided to go with option 2, and to then figure out a way to tell the user that the image was loading and that it would open shortly. This turned out to not be as straightforward as I first anticipated, but it was very satisfying when I eventually figured out a solution.
+- I determined that what I needed was a short `Loading...` message, whose visibility I could toggle using state (with either conditional rendering or with CSS classes as I touched on in the [Hamburger menu](#hamburger-menu) section above).
+- After some trial and error, I read about the `onLoad` attribute of `img` tags, and got partway to a solution by having (a) the `Loading...` message render as part of the magnified image modal component, (b) an `isImageLoaded` state that initialises as `false` and which sets the visiblity of the `Loading...` message, and (c) having the `isImageLoaded` state toggled to true in the callback when the `onLoad` event of the magnified image occurs. 
+- However, I then needed a way to toggle the `isImageLoaded` state back to `false` when the user closes the modal, to reset the situation for the next time they magnify an image.
+- A natural solution was to execute this in a `useEffect`, and to avoid causing an infinite loop, I added a `modalImage` variable (which is a prop to the modal component) to the dependency array. As such, the `isImageLoaded` state would only toggle back to false when the `modalImage` state changed (i.e. when a user magnified a new image).
+- Takeaway: One solution I tried involved using several pieces of state. However, I found I was not getting the result I was expecting. I eventually discovered that this was due to the fact that React sets state asynchronously, so that if I was executing code that sets multiple states sequentially, I could not rely on them actually being set in the order I had written. A valuable lesson!
+- [GeeksforGeeks Is setState() method async?](https://www.geeksforgeeks.org/is-setstate-method-async/)
 
 [Back to top](#-the-wall)
 
 ---
 
-#### Loading animation:
+### Loading animation:
 
 -
 
@@ -137,7 +151,7 @@ Back-end: Node/Express
 
 ---
 
-#### Getting images in different sizes, to increase performance:
+### Getting images in different sizes, to increase performance:
 
 - 
 
@@ -145,7 +159,7 @@ Back-end: Node/Express
 
 ---
 
-#### Counting 'likes' (i.e. tracking favourites):
+### Counting 'likes' (i.e. tracking favourites):
 
 -
 
