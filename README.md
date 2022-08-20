@@ -15,6 +15,7 @@ Each day, a new theme appears at the top of the page, such as 'Nature' or 'Statu
 3. [Features & lessons learned](#features--lessons-learned)
 
     - [Markdown anchors](#markdown-anchors)
+    - [Sticky navbar](#sticky-navbar)
     - [Hamburger menu](#hamburger-menu)
     - [Image modal](#image-modal)
     - [Loading animation](#loading-animation)
@@ -66,6 +67,7 @@ Back-end: Node/Express
         .
         [Back to top](#-the-wall)
 
+- A takeaway from this: markdown files don't always look or behave the same in VS Code as they do in GitHub! Header links may not work in the VS Code README preview, but will still work fine in GitHub. 
 - Props to [@Cavitedev](https://github.com/Cavitedev) for his answer [here](https://gist.github.com/asabaylus/3071099?permalink_comment_id=3528884#gistcomment-3528884)
 
 [Back to top](#-the-wall)
