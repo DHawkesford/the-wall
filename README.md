@@ -158,7 +158,9 @@ Back-end: Node/Express
 
 - A natural solution was to execute this in a `useEffect`, and to avoid causing an infinite loop, I added a `modalImage` variable (which is a prop to the modal component) to the dependency array. As such, the `isImageLoaded` state would only toggle back to false when the `modalImage` state changed (i.e. when a user magnified a new image).
 
-- Takeaway: One solution I tried involved using several pieces of state. However, I found I was not getting the result I was expecting. I eventually discovered that this was due to the fact that React sets state asynchronously, so that if I was executing code that sets multiple states sequentially, I could not rely on them actually being set in the order I had written. A valuable lesson!
+- Takeaway: One solution I tried involved using several pieces of state. However, I found I was not getting the result I was expecting - sometimes the `Loading...` message wouldn't appear, or it would only appear *after* closing the modal, and many other unintended results.
+
+    I eventually discovered that this was due to the fact that React sets state asynchronously, so that if I was executing code that sets multiple states sequentially, I could not rely on them actually being set in the order I had written. A valuable lesson!
 
 - [GeeksforGeeks Is setState() method async?](https://www.geeksforgeeks.org/is-setstate-method-async/)
 
@@ -208,16 +210,40 @@ Back-end: Node/Express
 
 ### Counting 'likes' (i.e. tracking favourites):
 
--
+- This was my favourite feature to implement so far, as it was more focused on the back-end, which I have a slight preference for. I wanted to be able to track which users has favourited which images. 
+
+- At this point, my database had just one table, called `images`, which had 3 columns: `id`, `url`, and `stars` (i.e. 'likes'). 
+
+- I thought about the different ways I could store a users' likes in the db, and learned a lot from researching each option.
+
+- I could add a `likes` column to the `images` table, which would be a list of the users who had liked that image, but this didn't *feel* like a good solution. And sure enough, it was very advised against. Editing such a cell (is 'cell' the correct term for a SQL db?) would be tricky and also time-consuming. I read that SQL is fast at looking through lots of cells, but would be slow at sifting through the same amount of information stored in a single cell.
+
+- I then thought about storing the users' likes in a separate table called `stars`. Each column would be an image, and each row would be a user, and each cell would either just be `true` or `false` depending on whether that user had liked the image. This seemed like it would be easier to update, but it still didn't seem right, and I read that PostgreSQL has a maximum of 1600 columns. If I ever wanted to store more than 1600 images that would then be an issue.
+
+- I eventually saw that a good way to track this would be to have a separate `stars` table, with just a `userID` column and an `imageID` column. If User 3 liked Image 7, that would get stored in the `stars` table, and its existence would indicate that User 3 had liked Image 7:
+
+    | UserID | ImageID |
+    | ------ | ------- |
+    | 3      | 7       |
+
+- This seemed a lot more "correct", as it was storing the minimal information needed (and no more), was easy to update, and wasn't trying to store everything in one monster of a table (which would miss the entire point of relational databases).
+
+- I then really enjoyed figuring out the SQL queries needed. For example I could remove the `stars` column from the `images` table, as that could come from executing a `COUNT` on the `stars` table instead. 
+
+- Takeaway: I have some habits from working so long with Excel that I need to unlearn!
 
 [Back to top](#-the-wall)
 
 ## Future plans
 
 - Each image has a counter for how many users have 'starred' (favourited) it. I would like to figure out the best way to make this a live figure. I could imagine that sending a fetch request to the server every few seconds would be a possible solution. 
+
 - Create a button that appears in the bottom-right corner that returns a user to the top of the page. The button should not appear if they had not scrolled down the page at all
+
 - Incorporate lazy loading of the images, or pagination, or some such alternative to reduce the initial page load time 
+
 - Create a page for showing the user's favourited images
+
 - Design and write a loader using CSS (see the [loader feature section](#loading-animation))
 
 [Back to top](#-the-wall)
