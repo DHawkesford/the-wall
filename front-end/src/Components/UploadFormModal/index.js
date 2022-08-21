@@ -6,7 +6,6 @@ import { useState } from 'react';
 const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) => {
     const [image, setImage] = useState(null);
     const [isPending, setIsPending] = useState(false);
-    // TODO: add check to make sure object is correct before console logging (sending to db eventually)
     
     let url = null;
 
