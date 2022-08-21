@@ -210,7 +210,7 @@ Back-end: Node/Express
 
 ### Counting 'likes' (i.e. tracking favourites):
 
-- This was my favourite feature to implement so far, as it was more focused on the back-end, which I have a slight preference for. I wanted to be able to track which users has favourited which images. 
+- This was my favourite feature to implement so far, as it was more focused on the back-end, which I have a slight preference for. I wanted to be able to track which users have favourited which images. 
 
 - At this point, my database had just one table, called `images`, which had 3 columns: `id`, `url`, and `stars` (i.e. 'likes'). 
 
