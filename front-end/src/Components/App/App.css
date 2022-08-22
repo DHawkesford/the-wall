@@ -209,7 +209,7 @@ main {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  width: 110px;
+  width: 136px;
   height: 100%;
 }
 
@@ -306,12 +306,25 @@ main {
   flex-direction: row;
   align-items: center;
   height: 100%;
-  width: 110px;
+  width: 136px;
   font-size: 13pt;
 }
 
-.info-icon {
+.github-icon {
   height: 70%;
+  cursor: pointer;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.github-icon > img {
+  height: 25px;
+}
+
+.info-icon {
+  height: 25px;
   cursor: pointer;
   margin-right: 10px;
 }
@@ -562,4 +575,10 @@ main {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@media screen and (max-width: 750px) {
+  .hamburger-icon-wrapper {
+    width: 30px;
+  }
 }

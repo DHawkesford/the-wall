@@ -1,5 +1,6 @@
 import infoIcon from './info_icon.svg';
 import hamburgerIconDark from './hamburger_icon_dark.svg';
+import githubIcon from './github_icon.png';
 import { useState } from 'react';
 import CloseButton from '../../CloseButton';
 
@@ -25,6 +26,9 @@ const Information = ({ setDisplayHamburgerMenu }) => {
     return (
         <>
             <div className="info">
+                <a href="https://github.com/DHawkesford/the-wall" className="github-icon" target="_blank" rel="noreferrer">
+                    <img src={githubIcon} alt="The GitHub Invertocat logo, which is a cat silhouette." />
+                </a>
                 <img src={infoIcon} className="info-icon" onClick={() => {setDisplayInfo(!displayInfo)}} alt="A circle containing the letter i in lower-case." />
                 <span>The Wall</span>
             </div>
