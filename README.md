@@ -1,6 +1,6 @@
 # ![A simple illustration of a brick wall.](./front-end/public/favicon.png) The Wall
 
-View the website [here](https://the-wall-dan-blake.netlify.app/).
+View the website [here](https://the-wall-app.netlify.app/).
 
 The Wall is an app for encouraging users to keep active by giving them a fun goal to focus on during their walk, run, cycle, etc.
 
