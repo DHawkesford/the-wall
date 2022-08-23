@@ -5,6 +5,7 @@ import Gallery from "../Gallery";
 import NavBar from "../NavBar/";
 import GalleryImageModal from '../GalleryImageModal';
 import UploadFormModal from '../UploadFormModal';
+import Loading from "../Loading";
 
 function App() {
   const { user, getAccessTokenWithPopup } = useAuth0();
@@ -83,17 +84,21 @@ function App() {
       const response = await fetch('https://the-wall-dan-blake.herokuapp.com/images');
       const data = await response.json();
       setImages(data.payload);
+      setAreImagesLoading(false);
     }
 
     getImages();
-    setAreImagesLoading(false);
   }, []);
 
   return (
     <div className="App">
       <NavBar handleClick={addImageToGallery} handleChange={inputChange} newImageURL={newImageURL} usersStars={usersStars} getUsersStars={getUsersStars} setDisplayUploadFormModal={setDisplayUploadFormModal} />
       <main>
-        <Gallery galleryImages={images} setImagesFn={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} areImagesLoading={areImagesLoading} />
+        {areImagesLoading ? (
+          <Loading />
+        ) : (
+          <Gallery galleryImages={images} setImagesFn={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} />
+        )}
       </main>
       <GalleryImageModal setDisplayModal={setDisplayModal} modalImage={modalImage} displayModal={displayModal} />
       <UploadFormModal displayUploadFormModal={displayUploadFormModal} setDisplayUploadFormModal={setDisplayUploadFormModal} />
