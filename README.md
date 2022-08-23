@@ -177,6 +177,8 @@ Back-end: Node/Express
 
 - I then looked into how others have made 'loaders', and saw [a guide from W3Schools](https://www.w3schools.com/howto/howto_css_loader.asp) that has a really nice way of making the loader just with CSS. I love neat solutions like this. And of course, people have made all sorts of amazing loaders purely with CSS. I'd like to try designing and making one of these myself at some point.
 
+- Later on, I reused the `Loader` component as part of the main fetch request that obtains all of the images on the front page. Using state and conditional rendering, the `Loader` component is rendered initially, and is then replaced by all of the images once they're received from the server/Cloudinary. From looking into the [Vue docs](https://vuejs.org/guide/essentials/conditional.html#v-if-vs-v-show) when I was making the [hamburger menu](#hamburger-menu), I now knew that conditional rendering would be the 'cheapest' option in this situation, as the main fetch request should only occur once for each visit, and so the state that controls the conditional render should only be toggled once.
+
 - [Single element CSS spinners by Luke Haas](https://projects.lukehaas.me/css-loaders/)
 
 - [SpinKit by Tobias Ahlin](https://tobiasahlin.com/spinkit/)
@@ -227,9 +229,14 @@ Back-end: Node/Express
     | ------ | ------- |
     | 3      | 7       |
 
-- This seemed a lot more "correct", as it was storing the minimal information needed (and no more), was easy to update, and wasn't trying to store everything in one monster of a table (which would miss the entire point of relational databases).
+- This seemed a lot more "correct", as it was storing precisely the information needed (and no more), was easy to update, and wasn't trying to store everything in one monster of a table (which would miss the entire point of relational databases).
 
-- I then really enjoyed figuring out the SQL queries needed. For example I could remove the `stars` column from the `images` table, as that could come from executing a `COUNT` on the `stars` table instead. 
+- I then really enjoyed figuring out the SQL queries needed. For example I could remove the `stars` column from the `images` table, as that could come from executing a `COUNT` on the `stars` table instead:
+
+        // Query for getting all images including a count of their stars
+        SELECT *, (SELECT count(*)::INT FROM stars WHERE stars.imageID = images.id) stars 
+            FROM images 
+        ORDER BY stars DESC;`
 
 - Takeaway: I have some habits from working so long with Excel that I need to unlearn!
 
