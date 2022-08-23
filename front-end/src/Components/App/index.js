@@ -14,6 +14,7 @@ function App() {
   const [displayModal, setDisplayModal] = useState(false);
   const [displayUploadFormModal, setDisplayUploadFormModal] = useState(false);
   const [modalImage, setModalImage] = useState(null);
+  const [areImagesLoading, setAreImagesLoading] = useState(true);
 
   const getUsersStars = async () => {
     try {
@@ -85,13 +86,14 @@ function App() {
     }
 
     getImages();
+    setAreImagesLoading(false);
   }, []);
 
   return (
     <div className="App">
       <NavBar handleClick={addImageToGallery} handleChange={inputChange} newImageURL={newImageURL} usersStars={usersStars} getUsersStars={getUsersStars} setDisplayUploadFormModal={setDisplayUploadFormModal} />
       <main>
-        <Gallery galleryImages={images} setImagesFn={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal}/>
+        <Gallery galleryImages={images} setImagesFn={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} areImagesLoading={areImagesLoading} />
       </main>
       <GalleryImageModal setDisplayModal={setDisplayModal} modalImage={modalImage} displayModal={displayModal} />
       <UploadFormModal displayUploadFormModal={displayUploadFormModal} setDisplayUploadFormModal={setDisplayUploadFormModal} />
