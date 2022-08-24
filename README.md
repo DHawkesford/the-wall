@@ -30,7 +30,7 @@ Each day, a new theme appears at the top of the page, such as 'Nature' or 'Statu
 
 With this project, the app itself (a photography sharing / fitness motivator website) was not hugely important. My goal with this project was to try to create commonly used features from scratch, in order to better understand how they work. For example, I've implemented hamburger menus in past projects by importing them from component libraries such as MUI, but I wanted to try writing such a menu myself.   
 
-In the [*Features & lessons learned*](#features--lessons-learned) section below, I've detailed the features I've been able to add to the app so far, how they were implemented, any difficulties I ran into, any useful links to resources I found helpful when trying to implement the feature, and any takeaways for the future.
+In the [Features & lessons learned](#features--lessons-learned) section below, I've detailed the features I've been able to add to the app so far, how they were implemented, any difficulties I ran into, any useful links to resources I found helpful when trying to implement the feature, and any takeaways for the future.
 
 [Back to top](#-the-wall)
 
@@ -236,7 +236,7 @@ Back-end: Node/Express
         // Query for getting all images including a count of their stars
         SELECT *, (SELECT count(*)::INT FROM stars WHERE stars.imageID = images.id) stars 
             FROM images 
-        ORDER BY stars DESC;`
+        ORDER BY stars DESC;
 
 - Takeaway: I have some habits from working so long with Excel that I need to unlearn!
 
