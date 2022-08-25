@@ -10,6 +10,7 @@ export async function getAllImages() {
 
 export async function postNewImage({ url, altText }) {
   const sqlString = `INSERT INTO images (url, alt) VALUES ($1, $2) RETURNING *;`;
+  console.log(`sqlString: ${sqlString}`)
   const result = await db.query(sqlString, [url, altText]);
   return result.rows;
 }
