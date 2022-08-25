@@ -14,6 +14,7 @@ const NavBar = ({ handleClick, handleChange, newImageURL, usersStars, getUsersSt
   const [displayHamburgerMenu, setDisplayHamburgerMenu] = useState(false);
   const photographerIcons = [photographer_1, photographer_2, photographer_3, photographer_4, photographer_5, photographer_6, photographer_7, photographer_8];
   const [currentPhotographer, setCurrentPhotographer] = useState(photographerIcons[Math.floor(Math.random()*photographerIcons.length)]);
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
 
   function randomisePhotographer() {
     const temp = [...photographerIcons];
@@ -27,7 +28,11 @@ const NavBar = ({ handleClick, handleChange, newImageURL, usersStars, getUsersSt
       <HamburgerMenu displayHamburgerMenu={displayHamburgerMenu} setDisplayHamburgerMenu={setDisplayHamburgerMenu} handleClick={handleClick} handleChange={handleChange} newImageURL={newImageURL} usersStars={usersStars} getUsersStars={getUsersStars} setDisplayUploadFormModal={setDisplayUploadFormModal} />
       <p className="theme">
         <span>Today's theme is.. Nature!</span>
-        <img src={currentPhotographer} key={currentPhotographer} className="theme-icon" onClick={randomisePhotographer} alt="An illustration of a person with a camera on a strap around their neck." title="Change the photographer!" />
+        {isFirstLoad ? (
+          <img src={currentPhotographer} key={currentPhotographer} className="theme-icon-first-load" onClick={() => {randomisePhotographer(); setIsFirstLoad(false);}} alt="An illustration of a person with a camera on a strap around their neck." title="Change the photographer!" />
+        ) : (
+          <img src={currentPhotographer} key={currentPhotographer} className="theme-icon" onClick={randomisePhotographer} alt="An illustration of a person with a camera on a strap around their neck." title="Change the photographer!" />
+        )}
       </p>
       <Information setDisplayHamburgerMenu={setDisplayHamburgerMenu} />
     </nav>

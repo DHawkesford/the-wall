@@ -45,6 +45,12 @@ nav {
   animation: spin 0.3s linear
 }
 
+.theme-icon-first-load {
+  height: 30px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
 main {
   margin-top: 40px;
 }
