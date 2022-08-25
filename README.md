@@ -21,6 +21,7 @@ Each day, a new theme appears at the top of the page, such as 'Nature' or 'Statu
     - [Loading animation](#loading-animation)
     - [Getting images in different sizes, to increase performance](#getting-images-in-different-sizes-to-increase-performance)
     - [Counting 'likes' (i.e. tracking favourites)](#counting-likes-ie-tracking-favourites)
+    - [Icon animation](#icon-animation)
 
 4. [Future plans](#future-plans)
 
@@ -242,6 +243,14 @@ Back-end: Node/Express
 
 [Back to top](#-the-wall)
 
+---
+
+### Icon animation:
+
+- 
+
+[Back to top](#-the-wall)
+
 ## Future plans
 
 - Each image has a counter for how many users have 'starred' (favourited) it. I would like to figure out the best way to make this a live figure. I could imagine that sending a fetch request to the server every few seconds would be a possible solution. 
@@ -264,7 +273,7 @@ Back-end: Node/Express
 - [Hamburger menu button icon (light and dark)](https://icons8.com/icon/JTddWDKbAzgl/menu) by [Icons8](https://icons8.com)
 - ['Submit a photo' icon](https://www.flaticon.com/free-icons/picture) by [mim_studio - Flaticon](https://www.flaticon.com/authors/mim-studio)
 - Info icon by [Raj Dev](https://freeicons.io/profile/714) on [freeicons.io](https://freeicons.io)
-- [Photographer icon](https://www.flaticon.com/free-icons/photographer) by [Eucalyp - Flaticon](https://www.flaticon.com/authors/eucalyp) 
+- [Photographer icons](https://www.flaticon.com/free-icons/photographer) by [Eucalyp - Flaticon](https://www.flaticon.com/authors/eucalyp) 
 - [Close menu icons (light and dark)](https://www.flaticon.com/free-icons/close) by [Tanah Basah - Flaticon](https://www.flaticon.com/authors/tanah-basah)
 - [Log out icon](https://www.flaticon.com/free-icons/logout) by [Freepik - Flaticon](https://www.flaticon.com/authors/freepik)
 - [Log in icon](https://www.flaticon.com/free-icons/entrance) by [Freepik - Flaticon](https://www.flaticon.com/authors/freepik)

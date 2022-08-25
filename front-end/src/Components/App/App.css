@@ -42,6 +42,7 @@ nav {
   height: 30px;
   margin-left: 5px;
   cursor: pointer;
+  animation: spin 0.3s linear
 }
 
 main {
@@ -124,7 +125,7 @@ main {
   cursor: pointer;
   border: none;
   background: url(../Gallery/GalleryImage/star_icon_grey.svg) no-repeat;
-  animation: spin 0.3s linear
+  animation: fadedown 1.3s ease-out
 }
 
 .starBarStarred > p {
@@ -613,6 +614,13 @@ main {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@keyframes fadedown {
+  0% { transform: translate(0px, 0px); opacity: 1 }
+  50% { transform: translate(0px, 20px); opacity: 0 }
+  75% { transform: translate(0px, 0px); opacity: 0 }
+  100% { transform: translate(0px, 0px); opacity: 1 }
 }
 
 @keyframes jump {

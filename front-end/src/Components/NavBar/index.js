@@ -27,7 +27,7 @@ const NavBar = ({ handleClick, handleChange, newImageURL, usersStars, getUsersSt
       <HamburgerMenu displayHamburgerMenu={displayHamburgerMenu} setDisplayHamburgerMenu={setDisplayHamburgerMenu} handleClick={handleClick} handleChange={handleChange} newImageURL={newImageURL} usersStars={usersStars} getUsersStars={getUsersStars} setDisplayUploadFormModal={setDisplayUploadFormModal} />
       <p className="theme">
         <span>Today's theme is.. Nature!</span>
-        <img src={currentPhotographer} className="theme-icon" onClick={randomisePhotographer} alt="An illustration of a person with a camera on a strap around their neck." title="Change the photographer!" />
+        <img src={currentPhotographer} key={currentPhotographer} className="theme-icon" onClick={randomisePhotographer} alt="An illustration of a person with a camera on a strap around their neck." title="Change the photographer!" />
       </p>
       <Information setDisplayHamburgerMenu={setDisplayHamburgerMenu} />
     </nav>
