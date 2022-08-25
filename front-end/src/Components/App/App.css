@@ -143,9 +143,9 @@ main {
 .zoomIn {
   position: absolute;
   visibility: hidden;
-  top: 45%;
-  right: 45%;
-  width: 50px;
+  top: calc(50% - 35px);
+  right: calc(50% - 35px);
+  width: 70px;
 }
 
 .GalleryImage:hover .zoomIn {

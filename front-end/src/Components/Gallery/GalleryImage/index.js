@@ -1,4 +1,4 @@
-import zoomIn from './zoom_in_icon.svg';
+import zoomIn from './zoom_in_icon.png';
 import { useAuth0 } from "@auth0/auth0-react";
 
 const GalleryImage = ({ image, star, usersStars, showModal, getUsersStars }) => {
