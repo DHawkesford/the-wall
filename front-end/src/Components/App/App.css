@@ -56,13 +56,13 @@ main {
 }
 
 .Gallery {
-  padding: 5px 0 0 5px;
+  padding: 5px;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   flex-wrap: wrap;
   justify-content: center;
-  width: 98%;
+  width: calc(100% - 10px);
 }
 
 .GalleryImage {

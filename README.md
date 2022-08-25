@@ -271,6 +271,8 @@ Back-end: Node/Express
 
 - Create a button that appears in the bottom-right corner that returns a user to the top of the page. The button should not appear if they had not scrolled down the page at all
 
+- Add in mobile responsiveness - the app already scales down quite nicely on smaller screens, but there is some work needed on the navbar in particular.
+
 - Incorporate lazy loading of the images, or pagination, or some such alternative to reduce the initial page load time 
 
 - Create a dashboard page, where users can see their starred posts, and see/edit/delete their own posts
