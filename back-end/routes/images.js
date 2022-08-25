@@ -11,7 +11,7 @@ router.get("/", async function (req, res, next) {
 
 router.post("/", async function(req, res, next) {
   const body = req.body;
-  const data = await postNewImage(body.url);
+  const data = await postNewImage(body);
   res.json({ success: true, payload: data })
 })
 
