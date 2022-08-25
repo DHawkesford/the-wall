@@ -30,7 +30,7 @@ const Information = ({ setDisplayHamburgerMenu }) => {
                     <img src={githubIcon} alt="The GitHub Invertocat logo, which is a cat silhouette." />
                 </a>
                 <img src={infoIcon} className="info-icon" onClick={() => {setDisplayInfo(!displayInfo)}} alt="A circle containing the letter i in lower-case." />
-                <span>The Wall</span>
+                <span onClick={() => {window.scrollTo({ top: 0, behavior: 'smooth' })}}>The Wall</span>
             </div>
             <div className={infoClasses}>
                 <p className="info-modal-title">

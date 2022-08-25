@@ -327,6 +327,10 @@ main {
   font-size: 13pt;
 }
 
+.info > span {
+  cursor: pointer;
+}
+
 .github-icon {
   cursor: pointer;
   margin-right: 10px;
