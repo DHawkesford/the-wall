@@ -1,22 +1,38 @@
 import zoomIn from './zoom_in_icon.svg';
+import { useAuth0 } from "@auth0/auth0-react";
 
-const GalleryImage = ({ image, star, usersStars, showModal }) => {
+const GalleryImage = ({ image, star, usersStars, showModal, getUsersStars }) => {
   const smallImageUrl = image.url.slice(0, image.url.indexOf('upload') + 7) + 'f_webp/c_scale,h_300/' + image.url.slice(image.url.indexOf('upload') + 7);
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
 
   return( 
     <div className="GalleryImage">
       <img className="zoomIn" src={zoomIn} onClick={() => {showModal(image)}} alt="A magnifying glass with a plus sign over the lens" />
       <img className="photo" src={smallImageUrl} alt={image.alt || 'No alt text available'} />
-      <div className="starBar">
-        <p>Stars: {image.stars}</p>
-        {usersStars 
-        ?
-          usersStars.includes(image.id)
-          ? <button className="starButtonStarred" onClick={() => {star(image.id)}} />
-          : <button className="starButtonNotStarred" onClick={() => {star(image.id)}} />
-        : null
-        }
-      </div>
+      {isAuthenticated ? (
+        usersStars ? (
+          usersStars.includes(image.id) ? (
+            <div className="starBarStarred">
+              <button className="starButtonStarred" onClick={() => {star(image.id)}} />
+              <p>{image.stars}</p>
+            </div>
+          ) : (
+            <div className="starBarNotStarred">
+              <button className="starButtonNotStarred" onClick={() => {star(image.id)}} />
+              <p>{image.stars}</p>
+            </div>
+          )) : (
+            <div className="starBarNotStarred">
+              <button className="starButtonNotStarred" onClick={getUsersStars} />
+              <p>{image.stars}</p>
+            </div>
+          )
+        ) : (
+          <div className="starBarNotStarred">
+            <button className="starButtonNotStarred" onClick={loginWithRedirect} />
+            <p>{image.stars}</p>
+          </div>
+        )}
     </div>
   );
 }
