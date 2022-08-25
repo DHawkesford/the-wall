@@ -3,9 +3,9 @@ import stub from '../../../libs/imagesData.js';
 
 async function populateTable() {
   for (let i = 0; i < stub.length; i++) {
-    let sqlString = `INSERT INTO images (url) VALUES ($1) RETURNING *;`;
+    let sqlString = `INSERT INTO images (url, alt) VALUES ($1, $2) RETURNING *;`;
 
-    const response = await db.query(sqlString, [stub[i].url]);
+    const response = await db.query(sqlString, [stub[i].url, stub[i].alt]);
   
     console.log(response.rows);
   
