@@ -573,6 +573,7 @@ main {
   /* width: 450px; */
   resize: none;
   font-size: 11pt;
+  padding: 5px;
 }
 
 .loading {

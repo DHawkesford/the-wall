@@ -250,7 +250,7 @@ Back-end: Node/Express
 
 - Incorporate lazy loading of the images, or pagination, or some such alternative to reduce the initial page load time 
 
-- Create a page for showing the user's favourited images
+- Create a dashboard page, where users can see their starred posts, and see/edit/delete their own posts
 
 - Design and write a loader using CSS (see the [loader feature section](#loading-animation))
 

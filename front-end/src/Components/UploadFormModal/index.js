@@ -72,7 +72,7 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) =>
                 </p>
                 <div className="form-field upload-image">
                     <input id="url-input" onChange={setImageAndShowOnPage} type="file" name="file" accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp"/>
-                    <label htmlFor="url-input">Upload image</label>
+                    <label htmlFor="url-input">Select image</label>
                     {image ? (
                         <img className="upload-form-image" src={image} alt="A preview of what you have selected to upload."/>
                     ) : (
