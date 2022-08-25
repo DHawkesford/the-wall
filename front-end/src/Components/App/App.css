@@ -79,7 +79,7 @@ main {
   position: absolute;
   top: 5px;
   right: 5px;
-  background-color: darkblue;
+  background-color: #57157a;
   /* opacity: 0.8; */
   min-width: 30px;
   color: white;
@@ -97,7 +97,7 @@ main {
   position: absolute;
   top: 5px;
   right: 5px;
-  background-color: darkblue;
+  background-color: #282c34;
   /* opacity: 0.8; */
   min-width: 30px;
   color: white;
@@ -114,6 +114,7 @@ main {
   cursor: pointer;
   border: none;
   background: url(../Gallery/GalleryImage/star_icon_gold.svg) no-repeat;
+  animation: jump 0.3s linear
 }
 
 .starButtonNotStarred {
@@ -122,11 +123,19 @@ main {
   cursor: pointer;
   border: none;
   background: url(../Gallery/GalleryImage/star_icon_grey.svg) no-repeat;
+  animation: spin 0.3s linear
 }
 
-.starBarStarred, .starBarNotStarred > p {
+.starBarStarred > p {
   font-size: 10px;
-  /* margin-right: 3px; */
+  font-weight: bold;
+  color: #FAC100;
+}
+
+.starBarNotStarred > p {
+  font-size: 10px;
+  font-weight: bold;
+  color: #C7C7C7;
 }
 
 .zoomIn {
@@ -603,6 +612,12 @@ main {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@keyframes jump {
+  0% { transform: translate(0px, 0px) }
+  50% { transform: translate(0px, -20px) }
+  100% { transform: translate(0px, 0px) }
 }
 
 @media screen and (max-width: 750px) {
