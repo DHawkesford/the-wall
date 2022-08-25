@@ -247,7 +247,21 @@ Back-end: Node/Express
 
 ### Icon animation:
 
-- 
+- Clicking on the photographer icon in the NavBar causes it to spin and change.
+
+- I'm using state to randomise the `src` of the `img` element, however changing the `src` alone would not cause the animation to replay each time. As I understand it, the animation only plays when the `img` element is rendered, so the animation would play on the initial page load but not when the `src` changes, as the content of the element is changing but it is not being re-rendered.
+
+- This can be resolved by adding a `key` attribute to the `img` element, with the same value as the `src`. This will force React to unmount the current instance and mount a new one every time the `key`/`src` changes. E.g.:
+
+        <img src={currentPhotographer} key={currentPhotographer} ... />
+
+- This is also what I'm using to re-order the images when an image is voted up higher than one that's currently above it:
+
+        {galleryImages.map((image, index) => <GalleryImage image={image} key={[image.id, index]} ... />)}
+
+    The `image.id` item in the `key` array is what I'm actually considering to be my key, and the `index` item is what causes the fade-in animation to play when the images get re-ordered.
+
+- [Understanding React's key prop](https://kentcdodds.com/blog/understanding-reacts-key-prop)
 
 [Back to top](#-the-wall)
 
