@@ -24,6 +24,7 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) =>
         await postImageToCloudinaryAndSetUrl();
 
         const newUpload = { ...data, url: url };
+        
         await fetch('https://the-wall-dan-blake.herokuapp.com/images', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -68,7 +69,11 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) =>
             <form className="upload-form" onSubmit={handleSubmit(onSubmit)}>
                 <p className="upload-form-modal-title">
                     Submit a photo
-                    <CloseButton handleClick={() => setDisplayUploadFormModal(false)} uniqueId="close-upload-form-modal" />
+                    {isPending ? (
+                        <CloseButton handleClick={() => setDisplayUploadFormModal(false)} uniqueId="close-upload-form-modal" disabled={true} />
+                    ) : (
+                        <CloseButton handleClick={() => setDisplayUploadFormModal(false)} uniqueId="close-upload-form-modal" />
+                    )}
                 </p>
                 <div className="form-field upload-image">
                     <input id="url-input" onChange={setImageAndShowOnPage} type="file" name="file" accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp"/>

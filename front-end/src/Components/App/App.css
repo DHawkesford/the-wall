@@ -392,6 +392,13 @@ main {
   cursor: pointer;
 }
 
+.close-icon-disabled {
+  height: 30px;
+  position: absolute;
+  right: 10px;
+  opacity: 0.5;
+}
+
 .info-modal-open-menu-wrapper {
   display: flex;
   flex-direction: column;
