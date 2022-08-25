@@ -41,6 +41,7 @@ nav {
 .theme-icon {
   height: 30px;
   margin-left: 5px;
+  cursor: pointer;
 }
 
 main {
