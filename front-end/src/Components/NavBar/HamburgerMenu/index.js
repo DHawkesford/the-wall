@@ -30,7 +30,15 @@ const HamburgerMenu = ({ usersStars, getUsersStars, setDisplayHamburgerMenu, dis
         setImages(data.payload);
         setAreImagesLoading(false);
     }
-      
+
+    async function refreshGallery() {
+        setAreImagesLoading(true); //maybe move
+        const response = await fetch('https://the-wall-dan-blake.herokuapp.com/images');
+        const data = await response.json();
+        setImages(data.payload);
+        setAreImagesLoading(false);
+    }
+    
     return (
         <>
             <div className="hamburger-icon-wrapper">
@@ -46,7 +54,7 @@ const HamburgerMenu = ({ usersStars, getUsersStars, setDisplayHamburgerMenu, dis
                         setDisplayUploadFormModal(true);
                         setDisplayHamburgerMenu(false)
                         }} imageSrc={newPhotoIcon} imageAlt="A simple square illustration of mountains under a clear sky. In the bottom-right corner there is a circle containing a plus sign." itemText="Submit a photo" redirectIfNotAuthenticated={true}/>
-                    <HamburgerMenuItem className="load-button" handleClick={getUsersStars} imageSrc={loadingIcon} imageAlt="Two arrows as a circle, pointing towards each other." itemText="Load your stars" redirectIfNotAuthenticated={true}/>
+                    <HamburgerMenuItem className="load-button" handleClick={refreshGallery} imageSrc={loadingIcon} imageAlt="Two arrows as a circle, pointing towards each other." itemText="Refresh the gallery" redirectIfNotAuthenticated={true}/>
                     <HamburgerMenuItem handleClick={() => {setAreImagesLoading(true); filterImagesByUsersStarred()}} imageSrc={starIconGold} imageAlt="A gold star." itemText="See your starred posts" redirectIfNotAuthenticated={true}/>
                     {isAuthenticated ? (
                         <HamburgerMenuItem className="log-out-button" handleClick={() => logout({ returnTo: window.location.origin })} imageSrc={logoutIcon} imageAlt="A simple square illustration of mountains under a clear sky. In the bottom-right corner there is a circle containing a plus sign." itemText="Log out" redirectIfNotAuthenticated={false}/>
