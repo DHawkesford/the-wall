@@ -272,7 +272,7 @@ Back-end: Node/Express
 
 - I wanted to try making the app responsive for mobile. Fortunately the app already scaled down quite nicely on smaller screens, but the navbar in particular would become quite crowded, and some of the modals (e.g. for making a post, or the information modal) would overflow the edge of the screen.
 
-- I had seen and used media queries very briefly on a few previous occasions, and in this case they were quite straightforward to add in.
+- I had seen and used media queries on a few previous occasions (although only very briefly), but in this case they were quite straightforward to add in.
 
 - I found the easiest approach was to use the device toolbar in Chrome's developer tools, and slowly decrease the width of the screen until the size/positioning of some part of the app becomes an issue. Then I would add in a breakpoint at that particular width, and modify relevant CSS selectors accordingly (usually by decreasing `font-size` or `margin`, or removing some elements from the page using `display: none`). Then I would repeat the process until the screen reached around 100px (it's unlikely that anyone would be using the app at sizes smaller than this).
 
