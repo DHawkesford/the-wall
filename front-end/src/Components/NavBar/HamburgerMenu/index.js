@@ -64,7 +64,7 @@ const HamburgerMenu = ({ setDisplayHamburgerMenu, displayHamburgerMenu, setDispl
                         setDisplayUploadFormModal(true);
                         setDisplayHamburgerMenu(false)
                         }} imageSrc={newPhotoIcon} imageAlt="A simple square illustration of mountains under a clear sky. In the bottom-right corner there is a circle containing a plus sign." itemText="Submit a photo" redirectIfNotAuthenticated={true}/>
-                    <HamburgerMenuItem className="load-button" handleClick={refreshGallery} imageSrc={loadingIcon} imageAlt="Two arrows as a circle, pointing towards each other." itemText="Refresh the gallery" redirectIfNotAuthenticated={true}/>
+                    <HamburgerMenuItem className="load-button" handleClick={refreshGallery} imageSrc={loadingIcon} imageAlt="Two arrows as a circle, pointing towards each other." itemText="Refresh the gallery" redirectIfNotAuthenticated={false}/>
                     <HamburgerMenuItem handleClick={() => {filterImagesByUsersStarred()}} imageSrc={starIconGold} imageAlt="A gold star." itemText="See your starred posts" redirectIfNotAuthenticated={true}/>
                     <HamburgerMenuItem handleClick={() => {filterImagesByUsersPosts()}} imageSrc={postsIcon} imageAlt="An illustration of a stack of photo frames." itemText="Manage your posts" redirectIfNotAuthenticated={true}/>
                     {isAuthenticated ? (
