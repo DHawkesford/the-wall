@@ -22,6 +22,7 @@ Each day, a new theme appears at the top of the page, such as 'Nature' or 'Statu
     - [Getting images in different sizes, to increase performance](#getting-images-in-different-sizes-to-increase-performance)
     - [Counting 'likes' (i.e. tracking favourites)](#counting-likes-ie-tracking-favourites)
     - [Icon animation](#icon-animation)
+    - [Mobile responsiveness](#mobile-responsiveness)
 
 4. [Future plans](#future-plans)
 
@@ -265,17 +266,31 @@ Back-end: Node/Express
 
 [Back to top](#-the-wall)
 
+---
+
+### Mobile responsiveness
+
+- I wanted to try making the app responsive for mobile. Fortunately the app already scaled down quite nicely on smaller screens, but the navbar in particular would become quite crowded, and some of the modals (e.g. for making a post, or the information modal) would overflow the edge of the screen.
+
+- I had seen and used media queries very briefly on a few previous occasions, and in this case they were quite straightforward to add in.
+
+- I found the easiest approach was to use the device toolbar in Chrome's developer tools, and slowly decrease the width of the screen until the size/positioning of some part of the app becomes an issue. Then I would add in a breakpoint at that particular width, and modify relevant CSS selectors accordingly (usually by decreasing `font-size` or `margin`, or removing some elements from the page using `display: none`). Then I would repeat the process until the screen reached around 100px (it's unlikely that anyone would be using the app at sizes smaller than this).
+
+- [Media Query CSS Tutorial – Standard Resolutions, CSS Breakpoints, and Target Phone Sizes](https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-standard-resolutions-and-more/)
+
+[Back to top](#-the-wall)
+
 ## Future plans
 
-- Each image has a counter for how many users have 'starred' (favourited) it. I would like to figure out the best way to make this a live figure. I could imagine that sending a fetch request to the server every few seconds would be a possible solution. 
+- Each image has a counter for how many users have 'starred' (favourited) it. I would like to figure out the best way to make this a live figure. I could imagine that sending a fetch request to the server every few seconds would be a possible solution. Currently there is a 'refresh' button in the hamburger menu for fetching the latest data from the server.
 
 - Create a button that appears in the bottom-right corner that returns a user to the top of the page. The button should not appear if they had not scrolled down the page at all
 
-- Add in mobile responsiveness - the app already scales down quite nicely on smaller screens, but there is some work needed on the navbar in particular.
+- ✅ Add in mobile responsiveness - the app already scales down quite nicely on smaller screens, but there is some work needed on the navbar in particular. 
 
 - Incorporate lazy loading of the images, or pagination, or some such alternative to reduce the initial page load time 
 
-- Create a dashboard page, where users can see their starred posts, and see/edit/delete their own posts
+- Create pages where users can see their starred posts, and see/edit/delete their own posts
 
 - Design and write a loader using CSS (see the [loader feature section](#loading-animation))
 
