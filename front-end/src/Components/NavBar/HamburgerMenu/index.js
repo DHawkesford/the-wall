@@ -9,7 +9,7 @@ import logoutIcon from './logout_icon.png';
 import loginIcon from './login_icon.png';
 import { useAuth0 } from "@auth0/auth0-react";
 
-const HamburgerMenu = ({ usersStars, getUsersStars, setDisplayHamburgerMenu, displayHamburgerMenu, setDisplayUploadFormModal, setImages, setAreImagesLoading }) => {
+const HamburgerMenu = ({ setDisplayHamburgerMenu, displayHamburgerMenu, setDisplayUploadFormModal, setImages, setAreImagesLoading }) => {
     const hamburgerMenuClasses = displayHamburgerMenu ? "hamburger-menu show-hamburger-menu" : "hamburger-menu hide-hamburger-menu";
   
     const { user, isAuthenticated, logout, loginWithRedirect } = useAuth0();

@@ -33,14 +33,14 @@ function App() {
   }, []);
 
   useEffect(() => {
-    async function getUsersStars(currentuser) {
+    async function getUsersStars() {
       try {
         const accessToken = await getAccessTokenSilently({
           audience: `https://the-wall-dan-blake.herokuapp.com`,
           scope: "read:current_user_stars",
         });
 
-        const userStarsByIDURL = `https://the-wall-dan-blake.herokuapp.com/stars/${currentuser.sub}`;
+        const userStarsByIDURL = `https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}`;
 
         const starsResponse = await fetch(userStarsByIDURL, {
           headers: {
@@ -63,17 +63,17 @@ function App() {
       }
     };
 
-    getUsersStars(user);
+    getUsersStars();
   }, [user, getAccessTokenSilently])
 
   return (
     <div className="App">
-      <NavBar usersStars={usersStars} getUsersStars={null} setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} />
+      <NavBar setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} />
       <main>
         {areImagesLoading ? (
           <Loading />
         ) : (
-          <Gallery galleryImages={images} setImagesFn={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} getUsersStars={null} />
+          <Gallery galleryImages={images} setImagesFn={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} />
         )}
       </main>
       <GalleryImageModal setDisplayModal={setDisplayModal} modalImage={modalImage} displayModal={displayModal} />

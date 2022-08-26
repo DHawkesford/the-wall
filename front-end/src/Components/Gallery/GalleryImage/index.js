@@ -1,9 +1,39 @@
 import zoomIn from './zoom_in_icon.png';
 import { useAuth0 } from "@auth0/auth0-react";
 
-const GalleryImage = ({ image, star, usersStars, showModal, getUsersStars }) => {
+const GalleryImage = ({ image, star, usersStars, showModal, setUsersStars }) => {
   const smallImageUrl = image.url.slice(0, image.url.indexOf('upload') + 7) + 'f_webp/c_scale,h_300/' + image.url.slice(image.url.indexOf('upload') + 7);
-  const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const { user, isAuthenticated, loginWithRedirect, getAccessTokenSilently } = useAuth0();
+
+  async function getUsersStars() {
+    try {
+      const accessToken = await getAccessTokenSilently({
+        audience: `https://the-wall-dan-blake.herokuapp.com`,
+        scope: "read:current_user_stars",
+      });
+
+      const userStarsByIDURL = `https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}`;
+
+      const starsResponse = await fetch(userStarsByIDURL, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json'
+        },
+      });
+
+      const users_stars = await starsResponse.json();
+
+      const starredImageIDs = [];
+
+      for (let i = 0; i < users_stars.payload.length; i++ ) {
+        starredImageIDs.push(users_stars.payload[i].imageid)
+      }
+      
+      setUsersStars(starredImageIDs);
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
 
   return( 
     <div className="GalleryImage">

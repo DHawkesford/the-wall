@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import GalleryImage from "./GalleryImage";
 
-const Gallery = ({ galleryImages, setImagesFn, usersStars, setUsersStars, showModal, getUsersStars }) => {
+const Gallery = ({ galleryImages, setImagesFn, usersStars, setUsersStars, showModal }) => {
   const { user, isAuthenticated } = useAuth0();
 
   async function star(idOfStarredItem) {
@@ -59,7 +59,7 @@ const Gallery = ({ galleryImages, setImagesFn, usersStars, setUsersStars, showMo
 
   return (
     <div className="Gallery">
-        {galleryImages.map((image, index) => <GalleryImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} getUsersStars={getUsersStars} />)}
+        {galleryImages.map((image, index) => <GalleryImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} />)}
     </div>
   );
 };

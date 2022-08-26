@@ -10,7 +10,7 @@ import photographer_7 from './photographer_7.png';
 import photographer_8 from './photographer_8.png';
 import { useState } from 'react';
 
-const NavBar = ({ handleClick, handleChange, newImageURL, usersStars, getUsersStars, setDisplayUploadFormModal, setImages, setAreImagesLoading }) => {
+const NavBar = ({ setDisplayUploadFormModal, setImages, setAreImagesLoading }) => {
   const [displayHamburgerMenu, setDisplayHamburgerMenu] = useState(false);
   const photographerIcons = [photographer_1, photographer_2, photographer_3, photographer_4, photographer_5, photographer_6, photographer_7, photographer_8];
   const [currentPhotographer, setCurrentPhotographer] = useState(photographerIcons[Math.floor(Math.random()*photographerIcons.length)]);
@@ -25,7 +25,7 @@ const NavBar = ({ handleClick, handleChange, newImageURL, usersStars, getUsersSt
 
   return (
     <nav>
-      <HamburgerMenu displayHamburgerMenu={displayHamburgerMenu} setDisplayHamburgerMenu={setDisplayHamburgerMenu} handleClick={handleClick} handleChange={handleChange} newImageURL={newImageURL} usersStars={usersStars} getUsersStars={getUsersStars} setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} />
+      <HamburgerMenu displayHamburgerMenu={displayHamburgerMenu} setDisplayHamburgerMenu={setDisplayHamburgerMenu} setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} />
       <p className="theme">
         <span>Today's theme is.. Nature!</span>
         {isFirstLoad ? (
