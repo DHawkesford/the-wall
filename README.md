@@ -294,5 +294,6 @@ Back-end: Node/Express
 - [Log out icon](https://www.flaticon.com/free-icons/logout) by [Freepik - Flaticon](https://www.flaticon.com/authors/freepik)
 - [Log in icon](https://www.flaticon.com/free-icons/entrance) by [Freepik - Flaticon](https://www.flaticon.com/authors/freepik)
 - Favicon by [www.wishforge.games](https://freeicons.io/profile/2257) on [freeicons.io](https://freeicons.io)
+- [Loading icon in hamburger menu](https://www.flaticon.com/authors/creative-stall-premium) by Creative Stall Premium from [Flaticon](https://www.flaticon.com)
 
 [Back to top](#-the-wall)
