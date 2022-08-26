@@ -4,6 +4,8 @@ import Profile from "../../Profile";
 import hamburgerIcon from './hamburger_icon.svg';
 import newPhotoIcon from './new_photo_icon.png';
 import starIconGold from '../../Gallery/GalleryImage/star_icon_gold.svg';
+import gitHubIcon from '../Information/github_icon.png';
+import infoIcon from '../Information/info_icon.svg';
 import loadingIcon from './loading_icon.png';
 import postsIcon from './posts_icon.png';
 import logoutIcon from './logout_icon.png';
@@ -60,13 +62,15 @@ const HamburgerMenu = ({ setDisplayHamburgerMenu, displayHamburgerMenu, setDispl
                     <CloseButton handleClick={() => setDisplayHamburgerMenu(false)} uniqueId="close-button-hamburger-menu" />
                 </div>
                 <div className="hamburger-menu-items">
-                    <HamburgerMenuItem handleClick={() => {
+                    <HamburgerMenuItem className="submit-button" handleClick={() => {
                         setDisplayUploadFormModal(true);
                         setDisplayHamburgerMenu(false)
                         }} imageSrc={newPhotoIcon} imageAlt="A simple square illustration of mountains under a clear sky. In the bottom-right corner there is a circle containing a plus sign." itemText="Submit a photo" redirectIfNotAuthenticated={true}/>
                     <HamburgerMenuItem className="load-button" handleClick={refreshGallery} imageSrc={loadingIcon} imageAlt="Two arrows as a circle, pointing towards each other." itemText="Refresh the gallery" redirectIfNotAuthenticated={false}/>
-                    <HamburgerMenuItem handleClick={() => {filterImagesByUsersStarred()}} imageSrc={starIconGold} imageAlt="A gold star." itemText="See your starred posts" redirectIfNotAuthenticated={true}/>
-                    <HamburgerMenuItem handleClick={() => {filterImagesByUsersPosts()}} imageSrc={postsIcon} imageAlt="An illustration of a stack of photo frames." itemText="Manage your posts" redirectIfNotAuthenticated={true}/>
+                    <HamburgerMenuItem className="star-button" handleClick={() => {filterImagesByUsersStarred()}} imageSrc={starIconGold} imageAlt="A gold star." itemText="See your starred posts" redirectIfNotAuthenticated={true}/>
+                    <HamburgerMenuItem className="manage-button" handleClick={() => {filterImagesByUsersPosts()}} imageSrc={postsIcon} imageAlt="An illustration of a stack of photo frames." itemText="Manage your posts" redirectIfNotAuthenticated={true}/>
+                    <HamburgerMenuItem className="github-button" handleClick={() => {filterImagesByUsersPosts()}} imageSrc={gitHubIcon} imageAlt="The GitHub Invertocat logo, which is a cat silhouette." itemText="Check out the GitHub" redirectIfNotAuthenticated={false}/>
+                    <HamburgerMenuItem className="info-button" handleClick={() => {filterImagesByUsersPosts()}} imageSrc={infoIcon} imageAlt="A circle containing the letter i in lower-case." itemText="See info" redirectIfNotAuthenticated={false}/>
                     {isAuthenticated ? (
                         <HamburgerMenuItem className="log-out-button" handleClick={() => logout({ returnTo: window.location.origin })} imageSrc={logoutIcon} imageAlt="A simple square illustration of mountains under a clear sky. In the bottom-right corner there is a circle containing a plus sign." itemText="Log out" redirectIfNotAuthenticated={false}/>
                     ) : (
