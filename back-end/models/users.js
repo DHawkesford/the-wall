@@ -13,12 +13,12 @@ export async function getUsersStarredImages(id) {
 }
 
 export async function getUsersPosts(id) { // TODO: Update SQL string
-  const sqlString = `SELECT *, (SELECT count(*)::INT FROM stars WHERE stars.imageID = images.id) stars 
+  const sqlString = `SELECT images.id, images.url, images.alt, images.userID, (SELECT count(*)::INT FROM stars WHERE stars.imageID = images.id) stars 
     FROM images 
     INNER JOIN stars
     ON images.id = stars.imageID
-    WHERE UPPER(stars.userid) = UPPER($1)
-    ORDER BY stars.imageID ASC;
+    WHERE UPPER(images.userID) = UPPER($1)
+    ORDER BY images.ID ASC;
   `;
   const result = await db.query(sqlString, [id]);
   return result.rows;
