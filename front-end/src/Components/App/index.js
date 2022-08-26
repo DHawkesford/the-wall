@@ -8,7 +8,7 @@ import UploadFormModal from '../UploadFormModal';
 import Loading from "../Loading";
 
 function App() {
-  const { user, getAccessTokenWithPopup } = useAuth0();
+  const { user, getAccessTokenSilently } = useAuth0();
   const [images, setImages] = useState([]);
   const [newImageURL, setNewImageURL] = useState('');
   const [usersStars, setUsersStars] = useState(null);
@@ -16,36 +16,6 @@ function App() {
   const [displayUploadFormModal, setDisplayUploadFormModal] = useState(false);
   const [modalImage, setModalImage] = useState(null);
   const [areImagesLoading, setAreImagesLoading] = useState(true);
-
-  const getUsersStars = async () => {
-    try {
-      const accessToken = await getAccessTokenWithPopup({
-        audience: `https://the-wall-dan-blake.herokuapp.com`,
-        scope: "read:current_user_stars",
-      });
-
-      const userStarsByIDURL = `https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}`;
-
-      const starsResponse = await fetch(userStarsByIDURL, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json'
-        },
-      });
-
-      const users_stars = await starsResponse.json();
-
-      const starredImageIDs = [];
-
-      for (let i = 0; i < users_stars.payload.length; i++ ) {
-        starredImageIDs.push(users_stars.payload[i].imageid)
-      }
-      
-      setUsersStars(starredImageIDs);
-    } catch (e) {
-      console.log(e.message);
-    }
-  };
 
   function inputChange(e) {
     setNewImageURL(e.target.value);
@@ -90,14 +60,48 @@ function App() {
     getImages();
   }, []);
 
+  useEffect(() => {
+    async function getUsersStars(currentuser) {
+      try {
+        const accessToken = await getAccessTokenSilently({
+          audience: `https://the-wall-dan-blake.herokuapp.com`,
+          scope: "read:current_user_stars",
+        });
+
+        const userStarsByIDURL = `https://the-wall-dan-blake.herokuapp.com/stars/${currentuser.sub}`;
+
+        const starsResponse = await fetch(userStarsByIDURL, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+          },
+        });
+
+        const users_stars = await starsResponse.json();
+
+        const starredImageIDs = [];
+
+        for (let i = 0; i < users_stars.payload.length; i++ ) {
+          starredImageIDs.push(users_stars.payload[i].imageid)
+        }
+        
+        setUsersStars(starredImageIDs);
+      } catch (e) {
+        console.log(e.message);
+      }
+    };
+
+    getUsersStars(user);
+  }, [user, getAccessTokenSilently])
+
   return (
     <div className="App">
-      <NavBar handleClick={addImageToGallery} handleChange={inputChange} newImageURL={newImageURL} usersStars={usersStars} getUsersStars={getUsersStars} setDisplayUploadFormModal={setDisplayUploadFormModal} />
+      <NavBar handleClick={addImageToGallery} handleChange={inputChange} newImageURL={newImageURL} usersStars={usersStars} getUsersStars={null} setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} />
       <main>
         {areImagesLoading ? (
           <Loading />
         ) : (
-          <Gallery galleryImages={images} setImagesFn={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} getUsersStars={getUsersStars} />
+          <Gallery galleryImages={images} setImagesFn={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} getUsersStars={null} />
         )}
       </main>
       <GalleryImageModal setDisplayModal={setDisplayModal} modalImage={modalImage} displayModal={displayModal} />
