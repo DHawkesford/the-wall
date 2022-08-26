@@ -1,8 +1,24 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect, useState } from "react";
+import Loading from "../../Loading";
 import GalleryImage from "../GalleryImage";
 
-const Home = ({ galleryImages, setImages, usersStars, setUsersStars, showModal }) => {
+const Favourites = ({ galleryImages, setImages, usersStars, setUsersStars, showModal }) => {
   const { user, isAuthenticated } = useAuth0();
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+    async function filterImagesByUsersStarred() {
+      setIsLoading(true); 
+      console.log('test');
+      const response = await fetch(`https://the-wall-dan-blake.herokuapp.com/users/${user.sub}/favourites`);
+      const data = await response.json();
+      setImages(data.payload);
+      setIsLoading(false);
+    }
+
+    filterImagesByUsersStarred();
+  }, [user, setImages]);
 
   async function star(idOfStarredItem) {
     console.log(usersStars);
@@ -59,9 +75,13 @@ const Home = ({ galleryImages, setImages, usersStars, setUsersStars, showModal }
 
   return (
     <div className="Gallery">
-        {galleryImages.map((image, index) => <GalleryImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} />)}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          galleryImages.map((image, index) => <GalleryImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} />)
+        )}
     </div>
   );
 };
 
-export default Home;
+export default Favourites;

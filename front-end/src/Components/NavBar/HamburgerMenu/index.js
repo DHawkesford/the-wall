@@ -77,7 +77,7 @@ const HamburgerMenu = ({ setDisplayHamburgerMenu, displayHamburgerMenu, setDispl
                         <HamburgerMenuItem className="star-button" handleClick={null} imageSrc={starIconGold} imageAlt="A gold star." itemText="See your starred posts" redirectIfNotAuthenticated={true}/>
                     </Link>
                     <Link className="text-link" to="/posts">
-                        <HamburgerMenuItem className="manage-button" handleClick={filterImagesByUsersPosts} imageSrc={postsIcon} imageAlt="An illustration of a stack of photo frames." itemText="Manage your posts" redirectIfNotAuthenticated={true}/>
+                        <HamburgerMenuItem className="manage-button" handleClick={null} imageSrc={postsIcon} imageAlt="An illustration of a stack of photo frames." itemText="Manage your posts" redirectIfNotAuthenticated={true}/>
                     </Link>
                     <HamburgerMenuItem className="github-button" handleClick={() => {window.open("https://github.com/DHawkesford/the-wall", "_blank")}} imageSrc={gitHubIcon} imageAlt="The GitHub Invertocat logo, which is a cat silhouette." itemText="Check out the GitHub" redirectIfNotAuthenticated={false}/>
                     <HamburgerMenuItem className="info-button" handleClick={closeHamburgerAndOpenInfo} imageSrc={infoIcon} imageAlt="A circle containing the letter i in lower-case." itemText="See info" redirectIfNotAuthenticated={false}/>
