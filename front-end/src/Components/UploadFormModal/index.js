@@ -1,12 +1,13 @@
 import CloseButton from '../CloseButton';
 import { useForm } from "react-hook-form";
 import { useState } from 'react';
-
+import { useAuth0 } from "@auth0/auth0-react";
 
 const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) => {
     const [image, setImage] = useState(null);
     const [isPending, setIsPending] = useState(false);
-    
+    const { user } = useAuth0();
+
     let url = null;
 
     const uploadFormModalClasses = displayUploadFormModal ? "modal-darken-background show-upload-form-modal" : "modal-darken-background hide-upload-form-modal";
@@ -23,7 +24,7 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal}) =>
 
         await postImageToCloudinaryAndSetUrl();
 
-        const newUpload = { ...data, url: url };
+        const newUpload = { ...data, url: url, userID: user.sub };
         
         await fetch('https://the-wall-dan-blake.herokuapp.com/images', {
             method: 'POST',
