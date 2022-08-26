@@ -10,39 +10,11 @@ import Loading from "../Loading";
 function App() {
   const { user, getAccessTokenSilently } = useAuth0();
   const [images, setImages] = useState([]);
-  const [newImageURL, setNewImageURL] = useState('');
   const [usersStars, setUsersStars] = useState(null);
   const [displayModal, setDisplayModal] = useState(false);
   const [displayUploadFormModal, setDisplayUploadFormModal] = useState(false);
   const [modalImage, setModalImage] = useState(null);
   const [areImagesLoading, setAreImagesLoading] = useState(true);
-
-  function inputChange(e) {
-    setNewImageURL(e.target.value);
-  }
-
-  async function addImageToGallery() {
-    // Update the page with the new image
-    const newImage = {
-      url: newImageURL,
-      stars: 1
-    }
-    setImages([...images, newImage])
-
-    // Clear the input field 
-    setNewImageURL('');
-
-    // Post the new image to the server
-    await fetch('https://the-wall-dan-blake.herokuapp.com/images', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        url: newImageURL
-      })
-    })
-  }
 
   function showModal(image) {
     setModalImage(image);
@@ -96,7 +68,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar handleClick={addImageToGallery} handleChange={inputChange} newImageURL={newImageURL} usersStars={usersStars} getUsersStars={null} setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} />
+      <NavBar usersStars={usersStars} getUsersStars={null} setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} />
       <main>
         {areImagesLoading ? (
           <Loading />
