@@ -36,6 +36,7 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  min-width: 220px;
 }
 
 .theme-icon {
@@ -678,4 +679,56 @@ main {
   .hamburger-icon-wrapper {
     width: 30px;
   }
+
+  .theme {
+    font-size: 14pt;
+  }
+} 
+
+@media screen and (max-width: 666px) {
+  .info-modal {
+    width: calc(100vw - 21px);
+  }
+} 
+
+@media screen and (max-width: 520px) {
+  .github-icon {
+    display: none;
+  }
+
+  .info-icon {
+    display: none;
+  }
+
+  .theme > img {
+    display: none;
+  }
+
+  .info {
+    width: 70px; 
+  }
+} 
+
+@media screen and (max-width: 500px) {
+  .upload-form {
+    width: calc(100vw - 6px);
+  }
+
+  #alt-text-textarea {
+    max-width: 90%;
+  }
 }
+
+@media screen and (max-width: 350px) {
+  .info {
+    display: none;
+  }
+
+  .theme {
+    margin-left: 5px;
+  }
+
+  .info {
+    width: 70px; 
+  }
+} 
