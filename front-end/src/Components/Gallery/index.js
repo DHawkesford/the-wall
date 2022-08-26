@@ -1,5 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import GalleryImage from "./GalleryImage";
+import { Routes, Route } from "react-router-dom";
 
 const Gallery = ({ galleryImages, setImagesFn, usersStars, setUsersStars, showModal }) => {
   const { user, isAuthenticated } = useAuth0();
@@ -58,9 +59,14 @@ const Gallery = ({ galleryImages, setImagesFn, usersStars, setUsersStars, showMo
   }
 
   return (
-    <div className="Gallery">
-        {galleryImages.map((image, index) => <GalleryImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} />)}
-    </div>
+    <Routes>
+      <Route path="test" element={<p>Test page</p>} />
+      <Route path="/" element={
+        <div className="Gallery">
+            {galleryImages.map((image, index) => <GalleryImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} />)}
+        </div>}
+      />
+    </Routes>
   );
 };
 

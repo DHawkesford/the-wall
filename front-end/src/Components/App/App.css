@@ -311,15 +311,15 @@ main {
   background-color: #7c9ee1;
 }
 
-.hamburger-menu-item-wrapper:first-child {
+.submit-button {
   border-top: solid white 1px;
 }
 
-.hamburger-menu-item-wrapper:last-child {
+.log-out-button, .log-in-button {
   border-top: solid white 1px;
 }
 
-.hamburger-menu-item-wrapper:last-child:hover {
+.log-out-button:hover {
   background-color: #EE5465;
   border-top: solid white 1px;
 }
@@ -659,6 +659,11 @@ main {
   position: fixed;
   top: calc(50% - 5vw);
   left: calc(50% - 5vw);
+}
+
+.text-link {
+  color: inherit;
+  text-decoration: inherit;
 }
 
 @keyframes spin {
