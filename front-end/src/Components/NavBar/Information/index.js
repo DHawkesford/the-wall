@@ -36,7 +36,7 @@ const Information = ({ setDisplayHamburgerMenu, displayInfo, setDisplayInfo }) =
                     <CloseButton handleClick={() => setDisplayInfo(false)} uniqueId="close-button-info-modal" />
                 </p>
                 <p>The purpose of The Wall is to help encourage you to keep active by giving you a fun goal to focus on during your walk, run, cycle, or any other activity you like that involves moving around your local surroundings.</p>
-                <p>Each day, a new theme will appear at the top of the page. When you're out on your walk or other activity, try to find something in your local area that matches that day's theme, and snap a photo of it. Submit your photo once home (mobile site coming soon..), check out what other users have posted, and vote on your favourites!</p>
+                <p>Each day, a new theme will appear at the top of the page. When you're out on your walk or other activity, try to find something in your local area that matches that day's theme, and snap a photo of it. Submit your photo to the site (The Wall is adaptive for mobile, so you can even do this on the go!), check out what other users have posted, and vote on your favourites!</p>
                 <div className="info-modal-open-menu-wrapper">
                     <p>Log in and upload your pictures using the menu at the top-left hand corner of the page:</p>
                     <button className="info-modal-open-menu-button" onClick={closeInfoAndOpenMenu}>
