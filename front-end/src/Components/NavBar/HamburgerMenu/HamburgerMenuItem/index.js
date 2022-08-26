@@ -6,7 +6,7 @@ const HamburgerMenuItem = ({ handleClick, imageSrc, imageAlt, itemText, redirect
     function handleClickOrRedirect () {
         if (redirectIfNotAuthenticated && !isAuthenticated) {
             loginWithRedirect()
-        } else {
+        } else if (handleClick !== null) {
             handleClick();
         }
     }
