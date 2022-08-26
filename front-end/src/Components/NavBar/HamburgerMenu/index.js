@@ -25,7 +25,7 @@ const HamburgerMenu = ({ usersStars, getUsersStars, setDisplayHamburgerMenu, dis
     )
 
     async function filterImagesByUsersStarred() {
-        const response = await fetch(`http://localhost:3000/users/${user.sub}`);
+        const response = await fetch(`https://the-wall-dan-blake.herokuapp.com/users/${user.sub}/favourites`);
         const data = await response.json();
         setImages(data.payload);
         setAreImagesLoading(false);
