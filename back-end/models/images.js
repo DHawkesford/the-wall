@@ -8,8 +8,8 @@ export async function getAllImages() {
   return result.rows;
 }
 
-export async function postNewImage({ url, altText }) {
-  const sqlString = `INSERT INTO images (url, alt) VALUES ($1, $2) RETURNING *;`;
-  const result = await db.query(sqlString, [url, altText]);
+export async function postNewImage({ url, altText, userID }) {
+  const sqlString = `INSERT INTO images (url, alt, userID) VALUES ($1, $2, $3) RETURNING *;`;
+  const result = await db.query(sqlString, [url, altText, userID]);
   return result.rows;
 }
