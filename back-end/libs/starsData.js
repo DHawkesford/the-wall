@@ -1,59 +1,59 @@
 const stars = [
     {
-      userID: "Dan1",
-      imageID: 1,
+      userid: "Dan1",
+      imageid: 1,
     },
     {
-      userID: "Dan1",
-      imageID: 2,
+      userid: "Dan1",
+      imageid: 2,
     },
     {
-      userID: "Dan1",
-      imageID: 4,
+      userid: "Dan1",
+      imageid: 4,
     },
     {
-      userID: "Dan2",
-      imageID: 1,
+      userid: "Dan2",
+      imageid: 1,
     },
     {
-      userID: "Dan2",
-      imageID: 5,
+      userid: "Dan2",
+      imageid: 5,
     },
     {
-      userID: "Dan2",
-      imageID: 2,
+      userid: "Dan2",
+      imageid: 2,
     },
     {
-      userID: "Dan3",
-      imageID: 1,
+      userid: "Dan3",
+      imageid: 1,
     },
     {
-      userID: "Dan3",
-      imageID: 3,
+      userid: "Dan3",
+      imageid: 3,
     },
     {
-      userID: "Dan3",
-      imageID: 4,
+      userid: "Dan3",
+      imageid: 4,
     },
     {
-      userID: "Dan4",
-      imageID: 1,
+      userid: "Dan4",
+      imageid: 1,
     },
     {
-      userID: "Dan4",
-      imageID: 2,
+      userid: "Dan4",
+      imageid: 2,
     },
     {
-      userID: "Dan5",
-      imageID: 1,
+      userid: "Dan5",
+      imageid: 1,
     },
     {
-      userID: "Dan5",
-      imageID: 2,
+      userid: "Dan5",
+      imageid: 2,
     },
     {
-      userID: "Dan5",
-      imageID: 3,
+      userid: "Dan5",
+      imageid: 3,
     }
 ];
 

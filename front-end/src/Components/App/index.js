@@ -51,13 +51,13 @@ function App() {
 
         const users_stars = await starsResponse.json();
 
-        const starredImageIDs = [];
+        const starredimageids = [];
 
         for (let i = 0; i < users_stars.payload.length; i++ ) {
-          starredImageIDs.push(users_stars.payload[i].imageid)
+          starredimageids.push(users_stars.payload[i].imageid)
         }
         
-        setUsersStars(starredImageIDs);
+        setUsersStars(starredimageids);
       } catch (e) {
         console.log(e.message);
       }

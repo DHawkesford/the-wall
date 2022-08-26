@@ -224,9 +224,9 @@ Back-end: Node/Express
 
 - I then thought about storing the users' likes in a separate table called `stars`. Each column would be an image, and each row would be a user, and each cell would either just be `true` or `false` depending on whether that user had liked the image. This seemed like it would be easier to update, but it still didn't seem right, and I read that PostgreSQL has a maximum of 1600 columns. If I ever wanted to store more than 1600 images that would then be an issue.
 
-- I eventually saw that a good way to track this would be to have a separate `stars` table, with just a `userID` column and an `imageID` column. If User 3 liked Image 7, that would get stored in the `stars` table, and its existence would indicate that User 3 had liked Image 7:
+- I eventually saw that a good way to track this would be to have a separate `stars` table, with just a `userid` column and an `imageid` column. If User 3 liked Image 7, that would get stored in the `stars` table, and its existence would indicate that User 3 had liked Image 7:
 
-    | UserID | ImageID |
+    | userid | imageid |
     | ------ | ------- |
     | 3      | 7       |
 
@@ -235,7 +235,7 @@ Back-end: Node/Express
 - I then really enjoyed figuring out the SQL queries needed. For example I could remove the `stars` column from the `images` table, as that could come from executing a `COUNT` on the `stars` table instead:
 
         // Query for getting all images including a count of their stars
-        SELECT *, (SELECT count(*)::INT FROM stars WHERE stars.imageID = images.id) stars 
+        SELECT *, (SELECT count(*)::INT FROM stars WHERE stars.imageid = images.id) stars 
             FROM images 
         ORDER BY stars DESC;
 

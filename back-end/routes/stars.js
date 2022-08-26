@@ -1,6 +1,6 @@
 import express from "express";
 import { auth, requiredScopes } from 'express-oauth2-jwt-bearer';
-import { getAllStars, getUsersStars, addStarToUserID , deleteStarFromUserID } from "../models/stars.js";
+import { getAllStars, getUsersStars, addStarTouserid , deleteStarFromuserid } from "../models/stars.js";
 
 const router = express.Router();
 
@@ -22,17 +22,17 @@ router.get("/:id", checkJwt, requiredScopes('read:current_user_stars'), async fu
   res.json({ success: true, payload: data })
 })
 
-router.post("/:userID/:imageID", async function(req, res, next) {
-  const userID = req.params.userID;
-  const imageID = req.params.imageID;
-  const data = await addStarToUserID(userID, imageID);
+router.post("/:userid/:imageid", async function(req, res, next) {
+  const userid = req.params.userid;
+  const imageid = req.params.imageid;
+  const data = await addStarTouserid(userid, imageid);
   res.json({ success: true, payload: data })
 })
 
-router.delete("/:userID/:imageID", async function(req, res, next) {
-  const userID = req.params.userID;
-  const imageID = req.params.imageID;
-  const data = await deleteStarFromUserID(userID, imageID);
+router.delete("/:userid/:imageid", async function(req, res, next) {
+  const userid = req.params.userid;
+  const imageid = req.params.imageid;
+  const data = await deleteStarFromuserid(userid, imageid);
   res.json({ success: true, payload: data })
 })
 
