@@ -1,11 +1,9 @@
 import infoIcon from './info_icon.svg';
 import hamburgerIconDark from './hamburger_icon_dark.svg';
 import githubIcon from './github_icon.png';
-import { useState } from 'react';
 import CloseButton from '../../CloseButton';
 
-const Information = ({ setDisplayHamburgerMenu }) => {
-    const [displayInfo, setDisplayInfo] = useState(false);
+const Information = ({ setDisplayHamburgerMenu, displayInfo, setDisplayInfo }) => {
     const infoClasses = displayInfo ? "info-modal show-info-modal" : "info-modal hide-info-modal";
 
     // Closes the info modal when clicking outside of it by setting the displayInfo boolean to be false
@@ -13,7 +11,7 @@ const Information = ({ setDisplayHamburgerMenu }) => {
         "click",
         (e) => {
         // Does not set displayInfo to be false if the user is clicking on the info icon (this would negate the effect of opening the info)
-        if (!e.target.closest(".info-modal") && !e.target.closest('.info-icon')) {
+        if (!e.target.closest(".info-modal") && !e.target.closest('.info-icon') && !e.target.closest(".info-button")) {
             setDisplayInfo(false);
         }}
     )
@@ -29,7 +27,7 @@ const Information = ({ setDisplayHamburgerMenu }) => {
                 <a href="https://github.com/DHawkesford/the-wall" className="github-icon" target="_blank" rel="noreferrer">
                     <img src={githubIcon} alt="The GitHub Invertocat logo, which is a cat silhouette." />
                 </a>
-                <img src={infoIcon} className="info-icon" onClick={() => {setDisplayInfo(!displayInfo)}} alt="A circle containing the letter i in lower-case." />
+                <img src={infoIcon} className="info-icon" onClick={() => {setDisplayInfo(true)}} alt="A circle containing the letter i in lower-case." />
                 <span onClick={() => {window.scrollTo({ top: 0, behavior: 'smooth' })}}>The Wall</span>
             </div>
             <div className={infoClasses}>

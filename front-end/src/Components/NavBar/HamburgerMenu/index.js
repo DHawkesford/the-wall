@@ -12,7 +12,7 @@ import logoutIcon from './logout_icon.png';
 import loginIcon from './login_icon.png';
 import { useAuth0 } from "@auth0/auth0-react";
 
-const HamburgerMenu = ({ setDisplayHamburgerMenu, displayHamburgerMenu, setDisplayUploadFormModal, setImages, setAreImagesLoading }) => {
+const HamburgerMenu = ({ setDisplayHamburgerMenu, displayHamburgerMenu, setDisplayUploadFormModal, setImages, setAreImagesLoading, setDisplayInfo }) => {
     const hamburgerMenuClasses = displayHamburgerMenu ? "hamburger-menu show-hamburger-menu" : "hamburger-menu hide-hamburger-menu";
   
     const { user, isAuthenticated, logout, loginWithRedirect } = useAuth0();
@@ -50,6 +50,11 @@ const HamburgerMenu = ({ setDisplayHamburgerMenu, displayHamburgerMenu, setDispl
         setImages(data.payload);
         setAreImagesLoading(false);
     }
+
+    function closeHamburgerAndOpenInfo() {
+        setDisplayInfo(true);
+        setDisplayHamburgerMenu(false);
+    }
     
     return (
         <>
@@ -70,7 +75,7 @@ const HamburgerMenu = ({ setDisplayHamburgerMenu, displayHamburgerMenu, setDispl
                     <HamburgerMenuItem className="star-button" handleClick={() => {filterImagesByUsersStarred()}} imageSrc={starIconGold} imageAlt="A gold star." itemText="See your starred posts" redirectIfNotAuthenticated={true}/>
                     <HamburgerMenuItem className="manage-button" handleClick={() => {filterImagesByUsersPosts()}} imageSrc={postsIcon} imageAlt="An illustration of a stack of photo frames." itemText="Manage your posts" redirectIfNotAuthenticated={true}/>
                     <HamburgerMenuItem className="github-button" handleClick={() => {filterImagesByUsersPosts()}} imageSrc={gitHubIcon} imageAlt="The GitHub Invertocat logo, which is a cat silhouette." itemText="Check out the GitHub" redirectIfNotAuthenticated={false}/>
-                    <HamburgerMenuItem className="info-button" handleClick={() => {filterImagesByUsersPosts()}} imageSrc={infoIcon} imageAlt="A circle containing the letter i in lower-case." itemText="See info" redirectIfNotAuthenticated={false}/>
+                    <HamburgerMenuItem className="info-button" handleClick={closeHamburgerAndOpenInfo} imageSrc={infoIcon} imageAlt="A circle containing the letter i in lower-case." itemText="See info" redirectIfNotAuthenticated={false}/>
                     {isAuthenticated ? (
                         <HamburgerMenuItem className="log-out-button" handleClick={() => logout({ returnTo: window.location.origin })} imageSrc={logoutIcon} imageAlt="A simple square illustration of mountains under a clear sky. In the bottom-right corner there is a circle containing a plus sign." itemText="Log out" redirectIfNotAuthenticated={false}/>
                     ) : (

@@ -15,6 +15,7 @@ const NavBar = ({ setDisplayUploadFormModal, setImages, setAreImagesLoading }) =
   const photographerIcons = [photographer_1, photographer_2, photographer_3, photographer_4, photographer_5, photographer_6, photographer_7, photographer_8];
   const [currentPhotographer, setCurrentPhotographer] = useState(photographerIcons[Math.floor(Math.random()*photographerIcons.length)]);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const [displayInfo, setDisplayInfo] = useState(false);
 
   function randomisePhotographer() {
     const temp = [...photographerIcons];
@@ -25,7 +26,7 @@ const NavBar = ({ setDisplayUploadFormModal, setImages, setAreImagesLoading }) =
 
   return (
     <nav>
-      <HamburgerMenu displayHamburgerMenu={displayHamburgerMenu} setDisplayHamburgerMenu={setDisplayHamburgerMenu} setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} />
+      <HamburgerMenu displayHamburgerMenu={displayHamburgerMenu} setDisplayHamburgerMenu={setDisplayHamburgerMenu} setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} setDisplayInfo={setDisplayInfo} />
       <p className="theme">
         <span>Today's theme is.. Nature!</span>
         {isFirstLoad ? (
@@ -34,7 +35,7 @@ const NavBar = ({ setDisplayUploadFormModal, setImages, setAreImagesLoading }) =
           <img src={currentPhotographer} key={currentPhotographer} className="theme-icon" onClick={randomisePhotographer} alt="An illustration of a person with a camera on a strap around their neck." title="Change the photographer!" />
         )}
       </p>
-      <Information setDisplayHamburgerMenu={setDisplayHamburgerMenu} />
+      <Information setDisplayHamburgerMenu={setDisplayHamburgerMenu} displayInfo={displayInfo} setDisplayInfo={setDisplayInfo} />
     </nav>
   );
 };
