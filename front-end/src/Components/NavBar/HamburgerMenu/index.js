@@ -4,14 +4,15 @@ import Profile from "../../Profile";
 import hamburgerIcon from './hamburger_icon.svg';
 import newPhotoIcon from './new_photo_icon.png';
 import starIconGold from '../../Gallery/GalleryImage/star_icon_gold.svg';
+import loadingIcon from './loading_icon.png';
 import logoutIcon from './logout_icon.png';
 import loginIcon from './login_icon.png';
 import { useAuth0 } from "@auth0/auth0-react";
 
-const HamburgerMenu = ({ handleClick, handleChange, newImageURL, usersStars, getUsersStars, setDisplayHamburgerMenu, displayHamburgerMenu, setDisplayUploadFormModal }) => {
+const HamburgerMenu = ({ handleClick, handleChange, newImageURL, usersStars, getUsersStars, setDisplayHamburgerMenu, displayHamburgerMenu, setDisplayUploadFormModal, setImages, setAreImagesLoading }) => {
     const hamburgerMenuClasses = displayHamburgerMenu ? "hamburger-menu show-hamburger-menu" : "hamburger-menu hide-hamburger-menu";
   
-    const { isAuthenticated, logout, loginWithRedirect } = useAuth0();
+    const { user, isAuthenticated, logout, loginWithRedirect } = useAuth0();
 
     // Closes the hamburger menu when clicking outside of it by setting the displayHamburgerMenu boolean to be false
     document.addEventListener(
@@ -23,6 +24,13 @@ const HamburgerMenu = ({ handleClick, handleChange, newImageURL, usersStars, get
         }}
     )
 
+    async function filterImagesByUsersStarred() {
+        const response = await fetch(`http://localhost:3000/users/${user.sub}`);
+        const data = await response.json();
+        setImages(data.payload);
+        setAreImagesLoading(false);
+    }
+      
     return (
         <>
             <div className="hamburger-icon-wrapper">
@@ -38,11 +46,8 @@ const HamburgerMenu = ({ handleClick, handleChange, newImageURL, usersStars, get
                         setDisplayUploadFormModal(true);
                         setDisplayHamburgerMenu(false)
                         }} imageSrc={newPhotoIcon} imageAlt="A simple square illustration of mountains under a clear sky. In the bottom-right corner there is a circle containing a plus sign." itemText="Submit a photo" redirectIfNotAuthenticated={true}/>
-                    {/* <div className="hamburger-menu-item-wrapper" onClick={() => console.log('test')}>
-                        <input type="text" className="input" onChange={handleChange} value={newImageURL} />
-                        <button className="submit" onClick={handleClick}>submit</button>
-                    </div> */}
-                    <HamburgerMenuItem handleClick={getUsersStars} imageSrc={starIconGold} imageAlt="A gold star." itemText="Load your stars" redirectIfNotAuthenticated={true}/>
+                    <HamburgerMenuItem className="load-button" handleClick={getUsersStars} imageSrc={loadingIcon} imageAlt="Two arrows as a circle, pointing towards each other." itemText="Load your stars" redirectIfNotAuthenticated={true}/>
+                    <HamburgerMenuItem handleClick={() => {setAreImagesLoading(true); filterImagesByUsersStarred()}} imageSrc={starIconGold} imageAlt="A gold star." itemText="See your starred posts" redirectIfNotAuthenticated={true}/>
                     {isAuthenticated ? (
                         <HamburgerMenuItem className="log-out-button" handleClick={() => logout({ returnTo: window.location.origin })} imageSrc={logoutIcon} imageAlt="A simple square illustration of mountains under a clear sky. In the bottom-right corner there is a circle containing a plus sign." itemText="Log out" redirectIfNotAuthenticated={false}/>
                     ) : (
