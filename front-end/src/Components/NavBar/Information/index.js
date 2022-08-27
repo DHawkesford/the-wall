@@ -1,6 +1,7 @@
 import infoIcon from './info_icon.svg';
 import hamburgerIconDark from './hamburger_icon_dark.svg';
 import githubIcon from './github_icon.png';
+import favIcon from './favicon.png';
 import CloseButton from '../../CloseButton';
 
 const Information = ({ setDisplayHamburgerMenu, displayInfo, setDisplayInfo }) => {
@@ -24,11 +25,11 @@ const Information = ({ setDisplayHamburgerMenu, displayInfo, setDisplayInfo }) =
     return (
         <>
             <div className="info">
+                <img src={infoIcon} className="info-icon" onClick={() => {setDisplayInfo(true)}} alt="A circle containing the letter i in lower-case." />
                 <a href="https://github.com/DHawkesford/the-wall" className="github-icon" target="_blank" rel="noreferrer">
                     <img src={githubIcon} alt="The GitHub Invertocat logo, which is a cat silhouette." />
                 </a>
-                <img src={infoIcon} className="info-icon" onClick={() => {setDisplayInfo(true)}} alt="A circle containing the letter i in lower-case." />
-                <span onClick={() => {window.scrollTo({ top: 0, behavior: 'smooth' })}}>The Wall</span>
+                <img src={favIcon} className="logo" onClick={() => {window.scrollTo({ top: 0, behavior: 'smooth' })}} alt="The app's logo, a brick wall." />
             </div>
             <div className={infoClasses}>
                 <p className="info-modal-title">

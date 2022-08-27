@@ -385,11 +385,11 @@ main {
   flex-direction: row;
   align-items: center;
   height: 100%;
-  width: 136px;
+  width: 101px;
   font-size: 13pt;
 }
 
-.info > span {
+.logo {
   cursor: pointer;
 }
 
@@ -721,7 +721,7 @@ main {
   }
 
   .info {
-    width: 70px; 
+    width: 32px; 
   }
 } 
 
