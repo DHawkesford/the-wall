@@ -392,6 +392,8 @@ main {
 
 .logo {
   cursor: pointer;
+  height: 30px;
+  margin-top: 1px;
 }
 
 .github-icon {
