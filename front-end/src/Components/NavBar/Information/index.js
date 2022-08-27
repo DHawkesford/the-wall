@@ -3,6 +3,7 @@ import hamburgerIconDark from './hamburger_icon_dark.svg';
 import githubIcon from './github_icon.png';
 import favIcon from './favicon.png';
 import CloseButton from '../../CloseButton';
+import { Routes, Route, Link } from "react-router-dom";
 
 const Information = ({ setDisplayHamburgerMenu, displayInfo, setDisplayInfo }) => {
     const infoClasses = displayInfo ? "info-modal show-info-modal" : "info-modal hide-info-modal";
@@ -29,7 +30,16 @@ const Information = ({ setDisplayHamburgerMenu, displayInfo, setDisplayInfo }) =
                 <a href="https://github.com/DHawkesford/the-wall" className="github-icon" target="_blank" rel="noreferrer">
                     <img src={githubIcon} alt="The GitHub Invertocat logo, which is a cat silhouette." />
                 </a>
-                <img src={favIcon} className="logo" onClick={() => {window.scrollTo({ top: 0, behavior: 'smooth' })}} alt="The app's logo, a brick wall." />
+                <Routes>
+                    <Route path="*" element={
+                        <Link to="/">
+                            <img src={favIcon} className="logo" alt="The app's logo, a brick wall." />
+                        </Link>
+                    } />
+                    <Route path="/" element={
+                        <img src={favIcon} className="logo" onClick={() => {window.scrollTo({ top: 0, behavior: 'smooth' })}} alt="The app's logo, a brick wall." />
+                    } />
+                </Routes>
             </div>
             <div className={infoClasses}>
                 <p className="info-modal-title">
