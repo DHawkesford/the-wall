@@ -10,7 +10,6 @@ const Favourites = ({ galleryImages, setImages, usersStars, setUsersStars, showM
   useEffect(() => {
     async function filterImagesByUsersStarred() {
       setIsLoading(true); 
-      console.log('test');
       const response = await fetch(`https://the-wall-dan-blake.herokuapp.com/users/${user.sub}/favourites`);
       const data = await response.json();
       setImages(data.payload);

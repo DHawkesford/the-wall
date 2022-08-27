@@ -8,6 +8,7 @@ import gitHubIcon from '../Information/github_icon.png';
 import infoIcon from '../Information/info_icon.svg';
 import loadingIcon from './loading_icon.png';
 import postsIcon from './posts_icon.png';
+import galleryIcon from './gallery_icon.png';
 import logoutIcon from './logout_icon.png';
 import loginIcon from './login_icon.png';
 import { useAuth0 } from "@auth0/auth0-react";
@@ -16,7 +17,7 @@ import { Link } from "react-router-dom";
 const HamburgerMenu = ({ setDisplayHamburgerMenu, displayHamburgerMenu, setDisplayUploadFormModal, setImages, setAreImagesLoading, setDisplayInfo }) => {
     const hamburgerMenuClasses = displayHamburgerMenu ? "hamburger-menu show-hamburger-menu" : "hamburger-menu hide-hamburger-menu";
   
-    const { user, isAuthenticated, logout, loginWithRedirect } = useAuth0();
+    const { isAuthenticated, logout, loginWithRedirect } = useAuth0();
 
     // Closes the hamburger menu when clicking outside of it by setting the displayHamburgerMenu boolean to be false
     document.addEventListener(
@@ -27,30 +28,6 @@ const HamburgerMenu = ({ setDisplayHamburgerMenu, displayHamburgerMenu, setDispl
             setDisplayHamburgerMenu(false);
         }}
     )
-
-    async function filterImagesByUsersStarred() {
-        setAreImagesLoading(true); 
-        const response = await fetch(`https://the-wall-dan-blake.herokuapp.com/users/${user.sub}/favourites`);
-        const data = await response.json();
-        setImages(data.payload);
-        setAreImagesLoading(false);
-    }
-
-    async function filterImagesByUsersPosts() {
-        setAreImagesLoading(true); 
-        const response = await fetch(`https://the-wall-dan-blake.herokuapp.com/users/${user.sub}/posts`);
-        const data = await response.json();
-        setImages(data.payload);
-        setAreImagesLoading(false);
-    }
-
-    async function refreshGallery() {
-        setAreImagesLoading(true); 
-        const response = await fetch('https://the-wall-dan-blake.herokuapp.com/images');
-        const data = await response.json();
-        setImages(data.payload);
-        setAreImagesLoading(false);
-    }
 
     function closeHamburgerAndOpenInfo() {
         setDisplayInfo(true);
@@ -72,12 +49,14 @@ const HamburgerMenu = ({ setDisplayHamburgerMenu, displayHamburgerMenu, setDispl
                         setDisplayUploadFormModal(true);
                         setDisplayHamburgerMenu(false)
                         }} imageSrc={newPhotoIcon} imageAlt="A simple square illustration of mountains under a clear sky. In the bottom-right corner there is a circle containing a plus sign." itemText="Submit a photo" redirectIfNotAuthenticated={true}/>
-                    <HamburgerMenuItem className="load-button" handleClick={refreshGallery} imageSrc={loadingIcon} imageAlt="Two arrows as a circle, pointing towards each other." itemText="Refresh the gallery" redirectIfNotAuthenticated={false}/>
+                    <Link className="text-link" to="/">
+                        <HamburgerMenuItem className="gallery-button" handleClick={null} imageSrc={galleryIcon} imageAlt="An illustration of a stack of photo frames." itemText="Go to gallery" redirectIfNotAuthenticated={false}/>
+                    </Link>
                     <Link className="text-link" to="/favourites">
                         <HamburgerMenuItem className="star-button" handleClick={null} imageSrc={starIconGold} imageAlt="A gold star." itemText="See your starred posts" redirectIfNotAuthenticated={true}/>
                     </Link>
                     <Link className="text-link" to="/posts">
-                        <HamburgerMenuItem className="manage-button" handleClick={null} imageSrc={postsIcon} imageAlt="An illustration of a stack of photo frames." itemText="Manage your posts" redirectIfNotAuthenticated={true}/>
+                        <HamburgerMenuItem className="manage-button" handleClick={null} imageSrc={postsIcon} imageAlt="An illustration of a camera." itemText="Manage your posts" redirectIfNotAuthenticated={true}/>
                     </Link>
                     <HamburgerMenuItem className="github-button" handleClick={() => {window.open("https://github.com/DHawkesford/the-wall", "_blank")}} imageSrc={gitHubIcon} imageAlt="The GitHub Invertocat logo, which is a cat silhouette." itemText="Check out the GitHub" redirectIfNotAuthenticated={false}/>
                     <HamburgerMenuItem className="info-button" handleClick={closeHamburgerAndOpenInfo} imageSrc={infoIcon} imageAlt="A circle containing the letter i in lower-case." itemText="See info" redirectIfNotAuthenticated={false}/>
