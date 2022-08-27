@@ -18,7 +18,7 @@ router.post("/", async function(req, res, next) {
 router.patch("/:id", async function(req, res, next) {
   const id = req.params.id;
   const body = req.body;
-  const data = await updateAltText(body);
+  const data = await updateAltText(id, body.altText);
   res.json({ success: true, payload: data })
 })
 

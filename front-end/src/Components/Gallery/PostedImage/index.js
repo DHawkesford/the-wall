@@ -42,10 +42,11 @@ const GalleryImage = ({ image, star, usersStars, showModal, setUsersStars, setIm
   };
 
   const onSubmit = async (data) => {
+    console.log(image);
     setIsPending(true);
 
     const newAltText = { ...data };
-
+    console.log(newAltText);
     await fetch(`https://the-wall-dan-blake.herokuapp.com/images/${image.id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
@@ -89,7 +90,7 @@ const GalleryImage = ({ image, star, usersStars, showModal, setUsersStars, setIm
                 </div>
               )}
               <div className="posted-image-buttons">
-                <button className="edit-button" onClick={null}>
+                <button className="edit-button" onClick={() => {setDisplayAltTextModal(true)}}>
                   <span>Edit alt text</span>
                 </button>
                 <button className="delete-button" onClick={null}>
