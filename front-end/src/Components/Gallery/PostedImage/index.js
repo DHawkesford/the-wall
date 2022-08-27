@@ -114,17 +114,16 @@ const GalleryImage = ({ image, star, usersStars, showModal, setUsersStars, setIm
       </div>
       {displayAltTextModal ? (
         <div className="modal-darken-background show-upload-form-modal">
-          <form className="upload-form" onSubmit={handleSubmit(onSubmit)}>
-              <p className="upload-form-modal-title">
-                  Submit a photo
-                  {isPending ? (
-                      <CloseButton handleClick={() => setDisplayAltTextModal(false)} uniqueId="close-alt-text-modal" disabled={true} />
-                  ) : (
-                      <CloseButton handleClick={() => setDisplayAltTextModal(false)} uniqueId="close-alt-text-modal" />
-                  )}
-              </p>
+          <form className="upload-form alt-text-form" onSubmit={handleSubmit(onSubmit)}>
               <div className="form-field">
-                  <label htmlFor="alt-text-textarea">Add alt text:</label>
+                  <label htmlFor="alt-text-textarea">
+                    Add alt text:
+                    {isPending ? (
+                      <CloseButton handleClick={() => setDisplayAltTextModal(false)} uniqueId="close-alt-text-modal" disabled={true} />
+                    ) : (
+                      <CloseButton handleClick={() => setDisplayAltTextModal(false)} uniqueId="close-alt-text-modal" />
+                    )}
+                  </label>
                   <textarea maxLength="140" rows="4" cols="35" id="alt-text-textarea" {...register("altText", { required: true })} />
                   {errors.altText && <span>This field is required</span>}
               </div>

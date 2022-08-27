@@ -548,6 +548,10 @@ main {
   font-size: 14pt;
 }
 
+.alt-text-form {
+  height: 220px;
+}
+
 .form-field {
   display: flex;
   flex-direction: column;
