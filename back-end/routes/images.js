@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllImages, postNewImage, updateAltText} from "../models/images.js";
+import { getAllImages, postNewImage, updateAltText, deleteImage } from "../models/images.js";
 
 const router = express.Router();
 
@@ -18,9 +18,13 @@ router.post("/", async function(req, res, next) {
 router.patch("/:id", async function(req, res, next) {
   const id = Number(req.params.id);
   const body = req.body;
-  console.log(id)
-  console.log(body)
   const data = await updateAltText(id, body.altText);
+  res.json({ success: true, payload: data })
+})
+
+router.delete("/:id", async function(req, res, next) {
+  const id = Number(req.params.id);
+  const data = await deleteImage(id);
   res.json({ success: true, payload: data })
 })
 

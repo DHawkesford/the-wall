@@ -8,6 +8,7 @@ const GalleryImage = ({ image, star, usersStars, showModal, setUsersStars, setIm
   const smallImageUrl = image.url.slice(0, image.url.indexOf('upload') + 7) + 'f_webp/c_scale,h_300/' + image.url.slice(image.url.indexOf('upload') + 7);
   const { user, isAuthenticated, loginWithRedirect, getAccessTokenSilently } = useAuth0();
   const [displayAltTextModal, setDisplayAltTextModal] = useState(false);
+  const [displayDeleteModal, setDisplayDeleteModal] = useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [isPending, setIsPending] = useState(false);
 
@@ -41,12 +42,10 @@ const GalleryImage = ({ image, star, usersStars, showModal, setUsersStars, setIm
     }
   };
 
-  const onSubmit = async (data) => {
-    console.log(image);
+  const onSubmitAltTextForm = async (data) => {
     setIsPending(true);
 
     const newAltText = { ...data };
-    console.log(newAltText);
     await fetch(`https://the-wall-dan-blake.herokuapp.com/images/${image.id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
@@ -67,6 +66,30 @@ const GalleryImage = ({ image, star, usersStars, showModal, setUsersStars, setIm
         setDisplayAltTextModal(false);
         setIsPending(false);
         document.getElementById(image.id).scrollIntoView({behavior: 'smooth'});
+    }, 1000);
+  }
+
+  const onSubmitDeleteForm = async () => {
+    setIsPending(true);
+
+    await fetch(`https://the-wall-dan-blake.herokuapp.com/images/${image.id}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    setImages((previousState) => {
+      return previousState
+      .map((item) => {
+        return item.id !== image.id
+        ? item
+        : null;
+      })
+      .sort((a, b) => b.stars - a.stars);
+    });
+
+    setTimeout(() => {
+        setDisplayAltTextModal(false);
+        setIsPending(false);
     }, 1000);
   }
 
@@ -93,7 +116,7 @@ const GalleryImage = ({ image, star, usersStars, showModal, setUsersStars, setIm
                 <button className="edit-button" onClick={() => {setDisplayAltTextModal(true)}}>
                   <span>Edit alt text</span>
                 </button>
-                <button className="delete-button" onClick={null}>
+                <button className="delete-button" onClick={setDisplayDeleteModal(true)}>
                   <span>Delete post</span>
                 </button>
               </div>
@@ -114,7 +137,7 @@ const GalleryImage = ({ image, star, usersStars, showModal, setUsersStars, setIm
       </div>
       {displayAltTextModal ? (
         <div className="modal-darken-background show-upload-form-modal">
-          <form className="upload-form alt-text-form" onSubmit={handleSubmit(onSubmit)}>
+          <form className="upload-form alt-text-form" onSubmit={handleSubmit(onSubmitAltTextForm)}>
               <div className="form-field">
                   <label htmlFor="alt-text-textarea">
                     Add alt text:
@@ -132,6 +155,31 @@ const GalleryImage = ({ image, star, usersStars, showModal, setUsersStars, setIm
                       <button className="upload-form-button-disabled" disabled>Submit</button>
                   ) : (
                       <button className="upload-form-button">Submit</button>
+                  )}
+              </div>
+          </form>
+        </div>
+      ) : (
+        null
+      )}
+      {displayDeleteModal ? (
+        <div className="modal-darken-background show-upload-form-modal">
+          <form className="upload-form delete-form" onSubmit={handleSubmit(onSubmitDeleteForm)}>
+              <div className="form-field">
+                  <label htmlFor="alt-text-textarea">
+                    Are you sure you want to delete this post?
+                    {isPending ? (
+                      <CloseButton handleClick={() => setDisplayDeleteModal(false)} uniqueId="close-delete-modal" disabled={true} />
+                    ) : (
+                      <CloseButton handleClick={() => setDisplayDeleteModal(false)} uniqueId="close-delete-modal" />
+                    )}
+                  </label>
+              </div>
+              <div className="upload-form-button-wrapper">
+                  {isPending ? (
+                      <button className="upload-form-button-disabled" disabled>Delete post</button>
+                  ) : (
+                      <button className="upload-form-button">Delete post</button>
                   )}
               </div>
           </form>
