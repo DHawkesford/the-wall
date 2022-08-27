@@ -30,7 +30,7 @@ Each day, a new theme appears at the top of the page, such as 'Nature' or 'Statu
 
 ## Purpose
 
-With this project, the app itself (a photography sharing / fitness motivator website) was not hugely important. My goal with this project was to try to create commonly used features from scratch, in order to better understand how they work. For example, I've implemented hamburger menus in past projects by importing them from component libraries such as MUI, but I wanted to try writing such a menu myself.   
+With this project, the app itself (a photography sharing / fitness motivator website) was not hugely important. My goal with this project was to try to create commonly used features from scratch, in order to better understand how they work. For example, I've implemented hamburger menus in past projects by importing them from component libraries such as MUI, but I wanted to try writing such a menu myself.
 
 In the [Features & lessons learned](#features--lessons-learned) section below, I've detailed the features I've been able to add to the app so far, how they were implemented, any difficulties I ran into, any useful links to resources I found helpful when trying to implement the feature, and any takeaways for the future.
 
@@ -309,7 +309,8 @@ Back-end: Node/Express
 - [Log out icon](https://www.flaticon.com/free-icons/logout) by [Freepik - Flaticon](https://www.flaticon.com/authors/freepik)
 - [Log in icon](https://www.flaticon.com/free-icons/entrance) by [Freepik - Flaticon](https://www.flaticon.com/authors/freepik)
 - Favicon by [www.wishforge.games](https://freeicons.io/profile/2257) on [freeicons.io](https://freeicons.io)
-- [Loading icon in hamburger menu](https://www.flaticon.com/authors/creative-stall-premium) by Creative Stall Premium from [Flaticon](https://www.flaticon.com)
-- 'Manage your posts' icon in hamburger menu by [Fauzidea](https://www.flaticon.com/authors/fauzidea) from [Flaticon](https://www.flaticon.com)
+- [Loading icon (two green arrows) in hamburger menu](https://www.flaticon.com/authors/creative-stall-premium) by Creative Stall Premium from [Flaticon](https://www.flaticon.com)
+- 'Go to gallery' icon in hamburger menu by [Fauzidea](https://www.flaticon.com/authors/fauzidea) from [Flaticon](https://www.flaticon.com)
+- 'Manage your posts' icon in hamburger menu by [Freepik](https://www.flaticon.com/authors/freepik) from [Flaticon](https://www.flaticon.com)
 
 [Back to top](#-the-wall)
