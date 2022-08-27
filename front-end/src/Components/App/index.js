@@ -79,7 +79,7 @@ function App() {
           )}
         </main>
         <GalleryImageModal setDisplayModal={setDisplayModal} modalImage={modalImage} displayModal={displayModal} />
-        <UploadFormModal displayUploadFormModal={displayUploadFormModal} setDisplayUploadFormModal={setDisplayUploadFormModal} />
+        <UploadFormModal displayUploadFormModal={displayUploadFormModal} setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} usersStars={usersStars} setUsersStars={setUsersStars} />
       </div>
     </Router>
   );
