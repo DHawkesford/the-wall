@@ -6,6 +6,7 @@ import NavBar from "../NavBar/";
 import GalleryImageModal from '../GalleryImageModal';
 import UploadFormModal from '../UploadFormModal';
 import Loading from "../Loading";
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   const { user, getAccessTokenSilently } = useAuth0();
@@ -67,18 +68,20 @@ function App() {
   }, [user, getAccessTokenSilently])
 
   return (
-    <div className="App">
-      <NavBar setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} />
-      <main>
-        {areImagesLoading ? (
-          <Loading />
-        ) : (
-          <Gallery galleryImages={images} setImagesFn={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} />
-        )}
-      </main>
-      <GalleryImageModal setDisplayModal={setDisplayModal} modalImage={modalImage} displayModal={displayModal} />
-      <UploadFormModal displayUploadFormModal={displayUploadFormModal} setDisplayUploadFormModal={setDisplayUploadFormModal} />
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} />
+        <main>
+          {areImagesLoading ? (
+            <Loading />
+          ) : (
+            <Gallery galleryImages={images} setImages={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} />
+          )}
+        </main>
+        <GalleryImageModal setDisplayModal={setDisplayModal} modalImage={modalImage} displayModal={displayModal} />
+        <UploadFormModal displayUploadFormModal={displayUploadFormModal} setDisplayUploadFormModal={setDisplayUploadFormModal} />
+      </div>
+    </Router>
   );
 }
 
