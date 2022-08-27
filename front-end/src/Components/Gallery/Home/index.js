@@ -59,6 +59,8 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
         })
         .sort((a, b) => b.stars - a.stars);
       });
+
+      document.getElementById(idOfStarredItem).scrollIntoView({behavior: 'smooth'});
       
       // Insert the (user_id, image_id) pair into the stars table
       await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
