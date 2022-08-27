@@ -14,8 +14,11 @@ export async function postNewImage({ url, altText, userid }) {
   return result.rows;
 }
 
-export async function updateAltText({ id, altText }) {
+export async function updateAltText(id, altText) {
   const sqlString = `UPDATE images SET alt = $1 WHERE id = $2 RETURNING *;`;
+  // console.log(id)
+  // console.log(altText)
+  console.log(sqlString);
   const result = await db.query(sqlString, [altText, id]);
   return result.rows;
 }
