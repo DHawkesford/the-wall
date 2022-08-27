@@ -32,12 +32,20 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal, set
             body: JSON.stringify(newUpload)
         });
         const responseData = await response.json();
+        const newImageId = responseData.payload[0].id;
 
-        star(responseData.payload[0].id);
+        star(newImageId);
 
-        alert('Upload successful!');
-        window.location.reload(true);
-        setIsPending(false);
+        setImages((previousState) => {
+            return [...previousState, {...responseData.payload[0], stars: 1}]
+            .sort((a, b) => b.stars - a.stars);
+        });
+
+        setTimeout(() => {
+            setDisplayUploadFormModal(false);
+            setIsPending(false);
+            document.getElementById(newImageId).scrollIntoView({behavior: 'smooth'});
+        }, 1000);
     }
 
     function setImageAndShowOnPage(event) {

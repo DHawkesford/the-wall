@@ -54,7 +54,7 @@ const GalleryImage = ({ image, star, usersStars, showModal, setUsersStars }) => 
               </div>
             )}
             <button className="edit-button" onClick={null}>
-              <span>Edit</span>
+              <span>Edit alt text</span>
             </button>
           </>
           ) : (

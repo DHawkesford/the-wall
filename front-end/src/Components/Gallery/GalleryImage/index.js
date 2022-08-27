@@ -36,7 +36,7 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars }) => {
   };
 
   return( 
-    <div className="GalleryImage">
+    <div className="GalleryImage" id={image.id}>
       <img className="zoomIn" src={zoomIn} onClick={() => {showModal(image)}} alt="A magnifying glass with a plus sign over the lens" />
       <img className="photo" src={smallImageUrl} alt={image.alt || 'No alt text available'} />
       {isAuthenticated ? (
