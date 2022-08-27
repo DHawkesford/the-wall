@@ -32,7 +32,7 @@ const Information = ({ setDisplayHamburgerMenu, displayInfo, setDisplayInfo }) =
                 </a>
                 <Routes>
                     <Route path="*" element={
-                        <Link to="/">
+                        <Link className="logo-wrapper" to="/">
                             <img src={favIcon} className="logo" alt="The app's logo, a brick wall." />
                         </Link>
                     } />

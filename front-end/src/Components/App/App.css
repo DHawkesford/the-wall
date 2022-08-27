@@ -396,6 +396,10 @@ main {
   margin-top: 1px;
 }
 
+.logo-wrapper {
+  height: 31px;
+}
+
 .github-icon {
   cursor: pointer;
   margin-right: 10px;
