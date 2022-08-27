@@ -313,4 +313,11 @@ Back-end: Node/Express
 - 'Go to gallery' icon in hamburger menu by [Fauzidea](https://www.flaticon.com/authors/fauzidea) from [Flaticon](https://www.flaticon.com)
 - 'Manage your posts' icon in hamburger menu by [Freepik](https://www.flaticon.com/authors/freepik) from [Flaticon](https://www.flaticon.com)
 
+### Photos:
+- [Johann Siemens](https://unsplash.com/photos/EPy0gBJzzZU?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/natural?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Johnson Martin](https://unsplash.com/photos/zpq2DMidOY0?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/natural?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Dhru J](https://unsplash.com/photos/i1e9fGrgILg?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/natural?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Laurel Balyeat](https://unsplash.com/photos/i1e9fGrgILg?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/natural?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Toni Lluch](https://unsplash.com/photos/zpq2DMidOY0?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/natural?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+
 [Back to top](#-the-wall)

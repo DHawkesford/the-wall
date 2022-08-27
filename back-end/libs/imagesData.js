@@ -35,6 +35,31 @@ const images = [
       userid: "Dan1"
     },
     {
+      url: "https://res.cloudinary.com/ddmilnqpc/image/upload/v1661625201/gallery/johnson-martin-zpq2DMidOY0-unsplash_z66t2b.jpg",
+      alt: "A stream of water pouring down cascading hills.",
+      userid: "Dan1"
+    },
+    {
+      url: "https://res.cloudinary.com/ddmilnqpc/image/upload/v1661625198/gallery/johann-siemens-EPy0gBJzzZU-unsplash_f83k17.jpg",
+      alt: "A tree in a field of tall grass.",
+      userid: "Dan1"
+    },
+    {
+      url: "https://res.cloudinary.com/ddmilnqpc/image/upload/v1661625190/gallery/toni-lluch-JoRoy500nCc-unsplash_t0vkpp.jpg",
+      alt: "A park path in early morning.",
+      userid: "Dan1"
+    },
+    {
+      url: "https://res.cloudinary.com/ddmilnqpc/image/upload/v1661625181/gallery/laurel-balyeat-ExarETx4xNA-unsplash_i1nbwm.jpg",
+      alt: "A waterfall with forest trees in the foreground.",
+      userid: "Dan1"
+    },
+    {
+      url: "https://res.cloudinary.com/ddmilnqpc/image/upload/v1661625180/gallery/dhru-j-i1e9fGrgILg-unsplash_bdgjdl.jpg",
+      alt: "A butterfly on a flower.",
+      userid: "Dan1"
+    },
+    {
       url: "https://res.cloudinary.com/ddmilnqpc/image/upload/v1659898050/gallery/Zugpsitze_mountain_nnjqrk.jpg",
       alt: "A placid lake encircled by plants and treelife, with mountains in the background. The sun can be seen low in the sky between two peaks.",
       userid: "Dan1"
