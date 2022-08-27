@@ -49,13 +49,13 @@ const HamburgerMenu = ({ setDisplayHamburgerMenu, displayHamburgerMenu, setDispl
                         setDisplayHamburgerMenu(false)
                         }} imageSrc={newPhotoIcon} imageAlt="A simple square illustration of mountains under a clear sky. In the bottom-right corner there is a circle containing a plus sign." itemText="Submit a photo" redirectIfNotAuthenticated={true}/>
                     <Link className="text-link" to="/">
-                        <HamburgerMenuItem className="gallery-button" handleClick={null} imageSrc={galleryIcon} imageAlt="An illustration of a stack of photo frames." itemText="Go to gallery" redirectIfNotAuthenticated={false}/>
+                        <HamburgerMenuItem className="gallery-button" handleClick={() => {setDisplayHamburgerMenu(false)}} imageSrc={galleryIcon} imageAlt="An illustration of a stack of photo frames." itemText="Go to gallery" redirectIfNotAuthenticated={false}/>
                     </Link>
                     <Link className="text-link" to="/favourites">
-                        <HamburgerMenuItem className="star-button" handleClick={null} imageSrc={starIconGold} imageAlt="A gold star." itemText="See your starred posts" redirectIfNotAuthenticated={true}/>
+                        <HamburgerMenuItem className="star-button" handleClick={() => {setDisplayHamburgerMenu(false)}} imageSrc={starIconGold} imageAlt="A gold star." itemText="See your starred posts" redirectIfNotAuthenticated={true}/>
                     </Link>
                     <Link className="text-link" to="/posts">
-                        <HamburgerMenuItem className="manage-button" handleClick={null} imageSrc={postsIcon} imageAlt="An illustration of a camera." itemText="Manage your posts" redirectIfNotAuthenticated={true}/>
+                        <HamburgerMenuItem className="manage-button" handleClick={() => {setDisplayHamburgerMenu(false)}} imageSrc={postsIcon} imageAlt="An illustration of a camera." itemText="Manage your posts" redirectIfNotAuthenticated={true}/>
                     </Link>
                     <HamburgerMenuItem className="github-button" handleClick={() => {window.open("https://github.com/DHawkesford/the-wall", "_blank")}} imageSrc={gitHubIcon} imageAlt="The GitHub Invertocat logo, which is a cat silhouette." itemText="Check out the GitHub" redirectIfNotAuthenticated={false}/>
                     <HamburgerMenuItem className="info-button" handleClick={closeHamburgerAndOpenInfo} imageSrc={infoIcon} imageAlt="A circle containing the letter i in lower-case." itemText="See info" redirectIfNotAuthenticated={false}/>
