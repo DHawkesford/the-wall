@@ -53,9 +53,14 @@ const GalleryImage = ({ image, star, usersStars, showModal, setUsersStars }) => 
                 <p>{image.stars}</p>
               </div>
             )}
-            <button className="edit-button" onClick={null}>
-              <span>Edit alt text</span>
-            </button>
+            <div className="posted-image-buttons">
+              <button className="edit-button" onClick={null}>
+                <span>Edit alt text</span>
+              </button>
+              <button className="delete-button" onClick={null}>
+                <span>Delete post</span>
+              </button>
+            </div>
           </>
           ) : (
             <div className="starBarNotStarred">
