@@ -703,7 +703,7 @@ main {
 
 @media screen and (max-width: 666px) {
   .info-modal {
-    width: calc(100vw - 21px);
+    width: calc(100vw - 31px);
   }
 } 
 
@@ -739,12 +739,18 @@ main {
   .info {
     display: none;
   }
-
+  
   .theme {
     margin-left: 5px;
   }
-
+  
   .info {
     width: 70px; 
+  }
+} 
+
+@media screen and (max-width: 311px) {
+  .hamburger-menu {
+    width: calc(100vw - 11px);
   }
 } 
