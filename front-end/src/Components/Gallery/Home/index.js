@@ -3,7 +3,7 @@ import GalleryImage from "../GalleryImage";
 import Loading from "../../Loading";
 import { useEffect, useState } from "react";
 
-const Home = ({ galleryImages, setImages, usersStars, setUsersStars, showModal }) => {
+const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
   const { user, isAuthenticated } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -20,8 +20,6 @@ const Home = ({ galleryImages, setImages, usersStars, setUsersStars, showModal }
   }, [user, setImages]);
 
   async function star(idOfStarredItem) {
-    console.log(usersStars);
-
     if (!isAuthenticated) return;
 
     // This next block toggles whether a user has starred the image with id idOfStarredItem
@@ -77,7 +75,7 @@ const Home = ({ galleryImages, setImages, usersStars, setUsersStars, showModal }
       {isLoading ? (
         <Loading />
       ) : (
-        galleryImages.map((image, index) => <GalleryImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} />)
+        images.map((image, index) => <GalleryImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} />)
       )}
     </div>
   );

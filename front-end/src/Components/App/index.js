@@ -75,7 +75,7 @@ function App() {
           {areImagesLoading ? (
             <Loading />
           ) : (
-            <Gallery galleryImages={images} setImages={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} />
+            <Gallery images={images} setImages={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} />
           )}
         </main>
         <GalleryImageModal setDisplayModal={setDisplayModal} modalImage={modalImage} displayModal={displayModal} />

@@ -258,7 +258,7 @@ Back-end: Node/Express
 
 - This is also what I'm using to re-order the images when an image is voted up higher than one that's currently above it:
 
-        {galleryImages.map((image, index) => <GalleryImage image={image} key={[image.id, index]} ... />)}
+        {images.map((image, index) => <GalleryImage image={image} key={[image.id, index]} ... />)}
 
     The `image.id` item in the `key` array is what I'm actually considering to be my key, and the `index` item is what causes the fade-in animation to play when the images get re-ordered.
 

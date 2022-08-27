@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Loading from "../../Loading";
 import GalleryImage from "../GalleryImage";
 
-const Favourites = ({ galleryImages, setImages, usersStars, setUsersStars, showModal }) => {
+const Favourites = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
   const { user, isAuthenticated } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
   
@@ -20,8 +20,6 @@ const Favourites = ({ galleryImages, setImages, usersStars, setUsersStars, showM
   }, [user, setImages]);
 
   async function star(idOfStarredItem) {
-    console.log(usersStars);
-
     if (!isAuthenticated) return;
 
     // This next block toggles whether a user has starred the image with id idOfStarredItem
@@ -36,8 +34,7 @@ const Favourites = ({ galleryImages, setImages, usersStars, setUsersStars, showM
           return image.id !== idOfStarredItem
           ? image
           : { ...image, stars: image.stars - 1 };
-        })
-          .sort((a, b) => b.stars - a.stars);
+        });
       });
       
       // Delete the (user_id, image_id) pair from the stars table
@@ -77,10 +74,10 @@ const Favourites = ({ galleryImages, setImages, usersStars, setUsersStars, showM
         {isLoading ? (
           <Loading />
           ) : (
-            galleryImages.length === 0 ? (
+            images.length === 0 ? (
               <p className="no-results">You have no starred posts currently.</p>
             ) : (
-              galleryImages.map((image, index) => <GalleryImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} />)
+              images.map((image, index) => <GalleryImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} />)
             )
         )}
     </div>
