@@ -76,8 +76,12 @@ const Favourites = ({ galleryImages, setImages, usersStars, setUsersStars, showM
     <div className="Gallery">
         {isLoading ? (
           <Loading />
-        ) : (
-          galleryImages.map((image, index) => <GalleryImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} />)
+          ) : (
+            galleryImages.length === 0 ? (
+              <p className="no-results">You have no starred posts currently.</p>
+            ) : (
+              galleryImages.map((image, index) => <GalleryImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} />)
+            )
         )}
     </div>
   );

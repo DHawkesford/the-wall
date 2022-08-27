@@ -649,6 +649,12 @@ main {
   padding: 5px;
 }
 
+.no-results {
+  color: white;
+  font-size: 14pt;
+  margin-top: 20px;
+}
+
 .loading {
   border: 10px solid #ffffff; 
   border-top: 10px solid #7c9ee1;

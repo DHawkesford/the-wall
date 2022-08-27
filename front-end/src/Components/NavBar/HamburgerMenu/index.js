@@ -6,7 +6,6 @@ import newPhotoIcon from './new_photo_icon.png';
 import starIconGold from '../../Gallery/GalleryImage/star_icon_gold.svg';
 import gitHubIcon from '../Information/github_icon.png';
 import infoIcon from '../Information/info_icon.svg';
-import loadingIcon from './loading_icon.png';
 import postsIcon from './posts_icon.png';
 import galleryIcon from './gallery_icon.png';
 import logoutIcon from './logout_icon.png';

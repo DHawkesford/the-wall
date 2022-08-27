@@ -76,8 +76,12 @@ const Posts = ({ galleryImages, setImages, usersStars, setUsersStars, showModal 
     <div className="Gallery">
         {isLoading ? (
           <Loading />
-        ) : (
-          galleryImages.map((image, index) => <GalleryImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} />)
+          ) : (
+            galleryImages.length === 0 ? (
+              <p className="no-results">You have no posts currently.</p>
+            ) : (
+              galleryImages.map((image, index) => <GalleryImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} />)
+            )
         )}
     </div>
   );
