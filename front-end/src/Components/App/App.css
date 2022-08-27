@@ -733,6 +733,18 @@ main {
   #alt-text-textarea {
     max-width: 90%;
   }
+
+  .info-modal > p {
+    margin-top: 10px;
+  }
+
+  .info-modal-open-menu-wrapper > p {
+    margin-top: 10px;
+  }
+
+  .info-modal-open-menu-button {
+    margin-bottom: 10px;
+  }
 }
 
 @media screen and (max-width: 350px) {
