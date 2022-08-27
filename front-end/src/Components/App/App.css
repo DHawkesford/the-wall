@@ -680,6 +680,37 @@ main {
   text-decoration: inherit;
 }
 
+.edit-button{
+  margin-top: 20px;
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 14pt;
+  cursor: pointer;  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: white;
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+
+.edit-button > span {
+  margin-left: 5px;
+  color: #3d434f;
+}
+
+.edit-button:hover {
+  background-color: #7c9ee1;
+}
+
+.edit-button:hover > span {
+  color: white;
+}
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

@@ -32,7 +32,7 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal, set
             body: JSON.stringify(newUpload)
         });
         const responseData = await response.json();
-        
+
         star(responseData.payload[0].id);
 
         alert('Upload successful!');
@@ -96,6 +96,7 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal, set
           })
         } else { // If the user has not starred this image yet
           // Add the image id to the list of starred image ids on the page (this will make the star button gold)
+          
           setUsersStars([...usersStars, idOfStarredItem]);
           
           // Increment the image's number of stars by 1 on the page

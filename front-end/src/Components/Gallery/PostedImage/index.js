@@ -1,7 +1,7 @@
 import zoomIn from './zoom_in_icon.png';
 import { useAuth0 } from "@auth0/auth0-react";
 
-const PostedImage = ({ image, star, usersStars, showModal, setUsersStars }) => {
+const GalleryImage = ({ image, star, usersStars, showModal, setUsersStars }) => {
   const smallImageUrl = image.url.slice(0, image.url.indexOf('upload') + 7) + 'f_webp/c_scale,h_300/' + image.url.slice(image.url.indexOf('upload') + 7);
   const { user, isAuthenticated, loginWithRedirect, getAccessTokenSilently } = useAuth0();
 
@@ -41,17 +41,23 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars }) => {
       <img className="photo" src={smallImageUrl} alt={image.alt || 'No alt text available'} />
       {isAuthenticated ? (
         usersStars ? (
-          usersStars.includes(image.id) ? (
-            <div className="starBarStarred">
-              <button className="starButtonStarred" onClick={() => {star(image.id)}} />
-              <p>{image.stars}</p>
-            </div>
+          <>
+            {usersStars.includes(image.id) ? (
+              <div className="starBarStarred">
+                <button className="starButtonStarred" onClick={() => {star(image.id)}} />
+                <p>{image.stars}</p>
+              </div>
+            ) : (
+              <div className="starBarNotStarred">
+                <button className="starButtonNotStarred" onClick={() => {star(image.id)}} />
+                <p>{image.stars}</p>
+              </div>
+            )}
+            <button className="edit-button" onClick={null}>
+              <span>Edit</span>
+            </button>
+          </>
           ) : (
-            <div className="starBarNotStarred">
-              <button className="starButtonNotStarred" onClick={() => {star(image.id)}} />
-              <p>{image.stars}</p>
-            </div>
-          )) : (
             <div className="starBarNotStarred">
               <button className="starButtonNotStarred" onClick={getUsersStars} />
               <p>{image.stars}</p>
@@ -68,4 +74,4 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars }) => {
   );
 }
 
-export default PostedImage; 
+export default GalleryImage; 

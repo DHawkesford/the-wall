@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
 import Loading from "../../Loading";
-import GalleryImage from "../GalleryImage";
+import PostedImage from "../PostedImage";
 
 const Posts = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
   const { user, isAuthenticated } = useAuth0();
@@ -78,7 +78,7 @@ const Posts = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
             images.length === 0 ? (
               <p className="no-results">You have no posts currently.</p>
             ) : (
-              images.map((image, index) => <GalleryImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} />)
+              images.map((image, index) => <PostedImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} />)
             )
         )}
     </div>
