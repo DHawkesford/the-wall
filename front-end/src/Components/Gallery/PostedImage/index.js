@@ -56,7 +56,17 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setIma
         body: JSON.stringify(newAltText)
     });
 
-    navigate(0);
+    setDisplayAltTextModal(false);
+    setImages(curr => curr.map(
+      item => {return (
+        item.id === image.id ? (
+          item = {...item, alt: data.altText}
+        ) : (
+          item
+        )
+      )}
+    ))
+    setIsPending(false);
   }
 
   const onSubmitDeleteForm = async () => {
