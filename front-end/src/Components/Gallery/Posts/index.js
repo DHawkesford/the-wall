@@ -78,7 +78,7 @@ const Posts = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
             images.length === 0 ? (
               <p className="no-results">You have no posts currently.</p>
             ) : (
-              images.map((image, index) => <PostedImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} setImages={setImages} />)
+              images.map((image, index) => <PostedImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} setImages={setImages} images={images} />)
             )
         )}
     </div>
