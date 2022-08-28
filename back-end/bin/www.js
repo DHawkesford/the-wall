@@ -6,7 +6,7 @@
 
 import debugLib from "debug";
 import http from "http";
-import websocket from "websocket";
+import { server as webSocketServer } from "websocket";
 
 import app from "../app.js";
 
@@ -32,6 +32,10 @@ const server = http.createServer(app);
 server.listen(port);
 server.on("error", onError);
 server.on("listening", onListening);
+
+const wsServer = new webSocketServer({
+  httpServer: server
+})
 
 /**
  * Normalize a port into a number, string, or false.
