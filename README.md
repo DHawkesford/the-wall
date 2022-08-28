@@ -286,11 +286,17 @@ Back-end: Node/Express
 
 - Create a button that appears in the bottom-right corner that returns a user to the top of the page. The button should not appear if they had not scrolled down the page at all
 
+- The 'theme of the day' in the navbar should change every 24 hours, and the images in the gallery should be reset as well. I need to update both the back-end and front-end to allow for this. 
+
+    - Include a timer to show users when the theme will next change
+
+    - Include a feature for showing the final gallery from previous days 
+
 - ✅ Add in mobile responsiveness - the app already scales down quite nicely on smaller screens, but there is some work needed on the navbar in particular. 
 
 - Incorporate lazy loading of the images, or pagination, or some such alternative to reduce the initial page load time 
 
-- Create pages where users can see their starred posts, and see/edit/delete their own posts
+- ✅ Create pages where users can see their starred posts, and see/edit/delete their own posts
 
 - Design and write a loader using CSS (see the [loader feature section](#loading-animation))
 
