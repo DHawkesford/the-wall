@@ -136,7 +136,7 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setIma
                       <CloseButton handleClick={() => setDisplayAltTextModal(false)} uniqueId="close-alt-text-modal" />
                     )}
                   </label>
-                  <textarea maxLength="140" rows="4" cols="35" id="alt-text-textarea" {...register("altText", { required: true })} />
+                  <textarea maxLength="140" rows="4" cols="35" id="alt-text-textarea" defaultValue={image.alt} {...register("altText", { required: true })} />
                   {errors.altText && <span>This field is required</span>}
               </div>
               <div className="upload-form-button-wrapper">
