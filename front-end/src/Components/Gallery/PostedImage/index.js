@@ -3,6 +3,7 @@ import zoomIn from './zoom_in_icon.png';
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setImages }) => {
   const smallImageUrl = image.url.slice(0, image.url.indexOf('upload') + 7) + 'f_webp/c_scale,h_300/' + image.url.slice(image.url.indexOf('upload') + 7);
@@ -13,6 +14,7 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setIma
   const [isPending, setIsPending] = useState(false);
   const [displayAltText, setDisplayAltText] = useState(false);
   const altTextModalClasses = displayAltText ? "alt-text-modal show-alt-text-modal" : "alt-text-modal hide-alt-text-modal";
+  const navigate = useNavigate();
 
   async function getUsersStars() {
     try {
@@ -54,7 +56,7 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setIma
         body: JSON.stringify(newAltText)
     });
 
-    window.location.reload();
+    navigate(0);
   }
 
   const onSubmitDeleteForm = async () => {
@@ -65,7 +67,7 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setIma
         headers: { 'Content-Type': 'application/json' },
     });
     
-    window.location.reload();
+    navigate(0);
   }
 
   return( 
