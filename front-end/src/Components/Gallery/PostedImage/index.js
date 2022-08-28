@@ -85,10 +85,7 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setIma
           <span className="alt-text">{image.alt}</span>
         </div>
       </div>
-      {displayAltText ? (
-        null
-      ) : (
-        isAuthenticated ? (
+        {isAuthenticated ? (
           usersStars ? (
             <>
               {usersStars.includes(image.id) ? (
@@ -123,7 +120,7 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setIma
               <p>{image.stars}</p>
             </div>
           )
-      )}
+        }
       </div>
       {displayAltTextModal ? (
         <div className="modal-darken-background show-upload-form-modal">

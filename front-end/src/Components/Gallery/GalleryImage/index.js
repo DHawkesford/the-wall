@@ -54,34 +54,31 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars }) => {
           <span className="alt-text">{image.alt}</span>
         </div>
       </div>
-      {displayAltText ? (
-        null
-      ) : (
-        isAuthenticated ? (
-          usersStars ? (
-            usersStars.includes(image.id) ? (
-              <div className="starBarStarred">
-                <button className="starButtonStarred" onClick={() => {star(image.id)}} />
-                <p>{image.stars}</p>
-              </div>
-            ) : (
-              <div className="starBarNotStarred">
-                <button className="starButtonNotStarred" onClick={() => {star(image.id)}} />
-                <p>{image.stars}</p>
-              </div>
-            )) : (
-              <div className="starBarNotStarred">
-                <button className="starButtonNotStarred" onClick={getUsersStars} />
-                <p>{image.stars}</p>
-              </div>
-            )
+      {isAuthenticated ? (
+        usersStars ? (
+          usersStars.includes(image.id) ? (
+            <div className="starBarStarred">
+              <button className="starButtonStarred" onClick={() => {star(image.id)}} />
+              <p>{image.stars}</p>
+            </div>
           ) : (
             <div className="starBarNotStarred">
-              <button className="starButtonNotStarred" onClick={loginWithRedirect} />
+              <button className="starButtonNotStarred" onClick={() => {star(image.id)}} />
+              <p>{image.stars}</p>
+            </div>
+          )) : (
+            <div className="starBarNotStarred">
+              <button className="starButtonNotStarred" onClick={getUsersStars} />
               <p>{image.stars}</p>
             </div>
           )
-      )}
+        ) : (
+          <div className="starBarNotStarred">
+            <button className="starButtonNotStarred" onClick={loginWithRedirect} />
+            <p>{image.stars}</p>
+          </div>
+        )
+      }
     </div>
   );
 }
