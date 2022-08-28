@@ -6,6 +6,7 @@
 
 import debugLib from "debug";
 import http from "http";
+import websocket from "websocket";
 
 import app from "../app.js";
 
