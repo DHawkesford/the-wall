@@ -4,7 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
 
-const GalleryImage = ({ image, star, usersStars, showModal, setUsersStars, setImages }) => {
+const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setImages }) => {
   const smallImageUrl = image.url.slice(0, image.url.indexOf('upload') + 7) + 'f_webp/c_scale,h_300/' + image.url.slice(image.url.indexOf('upload') + 7);
   const { user, isAuthenticated, loginWithRedirect, getAccessTokenSilently } = useAuth0();
   const [displayAltTextModal, setDisplayAltTextModal] = useState(false);
@@ -72,23 +72,21 @@ const GalleryImage = ({ image, star, usersStars, showModal, setUsersStars, setIm
   const onSubmitDeleteForm = async () => {
     setIsPending(true);
 
+    setImages((previousState) => {
+      const index = previousState.map(item => {return item.id}).indexOf(image.id);
+      const newState = [...previousState];
+      return newState
+      .splice(newState.indexOf(index), 1)
+      .sort((a, b) => b.stars - a.stars);
+    });
+
     await fetch(`https://the-wall-dan-blake.herokuapp.com/images/${image.id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
     });
-
-    setImages((previousState) => {
-      return previousState
-      .map((item) => {
-        return item.id !== image.id
-        ? item
-        : null;
-      })
-      .sort((a, b) => b.stars - a.stars);
-    });
-
+    
     setTimeout(() => {
-        setDisplayAltTextModal(false);
+        setDisplayDeleteModal(false);
         setIsPending(false);
     }, 1000);
   }
@@ -116,7 +114,7 @@ const GalleryImage = ({ image, star, usersStars, showModal, setUsersStars, setIm
                 <button className="edit-button" onClick={() => {setDisplayAltTextModal(true)}}>
                   <span>Edit alt text</span>
                 </button>
-                <button className="delete-button" onClick={setDisplayDeleteModal(true)}>
+                <button className="delete-button" onClick={() => {setDisplayDeleteModal(true)}}>
                   <span>Delete post</span>
                 </button>
               </div>
@@ -191,4 +189,4 @@ const GalleryImage = ({ image, star, usersStars, showModal, setUsersStars, setIm
   );
 }
 
-export default GalleryImage; 
+export default PostedImage; 
