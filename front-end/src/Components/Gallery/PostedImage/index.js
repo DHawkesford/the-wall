@@ -52,43 +52,18 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setIma
         body: JSON.stringify(newAltText)
     });
 
-    setImages((previousState) => {
-      return previousState
-      .map((item) => {
-        return item.id !== image.id
-        ? item
-        : { ...image, alt: data.altText };
-      })
-      .sort((a, b) => b.stars - a.stars);
-    });
-
-    setTimeout(() => {
-        setDisplayAltTextModal(false);
-        setIsPending(false);
-        document.getElementById(image.id).scrollIntoView({behavior: 'smooth'});
-    }, 1000);
+    window.location.reload();
   }
 
   const onSubmitDeleteForm = async () => {
     setIsPending(true);
-
-    setImages((previousState) => {
-      const index = previousState.map(item => {return item.id}).indexOf(image.id);
-      const newState = [...previousState];
-      return newState
-      .splice(newState.indexOf(index), 1)
-      .sort((a, b) => b.stars - a.stars);
-    });
 
     await fetch(`https://the-wall-dan-blake.herokuapp.com/images/${image.id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
     });
     
-    setTimeout(() => {
-        setDisplayDeleteModal(false);
-        setIsPending(false);
-    }, 1000);
+    window.location.reload();
   }
 
   return( 

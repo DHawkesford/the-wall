@@ -552,6 +552,14 @@ main {
   height: 220px;
 }
 
+.delete-form {
+  height: 120px;
+}
+
+.delete-form > div > button:hover {
+  background-color: #EE5465;
+}
+
 .form-field {
   display: flex;
   flex-direction: column;
