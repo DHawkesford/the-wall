@@ -11,6 +11,8 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setIma
   const [displayDeleteModal, setDisplayDeleteModal] = useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [isPending, setIsPending] = useState(false);
+  const [displayAltText, setDisplayAltText] = useState(false);
+  const altTextModalClasses = displayAltText ? "alt-text-modal show-alt-text-modal" : "alt-text-modal hide-alt-text-modal";
 
   async function getUsersStars() {
     try {
@@ -69,9 +71,24 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setIma
   return( 
     <>
       <div className="GalleryImage" id={image.id}>
+      {displayAltText ? (
+        null
+      ) : (
         <img className="zoomIn" src={zoomIn} onClick={() => {showModal(image)}} alt="A magnifying glass with a plus sign over the lens" />
-        <img className="photo" src={smallImageUrl} alt={image.alt || 'No alt text available'} />
-        {isAuthenticated ? (
+      )}
+      <img className="photo" src={smallImageUrl} alt={image.alt || 'No alt text available'} />
+      <button className="toggle-alt-text" onClick={() => {setDisplayAltText(!displayAltText)}}>
+        ALT
+      </button>
+      <div className={altTextModalClasses}>
+        <div className="alt-text-wrapper">
+          <span className="alt-text">{image.alt}</span>
+        </div>
+      </div>
+      {displayAltText ? (
+        null
+      ) : (
+        isAuthenticated ? (
           usersStars ? (
             <>
               {usersStars.includes(image.id) ? (
@@ -106,7 +123,7 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setIma
               <p>{image.stars}</p>
             </div>
           )
-        }
+      )}
       </div>
       {displayAltTextModal ? (
         <div className="modal-darken-background show-upload-form-modal">

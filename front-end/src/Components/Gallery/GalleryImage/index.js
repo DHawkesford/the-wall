@@ -1,9 +1,12 @@
 import zoomIn from './zoom_in_icon.png';
 import { useAuth0 } from "@auth0/auth0-react";
+import { useState } from 'react';
 
 const PostedImage = ({ image, star, usersStars, showModal, setUsersStars }) => {
   const smallImageUrl = image.url.slice(0, image.url.indexOf('upload') + 7) + 'f_webp/c_scale,h_300/' + image.url.slice(image.url.indexOf('upload') + 7);
   const { user, isAuthenticated, loginWithRedirect, getAccessTokenSilently } = useAuth0();
+  const [displayAltText, setDisplayAltText] = useState(false);
+  const altTextModalClasses = displayAltText ? "alt-text-modal show-alt-text-modal" : "alt-text-modal hide-alt-text-modal";
 
   async function getUsersStars() {
     try {
@@ -37,33 +40,48 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars }) => {
 
   return( 
     <div className="GalleryImage" id={image.id}>
-      <img className="zoomIn" src={zoomIn} onClick={() => {showModal(image)}} alt="A magnifying glass with a plus sign over the lens" />
+      {displayAltText ? (
+        null
+      ) : (
+        <img className="zoomIn" src={zoomIn} onClick={() => {showModal(image)}} alt="A magnifying glass with a plus sign over the lens" />
+      )}
       <img className="photo" src={smallImageUrl} alt={image.alt || 'No alt text available'} />
-      {isAuthenticated ? (
-        usersStars ? (
-          usersStars.includes(image.id) ? (
-            <div className="starBarStarred">
-              <button className="starButtonStarred" onClick={() => {star(image.id)}} />
-              <p>{image.stars}</p>
-            </div>
+      <button className="toggle-alt-text" onClick={() => {setDisplayAltText(!displayAltText)}}>
+        ALT
+      </button>
+      <div className={altTextModalClasses}>
+        <div className="alt-text-wrapper">
+          <span className="alt-text">{image.alt}</span>
+        </div>
+      </div>
+      {displayAltText ? (
+        null
+      ) : (
+        isAuthenticated ? (
+          usersStars ? (
+            usersStars.includes(image.id) ? (
+              <div className="starBarStarred">
+                <button className="starButtonStarred" onClick={() => {star(image.id)}} />
+                <p>{image.stars}</p>
+              </div>
+            ) : (
+              <div className="starBarNotStarred">
+                <button className="starButtonNotStarred" onClick={() => {star(image.id)}} />
+                <p>{image.stars}</p>
+              </div>
+            )) : (
+              <div className="starBarNotStarred">
+                <button className="starButtonNotStarred" onClick={getUsersStars} />
+                <p>{image.stars}</p>
+              </div>
+            )
           ) : (
             <div className="starBarNotStarred">
-              <button className="starButtonNotStarred" onClick={() => {star(image.id)}} />
-              <p>{image.stars}</p>
-            </div>
-          )) : (
-            <div className="starBarNotStarred">
-              <button className="starButtonNotStarred" onClick={getUsersStars} />
+              <button className="starButtonNotStarred" onClick={loginWithRedirect} />
               <p>{image.stars}</p>
             </div>
           )
-        ) : (
-          <div className="starBarNotStarred">
-            <button className="starButtonNotStarred" onClick={loginWithRedirect} />
-            <p>{image.stars}</p>
-          </div>
-        )
-      }
+      )}
     </div>
   );
 }
