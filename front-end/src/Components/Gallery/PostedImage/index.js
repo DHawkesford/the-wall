@@ -166,7 +166,7 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setIma
           <form className="upload-form delete-form" onSubmit={handleSubmit(onSubmitDeleteForm)}>
               <div className="form-field">
                   <label htmlFor="alt-text-textarea">
-                    Are you sure you want to delete this post?
+                    <span>Are you sure you want to delete this post?</span>
                     {isPending ? (
                       <CloseButton handleClick={() => setDisplayDeleteModal(false)} uniqueId="close-delete-modal" disabled={true} />
                     ) : (

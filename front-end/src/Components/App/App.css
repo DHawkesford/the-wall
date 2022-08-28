@@ -567,6 +567,14 @@ main {
   width: 100%;
 }
 
+.form-field > label {
+  margin-bottom: 10px;
+}
+
+.delete-form > .form-field > label {
+  margin-bottom: 0px;
+}
+
 .upload-image {
   display: flex;
   flex-direction: column;
@@ -844,6 +852,12 @@ main {
   }
 }
 
+@media screen and (max-width: 445px) {
+  #close-delete-modal {
+    bottom: 20px;
+  }
+}
+
 @media screen and (max-width: 350px) {
   .info {
     display: none;
@@ -856,6 +870,10 @@ main {
   .info {
     width: 70px; 
   }
+
+  #close-delete-modal {
+    bottom: 14px;
+  }
 } 
 
 @media screen and (max-width: 311px) {
@@ -863,3 +881,10 @@ main {
     width: calc(100vw - 11px);
   }
 } 
+
+@media screen and (max-width: 250px) {
+  #close-delete-modal {
+    /* bottom: 55px; */
+    top: 5px;
+  }
+}
