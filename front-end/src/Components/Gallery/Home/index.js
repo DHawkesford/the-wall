@@ -38,14 +38,12 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
   // }, []);
 
   useEffect(() => {
-
     webSocket.current = new W3CWebSocket("https://the-wall-dan-blake.herokuapp.com".replace(/^http/, 'ws'), 'echo-protocol');
-
     webSocket.current.onmessage = function(e) {
       if (typeof e.data === 'string') {
         const tes = JSON.parse(e.data)
         console.log(tes);
-        tes.star === 'inc' ? (
+        if(tes.star === 'inc') {
           setImages((previousState) => {
             return previousState.map((image) => {
               return image.id !== tes.id
@@ -54,18 +52,23 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
             })
             .sort((a, b) => b.stars - a.stars)
           })
-          ) : (
-            setImages((previousState) => {
-              return previousState.map((image) => {
-                return image.id !== tes.id
-                ? image
-                : { ...image, stars: image.stars - 1 };
-              })
-              .sort((a, b) => b.stars - a.stars)
-            }))
-          } else {console.log('not ready')}
-          }
-    }, [setImages])
+          setTimeout(() => {document.getElementById(tes.id).scrollIntoView({behavior: 'smooth'})}, 100)
+         } else {
+          setImages((previousState) => {
+            return previousState.map((image) => {
+              return image.id !== tes.id
+              ? image
+              : { ...image, stars: image.stars - 1 };
+            })
+            .sort((a, b) => b.stars - a.stars)
+          })
+          setTimeout(() => {document.getElementById(tes.id).scrollIntoView({behavior: 'smooth'})}, 100)
+         }
+      } else {
+        console.log('not ready')
+      }
+    }
+  }, [setImages])
         
   useEffect(() => {
     async function refreshGallery() {
