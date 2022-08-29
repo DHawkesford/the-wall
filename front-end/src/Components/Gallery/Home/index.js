@@ -1,44 +1,11 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import GalleryImage from "../GalleryImage";
 import Loading from "../../Loading";
-import { useEffect, useState, useRef } from "react";
-import { w3cwebsocket as W3CWebSocket } from "websocket";
+import { useEffect, useState } from "react";
 
-const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
+const Home = ({ images, setImages, usersStars, setUsersStars, showModal, webSocket }) => {
   const { user, isAuthenticated } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
-  const webSocket = useRef(null);
-
-  useEffect(() => {
-    webSocket.current = new W3CWebSocket("https://the-wall-dan-blake.herokuapp.com".replace(/^http/, 'ws'), 'broadcast-protocol');
-    // webSocket.current = new W3CWebSocket('ws://localhost:3001', 'broadcast-protocol');
-
-    webSocket.current.onmessage = function(e) {
-      if (typeof e.data === 'string') {
-        const messageData = JSON.parse(e.data)
-
-        if (messageData.star === 'increment') {
-          setImages((previousState) => {
-            return previousState.map((image) => {
-              return image.id !== messageData.id
-              ? image
-              : { ...image, stars: image.stars + 1 };
-            })
-            .sort((a, b) => b.stars - a.stars)
-          })
-        } else if (messageData.star === 'decrement') {
-          setImages((previousState) => {
-            return previousState.map((image) => {
-              return image.id !== messageData.id
-              ? image
-              : { ...image, stars: image.stars - 1 };
-            })
-            .sort((a, b) => b.stars - a.stars)
-          })
-        }
-      }
-    }
-  }, [setImages])
         
   useEffect(() => {
     async function refreshGallery() {
@@ -98,7 +65,6 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
         .sort((a, b) => b.stars - a.stars);
       });
 
-      
       // Insert the (user_id, image_id) pair into the stars table
       await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
         method: 'POST',
