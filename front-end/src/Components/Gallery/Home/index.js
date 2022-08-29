@@ -39,7 +39,7 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
 
   useEffect(() => {
 
-    webSocket.current = new W3CWebSocket(window.location.origin.replace(/^http/, 'ws'), 'echo-protocol');
+    webSocket.current = new W3CWebSocket("https://the-wall-dan-blake.herokuapp.com".replace(/^http/, 'ws'), 'echo-protocol');
 
     webSocket.current.onmessage = function(e) {
       if (typeof e.data === 'string') {
