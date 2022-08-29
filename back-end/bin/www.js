@@ -47,6 +47,7 @@ const getUniqueID = () => {
 
 function originIsAllowed(origin) {
   const allowedOrigins = ['http://localhost:3000', 'https://the-wall-app-dev.netlify.app', 'https://the-wall-app.netlify.app']
+  console.log(allowedOrigins)
   if (allowedOrigins.includes(origin)) {
     return true;
   }
@@ -54,11 +55,11 @@ function originIsAllowed(origin) {
 }
 
 wsServer.on('request', function(request) {
-  // if (!originIsAllowed(request.origin)) {
-  //   request.reject();
-  //   console.log((new Date()) + ' Connection from origin ' + request.origin + ' rejected.');
-  //   return;
-  // }
+  if (!originIsAllowed(request.origin)) {
+    request.reject();
+    console.log((new Date()) + ' Connection from origin ' + request.origin + ' rejected.');
+    return;
+  }
   console.log(request.origin);
   var userID = getUniqueID();
   var connection = request.accept('broadcast-protocol', request.origin);
