@@ -8,7 +8,7 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
   const { user, isAuthenticated } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
 
-  const [messages, setMessages] = useState([]);
+  // const [messages, setMessages] = useState([]);
   const webSocket = useRef(null);
 
   // useEffect(() => {
@@ -64,7 +64,7 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
             }))
           } else {console.log('not ready')}
           }
-    }, [])
+    }, [setImages])
         
   useEffect(() => {
     async function refreshGallery() {

@@ -7,7 +7,7 @@ import GalleryImageModal from '../GalleryImageModal';
 import UploadFormModal from '../UploadFormModal';
 import Loading from "../Loading";
 import { BrowserRouter as Router } from "react-router-dom";
-import { w3cwebsocket as W3CWebSocket } from "websocket";
+// import { w3cwebsocket as W3CWebSocket } from "websocket";
 
 function App() {
   const { user, getAccessTokenSilently } = useAuth0();
