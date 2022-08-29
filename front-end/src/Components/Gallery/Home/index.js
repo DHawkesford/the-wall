@@ -52,7 +52,7 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
             })
             .sort((a, b) => b.stars - a.stars)
           })
-          setTimeout(() => {document.getElementById(tes.id).scrollIntoView({behavior: 'smooth'})}, 100)
+          // setTimeout(() => {document.getElementById(tes.id).scrollIntoView({behavior: 'smooth'})}, 100)
          } else {
           setImages((previousState) => {
             return previousState.map((image) => {
@@ -62,7 +62,7 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
             })
             .sort((a, b) => b.stars - a.stars)
           })
-          setTimeout(() => {document.getElementById(tes.id).scrollIntoView({behavior: 'smooth'})}, 100)
+          // setTimeout(() => {document.getElementById(tes.id).scrollIntoView({behavior: 'smooth'})}, 100)
          }
       } else {
         console.log('not ready')
@@ -129,7 +129,6 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
       //   .sort((a, b) => b.stars - a.stars);
       // });
 
-      setTimeout(() => {document.getElementById(idOfStarredItem).scrollIntoView({behavior: 'smooth'})}, 100)
       
       // Insert the (user_id, image_id) pair into the stars table
       await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
@@ -138,12 +137,13 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
           'Content-Type': 'application/json'
         }
       })
-
+      
       webSocket.current.send(JSON.stringify({
         id: idOfStarredItem,
         star: 'inc'
       }));
     }
+    setTimeout(() => {document.getElementById(idOfStarredItem).scrollIntoView({behavior: 'smooth'})}, 100)
   }
 
   return (
