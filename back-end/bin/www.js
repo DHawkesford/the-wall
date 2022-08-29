@@ -59,7 +59,7 @@ wsServer.on('request', function(request) {
   //   console.log((new Date()) + ' Connection from origin ' + request.origin + ' rejected.');
   //   return;
   // }
-
+  console.log(request.origin);
   var userID = getUniqueID();
   var connection = request.accept('broadcast-protocol', request.origin);
   clients[userID] = connection;
