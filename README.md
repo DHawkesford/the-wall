@@ -14,7 +14,7 @@ Each day, a new theme appears at the top of the page, such as 'Nature' or 'Statu
 
 3. [Features & lessons learned](#features--lessons-learned) (most recently added features listed first)
 
-    - [Websockets for realtime data](#websocks-for-realtime-data)
+    - [Websockets for realtime data](#websockets-for-realtime-data)
     - [Adding routes](#adding-routes)
     - [Getting images in different sizes, to increase performance](#getting-images-in-different-sizes-to-increase-performance)
     - [Counting 'likes' (i.e. tracking favourites)](#counting-likes-ie-tracking-favourites)
