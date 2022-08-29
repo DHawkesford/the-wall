@@ -9,6 +9,7 @@ import logger  from 'morgan';
 import imagesRouter from './routes/images.js';
 import starsRouter from './routes/stars.js';
 import usersRouter from './routes/users.js'; 
+import themesRouter from './routes/themes.js'; 
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use('/images', imagesRouter);
 app.use('/stars', starsRouter);
 app.use('/users', usersRouter);
+app.use('/themes', themesRouter);
 
 app.use(function (req, res, next) {
   res.status(404).json({message: "We couldn't find what you were looking for 😞"})
