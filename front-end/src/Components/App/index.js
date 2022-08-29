@@ -32,7 +32,7 @@ function App() {
 
     getImages();
   }, []);
-
+  
   useEffect(() => {
     async function getUsersStars() {
       try {

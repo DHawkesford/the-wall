@@ -3,10 +3,10 @@ import GalleryImage from "../GalleryImage";
 import Loading from "../../Loading";
 import { useEffect, useState } from "react";
 
-const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
+const Home = ({ images, setImages, usersStars, setUsersStars, showModal, webSocket }) => {
   const { user, isAuthenticated } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
-
+        
   useEffect(() => {
     async function refreshGallery() {
       setIsLoading(true); 
@@ -45,6 +45,11 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
           'Content-Type': 'application/json'
         }
       })
+
+      webSocket.current.send(JSON.stringify({
+        id: idOfStarredItem,
+        star: 'decrement'
+      }));
     } else { // If the user has not starred this image yet
       // Add the image id to the list of starred image ids on the page (this will make the star button gold)
       setUsersStars([...usersStars, idOfStarredItem]);
@@ -60,8 +65,6 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
         .sort((a, b) => b.stars - a.stars);
       });
 
-      setTimeout(() => {document.getElementById(idOfStarredItem).scrollIntoView({behavior: 'smooth'})}, 100)
-      
       // Insert the (user_id, image_id) pair into the stars table
       await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
         method: 'POST',
@@ -69,7 +72,13 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
           'Content-Type': 'application/json'
         }
       })
+      
+      webSocket.current.send(JSON.stringify({
+        id: idOfStarredItem,
+        star: 'increment'
+      }));
     }
+    setTimeout(() => {document.getElementById(idOfStarredItem).scrollIntoView({behavior: 'smooth'})}, 100)
   }
 
   return (

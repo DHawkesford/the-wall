@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Loading from "../../Loading";
 import GalleryImage from "../GalleryImage";
 
-const Favourites = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
+const Favourites = ({ images, setImages, usersStars, setUsersStars, showModal, webSocket }) => {
   const { user, isAuthenticated } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
   
@@ -44,6 +44,11 @@ const Favourites = ({ images, setImages, usersStars, setUsersStars, showModal })
           'Content-Type': 'application/json'
         }
       })
+
+      webSocket.current.send(JSON.stringify({
+        id: idOfStarredItem,
+        star: 'decrement'
+      }));
     } else { // If the user has not starred this image yet
       // Add the image id to the list of starred image ids on the page (this will make the star button gold)
       setUsersStars([...usersStars, idOfStarredItem]);
@@ -66,6 +71,11 @@ const Favourites = ({ images, setImages, usersStars, setUsersStars, showModal })
           'Content-Type': 'application/json'
         }
       })
+
+      webSocket.current.send(JSON.stringify({
+        id: idOfStarredItem,
+        star: 'increment'
+      }));
     }
   }
 
