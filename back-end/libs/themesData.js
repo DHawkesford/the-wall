@@ -1,4 +1,5 @@
 const themes = [
+  // TODO: Put these in the order where it will match images
   {
     theme: 'Nature',
   },
@@ -7,9 +8,6 @@ const themes = [
   },
   {
     theme: 'Animals',
-  },
-  {
-    theme: 'Buildings',
   }
 ];
 
