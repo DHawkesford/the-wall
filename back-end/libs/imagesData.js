@@ -1,4 +1,6 @@
-const images = [
+const images = [ 
+  // TODO: Add images for other categories
+  // TODO: Add a created property for each image - should be a timestamp which will match with the image's theme
     {
       url: "https://res.cloudinary.com/ddmilnqpc/image/upload/v1659898080/gallery/viWSgYu_mpakx2.jpg",
       alt: "A park with a small wooden bridge and with dense forest in the background.",
