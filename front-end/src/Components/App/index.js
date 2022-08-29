@@ -17,7 +17,7 @@ function App() {
   const [displayUploadFormModal, setDisplayUploadFormModal] = useState(false);
   const [modalImage, setModalImage] = useState(null);
   const [areImagesLoading, setAreImagesLoading] = useState(true);
-  const client = new W3CWebSocket('ws://localhost:3001', 'echo-protocol');
+  // const client = new W3CWebSocket('ws://localhost:3001', 'echo-protocol');
 
   function showModal(image) {
     setModalImage(image);
@@ -27,11 +27,11 @@ function App() {
     //   type: "userevent"
     // }))
     // function sendNumber() {
-          if (client.readyState === client.OPEN) {
+          // if (client.readyState === client.OPEN) {
               // var number = Math.round(Math.random() * 0xFFFFFF);
-              client.send('hello');
+              // client.send('hello');
               // setTimeout(sendNumber, 5000);
-          }
+          // }
     // }
     // sendNumber();
   }
@@ -110,7 +110,7 @@ function App() {
           {areImagesLoading ? (
             <Loading />
           ) : (
-            <Gallery images={images} setImages={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} client={client} />
+            <Gallery images={images} setImages={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} />
           )}
         </main>
         <GalleryImageModal setDisplayModal={setDisplayModal} modalImage={modalImage} displayModal={displayModal} />

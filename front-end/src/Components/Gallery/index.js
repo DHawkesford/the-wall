@@ -3,7 +3,7 @@ import Home from './Home';
 import Favourites from './Favourites';
 import Posts from './Posts';
 
-const Gallery = ({ images, setImages, usersStars, setUsersStars, showModal, client }) => {
+const Gallery = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
   return (
     <Routes>
       <Route path="/favourites" element={
@@ -13,7 +13,7 @@ const Gallery = ({ images, setImages, usersStars, setUsersStars, showModal, clie
         <Posts images={images} setImages={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} />
       } />
       <Route path="/" element={
-        <Home images={images} setImages={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} client={client}/>
+        <Home images={images} setImages={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} />
       } />
     </Routes>
   );

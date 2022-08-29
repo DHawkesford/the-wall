@@ -1,39 +1,71 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import GalleryImage from "../GalleryImage";
 import Loading from "../../Loading";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { w3cwebsocket as W3CWebSocket } from "websocket";
 
-const Home = ({ images, setImages, usersStars, setUsersStars, showModal, client }) => {
+const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
   const { user, isAuthenticated } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
 
-  client.onmessage = function(e) {
-    console.log(e);
-    if (typeof e.data === 'string') {
+  const [messages, setMessages] = useState([]);
+  const webSocket = useRef(null);
+
+  // useEffect(() => {
+  //   webSocket.current = new W3CWebSocket('ws://localhost:3001', 'echo-protocol');
+  //     webSocket.current.onmessage = (message) => {
+  //       serverMessage.star === 'inc' ? (
+  //         setImages((previousState) => {
+  //           return previousState.map((image) => {
+  //             return image.id !== serverMessage.id
+  //             ? image
+  //             : { ...image, stars: image.stars + 1 };
+  //           })
+  //           .sort((a, b) => b.stars - a.stars)
+  //         })
+  //         ) : (
+  //           setImages((previousState) => {
+  //             return previousState.map((image) => {
+  //               return image.id !== serverMessage.id
+  //               ? image
+  //               : { ...image, stars: image.stars - 1 };
+  //             })
+  //             .sort((a, b) => b.stars - a.stars)
+  //           }))
+  //         setMessages(prev => [...prev, message.data]);
+  //     };
+  //     return () => webSocket.current.close();
+  // }, []);
+
+  useEffect(() => {
+    webSocket.current = new W3CWebSocket('ws://localhost:3001', 'echo-protocol');
+
+    webSocket.current.onmessage = function(e) {
+      if (typeof e.data === 'string') {
         const tes = JSON.parse(e.data)
-        console.log("Received: '" + e.data + "'");
         console.log(tes);
         tes.star === 'inc' ? (
           setImages((previousState) => {
             return previousState.map((image) => {
-                return image.id !== tes.id
-                ? image
-                : { ...image, stars: image.stars + 1 };
-              })
-                .sort((a, b) => b.stars - a.stars)
+              return image.id !== tes.id
+              ? image
+              : { ...image, stars: image.stars + 1 };
+            })
+            .sort((a, b) => b.stars - a.stars)
           })
-        ) : (
-          setImages((previousState) => {
-            return previousState.map((image) => {
+          ) : (
+            setImages((previousState) => {
+              return previousState.map((image) => {
                 return image.id !== tes.id
                 ? image
                 : { ...image, stars: image.stars - 1 };
               })
-                .sort((a, b) => b.stars - a.stars)
+              .sort((a, b) => b.stars - a.stars)
             }))
-    }
-  };
-
+          } else {console.log('not ready')}
+          }
+    }, [])
+        
   useEffect(() => {
     async function refreshGallery() {
       setIsLoading(true); 
@@ -74,7 +106,7 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal, client 
       })
 
       // client.send(idOfStarredItem.toString());
-      client.send(JSON.stringify({
+      webSocket.current.send(JSON.stringify({
         id: idOfStarredItem,
         star: 'dec'
       }));
@@ -103,7 +135,7 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal, client 
         }
       })
 
-      client.send(JSON.stringify({
+      webSocket.current.send(JSON.stringify({
         id: idOfStarredItem,
         star: 'inc'
       }));

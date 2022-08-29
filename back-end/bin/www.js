@@ -52,10 +52,15 @@ wsServer.on('request', function(request) {
   //   console.log((new Date()) + ' Connection from origin ' + request.origin + ' rejected.');
   //   return;
   // }
-  
+  var userID = getUniqueID();
   var connection = request.accept('echo-protocol', request.origin);
+  clients[userID] = connection;
+// console.log(clients);
   console.log((new Date()) + ' Connection accepted.');
+  // console.log(Object.values(clients).length)
+  // console.log(connection);
   connection.on('message', function(message) {
+    Object.values(clients).forEach(function (connection) {
       if (message.type === 'utf8') {
           console.log('Received Message: ' + message.utf8Data);
           connection.sendUTF(message.utf8Data);
@@ -64,7 +69,7 @@ wsServer.on('request', function(request) {
           console.log('Received Binary Message of ' + message.binaryData.length + ' bytes');
           connection.sendBytes(message.binaryData);
       }
-  });
+  })})
   connection.on('close', function(reasonCode, description) {
       console.log((new Date()) + ' Peer ' + connection.remoteAddress + ' disconnected.');
   });
