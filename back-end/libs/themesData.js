@@ -9,16 +9,7 @@ const themes = [
     theme: 'Animals',
   },
   {
-    theme: 'Selfies',
-  },
-  {
-    theme: 'Free choice',
-  },
-  {
     theme: 'Buildings',
-  },
-  {
-    theme: 'Bodies of water',
   }
 ];
 
