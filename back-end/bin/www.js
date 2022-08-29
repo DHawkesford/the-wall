@@ -45,31 +45,41 @@ const getUniqueID = () => {
   return s4() + s4() + '-' + s4();
 };
 
+function originIsAllowed(origin) {
+  const allowedOrigins = ['http://localhost:3000', 'https://the-wall-app-dev.netlify.app/', 'https://the-wall-app.netlify.app/']
+  if (allowedOrigins.includes(origin)) {
+    return true;
+  }
+  return false;
+}
+
 wsServer.on('request', function(request) {
-  // if (!originIsAllowed(request.origin)) {
-  //   // Make sure we only accept requests from an allowed origin
-  //   request.reject();
-  //   console.log((new Date()) + ' Connection from origin ' + request.origin + ' rejected.');
-  //   return;
-  // }
+  if (!originIsAllowed(request.origin)) {
+    request.reject();
+    console.log((new Date()) + ' Connection from origin ' + request.origin + ' rejected.');
+    return;
+  }
+
   var userID = getUniqueID();
-  var connection = request.accept('echo-protocol', request.origin);
+  var connection = request.accept('broadcast-protocol', request.origin);
   clients[userID] = connection;
-// console.log(clients);
+
   console.log((new Date()) + ' Connection accepted.');
-  // console.log(Object.values(clients).length)
-  // console.log(connection);
+
   connection.on('message', function(message) {
-    Object.values(clients).forEach(function (connection) {
-      if (message.type === 'utf8') {
-          console.log('Received Message: ' + message.utf8Data);
-          connection.sendUTF(message.utf8Data);
-      }
-      else if (message.type === 'binary') {
-          console.log('Received Binary Message of ' + message.binaryData.length + ' bytes');
-          connection.sendBytes(message.binaryData);
+    Object.values(clients).forEach(function (client) {
+      if (client !== connection) {
+        if (message.type === 'utf8') {
+            console.log('Received Message: ' + message.utf8Data);
+            client.sendUTF(message.utf8Data);
+        }
+        else if (message.type === 'binary') {
+            console.log('Received Binary Message of ' + message.binaryData.length + ' bytes');
+            client.sendBytes(message.binaryData);
+        }
       }
   })})
+
   connection.on('close', function(reasonCode, description) {
       console.log((new Date()) + ' Peer ' + connection.remoteAddress + ' disconnected.');
   });

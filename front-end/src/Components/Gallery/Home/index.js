@@ -7,65 +7,35 @@ import { w3cwebsocket as W3CWebSocket } from "websocket";
 const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
   const { user, isAuthenticated } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
-
-  // const [messages, setMessages] = useState([]);
   const webSocket = useRef(null);
 
-  // useEffect(() => {
-  //   webSocket.current = new W3CWebSocket('ws://localhost:3001', 'echo-protocol');
-  //     webSocket.current.onmessage = (message) => {
-  //       serverMessage.star === 'inc' ? (
-  //         setImages((previousState) => {
-  //           return previousState.map((image) => {
-  //             return image.id !== serverMessage.id
-  //             ? image
-  //             : { ...image, stars: image.stars + 1 };
-  //           })
-  //           .sort((a, b) => b.stars - a.stars)
-  //         })
-  //         ) : (
-  //           setImages((previousState) => {
-  //             return previousState.map((image) => {
-  //               return image.id !== serverMessage.id
-  //               ? image
-  //               : { ...image, stars: image.stars - 1 };
-  //             })
-  //             .sort((a, b) => b.stars - a.stars)
-  //           }))
-  //         setMessages(prev => [...prev, message.data]);
-  //     };
-  //     return () => webSocket.current.close();
-  // }, []);
-
   useEffect(() => {
-    webSocket.current = new W3CWebSocket("https://the-wall-dan-blake.herokuapp.com".replace(/^http/, 'ws'), 'echo-protocol');
+    webSocket.current = new W3CWebSocket("https://the-wall-dan-blake.herokuapp.com".replace(/^http/, 'ws'), 'broadcast-protocol');
+    // webSocket.current = new W3CWebSocket('ws://localhost:3001', 'broadcast-protocol');
+
     webSocket.current.onmessage = function(e) {
       if (typeof e.data === 'string') {
-        const tes = JSON.parse(e.data)
-        console.log(tes);
-        if(tes.star === 'inc') {
+        const messageData = JSON.parse(e.data)
+
+        if (messageData.star === 'increment') {
           setImages((previousState) => {
             return previousState.map((image) => {
-              return image.id !== tes.id
+              return image.id !== messageData.id
               ? image
               : { ...image, stars: image.stars + 1 };
             })
             .sort((a, b) => b.stars - a.stars)
           })
-          // setTimeout(() => {document.getElementById(tes.id).scrollIntoView({behavior: 'smooth'})}, 100)
-         } else {
+        } else if (messageData.star === 'decrement') {
           setImages((previousState) => {
             return previousState.map((image) => {
-              return image.id !== tes.id
+              return image.id !== messageData.id
               ? image
               : { ...image, stars: image.stars - 1 };
             })
             .sort((a, b) => b.stars - a.stars)
           })
-          // setTimeout(() => {document.getElementById(tes.id).scrollIntoView({behavior: 'smooth'})}, 100)
-         }
-      } else {
-        console.log('not ready')
+        }
       }
     }
   }, [setImages])
@@ -91,15 +61,15 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
       setUsersStars(usersStars.filter(star => star !== idOfStarredItem));
       
       // Decrement the image's number of stars by 1 on the page
-      // setImages((previousState) => {
-      //   return previousState
-      //   .map((image) => {
-      //     return image.id !== idOfStarredItem
-      //     ? image
-      //     : { ...image, stars: image.stars - 1 };
-      //   })
-      //     .sort((a, b) => b.stars - a.stars);
-      // });
+      setImages((previousState) => {
+        return previousState
+        .map((image) => {
+          return image.id !== idOfStarredItem
+          ? image
+          : { ...image, stars: image.stars - 1 };
+        })
+          .sort((a, b) => b.stars - a.stars);
+      });
       
       // Delete the (user_id, image_id) pair from the stars table
       await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
@@ -109,25 +79,24 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
         }
       })
 
-      // client.send(idOfStarredItem.toString());
       webSocket.current.send(JSON.stringify({
         id: idOfStarredItem,
-        star: 'dec'
+        star: 'decrement'
       }));
     } else { // If the user has not starred this image yet
       // Add the image id to the list of starred image ids on the page (this will make the star button gold)
       setUsersStars([...usersStars, idOfStarredItem]);
       
       // Increment the image's number of stars by 1 on the page
-      // setImages((previousState) => {
-      //   return previousState
-      //   .map((image) => {
-      //     return image.id !== idOfStarredItem
-      //     ? image
-      //     : { ...image, stars: image.stars + 1 };
-      //   })
-      //   .sort((a, b) => b.stars - a.stars);
-      // });
+      setImages((previousState) => {
+        return previousState
+        .map((image) => {
+          return image.id !== idOfStarredItem
+          ? image
+          : { ...image, stars: image.stars + 1 };
+        })
+        .sort((a, b) => b.stars - a.stars);
+      });
 
       
       // Insert the (user_id, image_id) pair into the stars table
@@ -140,7 +109,7 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
       
       webSocket.current.send(JSON.stringify({
         id: idOfStarredItem,
-        star: 'inc'
+        star: 'increment'
       }));
     }
     setTimeout(() => {document.getElementById(idOfStarredItem).scrollIntoView({behavior: 'smooth'})}, 100)
