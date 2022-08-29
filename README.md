@@ -88,7 +88,17 @@ Back-end: Node/Express
 
 ### Adding routes
 
--
+- I wanted separate pages where users could see their starred posts and their own posts. This was a good opportunity to practice with React Router and its new v6 syntax (in particular how `Switch` has been replaced with `Routes`, and how components are now passed down as an `element` prop to a `Route` instead of using children).
+
+- In the page where users can manage their posts, each of their posts have an option for editing and/or deleting it. To use the delete option as an example, I originally had this sending a `DELETE` request to the server (to remove the post from the db), and then reload the page so that the user could see that the post had been deleted. However, reloading the page gave a 404 error. 
+
+- This led to me reading about React Router's client-side routing, and how `Link`s in React Router don't actually trigger a refresh of the page (and how they just cause a page transition on the client-side, without any requests to the server). 
+
+- I decided to change the functionality of the delete option to avoid needing to reload the page. This does however mean that a user cannot currently navitage to, for example, https://the-wall-app.netlify.app/posts directly from the address bar. They would need to navigate to the home page first, and then use the `Link` on the page.
+
+- [React Router docs](https://v5.reactrouter.com/web/guides/quick-start)
+
+- [Server-side vs Client-side routing](https://stackoverflow.com/questions/27928372/react-router-urls-dont-work-when-refreshing-or-writing-manually)
 
 [Back to top](#-the-wall)
 
