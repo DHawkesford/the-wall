@@ -1,11 +1,17 @@
 import express from "express";
-import { getAllImages, postNewImage, updateAltText, deleteImage } from "../models/images.js";
+import { getAllImages, getTodaysImages, postNewImage, updateAltText, deleteImage } from "../models/images.js";
 
 const router = express.Router();
 
 /* GET images listing. */
 router.get("/", async function (req, res, next) {
   const data = await getAllImages();
+  res.json({ success: true, payload: data });
+});
+
+router.get("/:minute", async function (req, res, next) {
+  const minute = Number(req.params.minute)
+  const data = await getTodaysImages(minute);
   res.json({ success: true, payload: data });
 });
 

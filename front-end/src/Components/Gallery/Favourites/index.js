@@ -45,7 +45,7 @@ const Favourites = ({ images, setImages, usersStars, setUsersStars, showModal, w
         }
       })
 
-      webSocket.current.send(JSON.stringify({
+      webSocket.send(JSON.stringify({
         id: idOfStarredItem,
         star: 'decrement'
       }));
@@ -72,7 +72,7 @@ const Favourites = ({ images, setImages, usersStars, setUsersStars, showModal, w
         }
       })
 
-      webSocket.current.send(JSON.stringify({
+      webSocket.send(JSON.stringify({
         id: idOfStarredItem,
         star: 'increment'
       }));

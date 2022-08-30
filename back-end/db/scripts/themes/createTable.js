@@ -2,7 +2,7 @@ import db from "../../connection.js";
 
 async function createTable() {
   const response = await db.query(
-    `CREATE TABLE IF NOT EXISTS images (id SERIAL PRIMARY KEY, url TEXT, alt TEXT, userid TEXT, created TIMESTAMP);`
+    `CREATE TABLE IF NOT EXISTS themes (id SERIAL PRIMARY KEY, theme TEXT);`
   );
   
   console.log(response);

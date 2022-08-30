@@ -2,16 +2,17 @@ import { Routes, Route } from "react-router-dom";
 import Home from './Home';
 import Favourites from './Favourites';
 import Posts from './Posts';
-import { w3cwebsocket as W3CWebSocket } from "websocket";
-import { useRef, useEffect } from 'react';
+// import { w3cwebsocket as W3CWebSocket } from "websocket";
+import webSocket from '../Socket';
+import { useEffect } from 'react'; // add in useRef if changing back
 
 const Gallery = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
-  const webSocket = useRef(null);
+  // const webSocket = useRef(null);
 
   useEffect(() => {
-    webSocket.current = new W3CWebSocket("https://the-wall-dan-blake.herokuapp.com".replace(/^http/, 'ws'), 'broadcast-protocol');
+    // webSocket.current = new W3CWebSocket("https://the-wall-dan-blake.herokuapp.com".replace(/^http/, 'ws'), 'broadcast-protocol');
 
-    webSocket.current.onmessage = function(e) {
+    webSocket.onmessage = function(e) {
       if (typeof e.data === 'string') {
         const messageData = JSON.parse(e.data)
 
