@@ -1,5 +1,4 @@
 import db from "../db/connection.js";
-// import { wsServer } from "../bin/www.js";
 
 export async function getAllImages() {
   const result = await db.query(`
@@ -8,14 +7,6 @@ export async function getAllImages() {
     ORDER BY stars DESC;`);
   return result.rows;
 }
-
-// wsServer.on('connect', function(connection) {
-//   setInterval(() => {
-//     console.log('Connection accepted');
-//     // const data = await getAllImages();
-//     // connection.sendUTF(JSON.stringify({success: true, payload: data, star: 'test'}))
-//   }, 5000);
-// })
 
 export async function getTodaysImages(minute) {
 //   const result = await db.query(`

@@ -55,6 +55,14 @@ function originIsAllowed(origin) {
   return false;
 }
 
+wsServer.on('connect', function(connection) {
+  setInterval(() => {
+    console.log('Connection accepted');
+    const data = await getAllImages();
+    // connection.sendUTF(JSON.stringify({success: true, payload: data, star: 'test'}))
+  }, 5000);
+})
+
 wsServer.on('request', function(request) {
   if (!originIsAllowed(request.origin)) {
     request.reject();
