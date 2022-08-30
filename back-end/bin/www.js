@@ -60,7 +60,7 @@ wsServer.on('connect', function(connection) {
     const result = await db.query(`
     SELECT *, (SELECT count(*)::INT FROM stars WHERE stars.imageid = images.id) stars 
     FROM images 
-    WHERE EXTRACT(MINUTE FROM created) = EXTRACT(MINUTE FROM NOW())
+    WHERE EXTRACT(MINUTES FROM created) = EXTRACT(MINUTES FROM NOW())
     ORDER BY stars DESC;`);
     const data = result.rows;
     connection.sendUTF(JSON.stringify({success: true, payload: data, star: 'test'}))
