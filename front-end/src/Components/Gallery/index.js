@@ -4,7 +4,7 @@ import Favourites from './Favourites';
 import Posts from './Posts';
 // import { w3cwebsocket as W3CWebSocket } from "websocket";
 import webSocket from '../Socket';
-import { useRef, useEffect } from 'react';
+import { useEffect } from 'react'; // add in useRef if changing back
 
 const Gallery = ({ images, setImages, usersStars, setUsersStars, showModal }) => {
   // const webSocket = useRef(null);
