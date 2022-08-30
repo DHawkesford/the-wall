@@ -58,9 +58,9 @@ function originIsAllowed(origin) {
 
 wsServer.on('connect', function(connection) {
 
-  // cron.schedule('0-59 * * * *', () => {
-  //   connection.sendUTF(JSON.stringify({message: 'hello world', star: 'test2'}))
-  // });
+  cron.schedule('0,10,20,30,40,50 0-59 * * * *', () => {
+    connection.sendUTF(JSON.stringify({message: 'hello world', star: 'test2'}))
+  });
 
   // setInterval(async () => {
   //   const result = await db.query(`
