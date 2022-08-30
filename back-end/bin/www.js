@@ -68,7 +68,7 @@ wsServer.on('request', function(request) {
   console.log((new Date()) + ' Connection accepted.');
 
   setInterval(() => {
-    connection.sendUTF(JSON.stringify({stars: 'test', data: 'test message'}))
+    connection.sendUTF(JSON.stringify({star: 'test', data: 'test message'}))
   }, 60 * 5000);
 
   connection.on('message', function(message) {
