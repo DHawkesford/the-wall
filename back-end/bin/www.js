@@ -74,7 +74,7 @@ wsServer.on('connect', function(connection) {
           cr BETWEEN ((mins - mins % 5) + 30) % 60 AND ((mins - mins % 5 + 4) + 30) % 60
         OR 
           cr BETWEEN ((mins - mins % 5) + 45) % 60 AND ((mins - mins % 5 + 4) + 45) % 60
-      ORDER BY stars, id DESC;
+      ORDER BY stars DESC, id DESC;
     `);
     const data = result.rows;
     connection.sendUTF(JSON.stringify({success: true, payload: data, star: 'test'}))

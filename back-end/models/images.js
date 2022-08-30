@@ -4,7 +4,7 @@ export async function getAllImages() {
   const result = await db.query(`
     SELECT *, (SELECT count(*)::INT FROM stars WHERE stars.imageid = images.id) stars 
     FROM images 
-    ORDER BY stars, id DESC;`);
+    ORDER BY stars DESC, id DESC;`);
   return result.rows;
 }
 
@@ -26,7 +26,7 @@ export async function getTodaysImages() {
           cr BETWEEN ((mins - mins % 5) + 30) % 60 AND ((mins - mins % 5 + 4) + 30) % 60
         OR 
           cr BETWEEN ((mins - mins % 5) + 45) % 60 AND ((mins - mins % 5 + 4) + 45) % 60
-      ORDER BY stars, id DESC;
+      ORDER BY stars DESC, id DESC;
   `);
   return result.rows;
 }
