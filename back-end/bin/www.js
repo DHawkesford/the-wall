@@ -34,7 +34,7 @@ server.listen(port);
 server.on("error", onError);
 server.on("listening", onListening);
 
-const wsServer = new webSocketServer({
+export const wsServer = new webSocketServer({
   httpServer: server,
   autoAcceptConnections: false
 })
@@ -54,14 +54,6 @@ function originIsAllowed(origin) {
   }
   return false;
 }
-
-wsServer.on('connect', function(connection) {
-  console.log('Connection accepted');
-  setInterval(() => {
-    const data = await getAllImages();
-    connection.sendUTF(JSON.stringify({success: true, payload: data, star: 'test'}))
-  }, 5000);
-})
 
 wsServer.on('request', function(request) {
   if (!originIsAllowed(request.origin)) {
