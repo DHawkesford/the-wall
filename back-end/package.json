@@ -28,6 +28,7 @@
     "express": "~4.16.1",
     "express-oauth2-jwt-bearer": "^1.1.0",
     "morgan": "~1.9.1",
+    "node-cron": "^3.0.2",
     "pg": "^8.7.1",
     "websocket": "^1.0.34"
   },
