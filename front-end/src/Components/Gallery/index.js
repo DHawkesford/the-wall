@@ -17,7 +17,7 @@ const Gallery = ({ images, setImages, usersStars, setUsersStars, showModal }) =>
         const messageData = JSON.parse(e.data)
 
         if (messageData.star === 'test') {
-          console.log(messageData.data);
+          console.log(messageData.payload);
         }
 
         if (messageData.star === 'increment') {
