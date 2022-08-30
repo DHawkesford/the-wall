@@ -1,7 +1,5 @@
-import { useRef, useEffect } from 'react';
+import { w3cwebsocket as W3CWebSocket } from "websocket";
 
-const webSocket = useRef(null);
-
-webSocket.current = new W3CWebSocket("https://the-wall-dan-blake.herokuapp.com".replace(/^http/, 'ws'), 'broadcast-protocol');
+const webSocket = new W3CWebSocket("https://the-wall-dan-blake.herokuapp.com".replace(/^http/, 'ws'), 'broadcast-protocol');
 
 export default webSocket;

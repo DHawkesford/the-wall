@@ -10,18 +10,13 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal, webSock
   useEffect(() => {
     async function refreshGallery() {
       setIsLoading(true); 
-
-      const currentTime = new Date();
-      const currentMinute = currentTime.getMinutes();
-
-      const response = await fetch('https://the-wall-dan-blake.herokuapp.com/images/' + currentMinute);
+      const response = await fetch('https://the-wall-dan-blake.herokuapp.com/images');
       const data = await response.json();
       setImages(data.payload);
       setIsLoading(false);
     }
 
-    const intervalId = setInterval(refreshGallery, 300000);
-    return () => clearInterval(intervalId);
+    refreshGallery();
   }, [user, setImages]);
 
   async function star(idOfStarredItem) {
@@ -51,7 +46,7 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal, webSock
         }
       })
 
-      webSocket.current.send(JSON.stringify({
+      webSocket.send(JSON.stringify({
         id: idOfStarredItem,
         star: 'decrement'
       }));
@@ -78,7 +73,7 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal, webSock
         }
       })
       
-      webSocket.current.send(JSON.stringify({
+      webSocket.send(JSON.stringify({
         id: idOfStarredItem,
         star: 'increment'
       }));

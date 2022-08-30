@@ -46,7 +46,7 @@ const Posts = ({ images, setImages, usersStars, setUsersStars, showModal, webSoc
         }
       })
 
-      webSocket.current.send(JSON.stringify({
+      webSocket.send(JSON.stringify({
         id: idOfStarredItem,
         star: 'decrement'
       }));
@@ -73,7 +73,7 @@ const Posts = ({ images, setImages, usersStars, setUsersStars, showModal, webSoc
         }
       })
 
-      webSocket.current.send(JSON.stringify({
+      webSocket.send(JSON.stringify({
         id: idOfStarredItem,
         star: 'increment'
       }));
