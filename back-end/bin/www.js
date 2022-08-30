@@ -74,7 +74,7 @@ wsServer.on('connect', function(connection) {
   });
 
   async function sendCurrentImages(themeNumber) {
-    const result = await db.query(`
+    const sqlString =(`
       WITH tab AS (SELECT *, 
         EXTRACT(MINUTES FROM created)::int AS cr, 
         EXTRACT(MINUTES FROM NOW())::int AS mins,
@@ -87,6 +87,8 @@ wsServer.on('connect', function(connection) {
             cr IN ${themeNumber[0].join()}
         ORDER BY stars DESC, id DESC;
     `);
+    console.log(sqlString);
+    const result = await db.query(sqlString);
     const data = result.rows;
     connection.sendUTF(JSON.stringify({success: true, payload: data, star: 'test'}))
   }
