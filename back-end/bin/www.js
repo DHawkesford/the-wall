@@ -64,41 +64,35 @@ wsServer.on('connect', function(connection) {
   }
 
   cron.schedule(`${themes[0].join()} * * * *`, () => {
-    connection.sendUTF(JSON.stringify({message: 'hello world', star: 'test2'}))
+    sendCurrentImages(0);
   });
   cron.schedule(`${themes[1].join()} * * * *`, () => {
-    connection.sendUTF(JSON.stringify({message: 'hello world2', star: 'test2'}))
+    sendCurrentImages(1);
   });
   cron.schedule(`${themes[2].join()} * * * *`, () => {
-    connection.sendUTF(JSON.stringify({message: 'hello world3', star: 'test2'}))
-  });
-  cron.schedule(`${themes[2].join()} * * * *`, () => {
-    connection.sendUTF(JSON.stringify({message: 'hello world3', star: 'test2'}))
+    sendCurrentImages(2);
   });
 
-  // setInterval(async () => {
-  //   const result = await db.query(`
-  //   WITH tab AS (SELECT *, 
-  //     EXTRACT(MINUTES FROM created)::int AS cr, 
-  //     EXTRACT(MINUTES FROM NOW())::int AS mins,
-  //     (SELECT count(*)::INT FROM stars WHERE stars.imageid = images.id) AS stars
-  //   FROM images)
-    
-  //   SELECT *
-  //     FROM tab
-	//     WHERE
-  //   	    cr BETWEEN (mins - mins % 5) AND (mins- mins % 5 + 4)
-  //       OR 
-  //         cr BETWEEN ((mins - mins % 5) + 15) % 60 AND ((mins - mins % 5 + 4) + 15) % 60
-  //       OR 
-  //         cr BETWEEN ((mins - mins % 5) + 30) % 60 AND ((mins - mins % 5 + 4) + 30) % 60
-  //       OR 
-  //         cr BETWEEN ((mins - mins % 5) + 45) % 60 AND ((mins - mins % 5 + 4) + 45) % 60
-  //     ORDER BY stars DESC, id DESC;
-  //   `);
+  async function sendCurrentImages(themeNumber) {
+    const result = await db.query(`
+      WITH tab AS (SELECT *, 
+        EXTRACT(MINUTES FROM created)::int AS cr, 
+        EXTRACT(MINUTES FROM NOW())::int AS mins,
+        (SELECT count(*)::INT FROM stars WHERE stars.imageid = images.id) AS stars
+      FROM images)
+      
+      SELECT *
+        FROM tab
+        WHERE
+            cr IN ${themeNumber[0].join()}
+        ORDER BY stars DESC, id DESC;
+    `);
+    const data = result.rows;
+    connection.sendUTF(JSON.stringify({success: true, payload: data, star: 'test'}))
+  }
 
-  //   const sqlString = `
-  //   WITH tab AS (SELECT *, EXTRACT(MINUTES FROM NOW())::int AS mins FROM themes)
+    // const sqlString = `
+    // WITH tab AS (SELECT *, EXTRACT(MINUTES FROM NOW())::int AS mins FROM themes)
       
   //   SELECT * 
   //     FROM tab
@@ -111,9 +105,6 @@ wsServer.on('connect', function(connection) {
   //   `;
   //   const themeResponse = await db.query(sqlString);
 
-  //   const data = result.rows;
-  //   connection.sendUTF(JSON.stringify({success: true, payload: data, star: 'test'}))
-  // }, 5000);
 })
 
 wsServer.on('request', function(request) {
