@@ -10,9 +10,13 @@ export async function getAllImages() {
 
 export async function getTodaysImages() {
   const result = await db.query(`
-    WITH tab AS (SELECT *, EXTRACT(MINUTES FROM created)::int AS cr, EXTRACT(MINUTES FROM NOW())::int AS mins FROM images)
+    WITH tab AS (SELECT *, 
+      EXTRACT(MINUTES FROM created)::int AS cr, 
+      EXTRACT(MINUTES FROM NOW())::int AS mins,
+      (SELECT count(*)::INT FROM stars WHERE stars.imageid = images.id) AS stars
+    FROM images)
     
-    SELECT *, (SELECT count(*)::INT FROM stars WHERE stars.imageid = images.id) stars
+    SELECT *
       FROM tab
 	    WHERE
     	    cr BETWEEN (mins - mins % 5) AND (mins- mins % 5 + 4)
