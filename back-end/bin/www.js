@@ -7,6 +7,7 @@
 import debugLib from "debug";
 import http from "http";
 import { server as webSocketServer } from "websocket";
+import { getAllImages } from '../models/images';
 
 import app from "../app.js";
 
@@ -57,7 +58,8 @@ function originIsAllowed(origin) {
 wsServer.on('connect', function(connection) {
   console.log('Connection accepted');
   setInterval(() => {
-    connection.sendUTF(JSON.stringify({star: 'test', data: 'test message'}))
+    const data = await getAllImages();
+    connection.sendUTF(JSON.stringify({success: true, payload: data, star: 'test'}))
   }, 5000);
 })
 
