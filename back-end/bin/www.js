@@ -7,7 +7,6 @@
 import debugLib from "debug";
 import http from "http";
 import { server as webSocketServer } from "websocket";
-// import { getAllImages } from '../models/images.js';
 import db from "../db/connection.js";
 
 import app from "../app.js";
@@ -58,14 +57,12 @@ function originIsAllowed(origin) {
 
 wsServer.on('connect', function(connection) {
   setInterval(async () => {
-    console.log('Connection accepted');
     const result = await db.query(`
     SELECT *, (SELECT count(*)::INT FROM stars WHERE stars.imageid = images.id) stars 
     FROM images 
+    WHERE EXTRACT(MINUTE FROM created) = EXTRACT(MINUTE FROM NOW())
     ORDER BY stars DESC;`);
     const data = result.rows;
-    // app.get('/images')
-    // const data = await getAllImages();
     connection.sendUTF(JSON.stringify({success: true, payload: data, star: 'test'}))
   }, 5000);
 })

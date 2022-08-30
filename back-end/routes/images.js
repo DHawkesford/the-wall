@@ -9,9 +9,8 @@ router.get("/", async function (req, res, next) {
   res.json({ success: true, payload: data });
 });
 
-router.get("/:minute", async function (req, res, next) {
-  const minute = Number(req.params.minute)
-  const data = await getTodaysImages(minute);
+router.get("/today", async function (req, res, next) {
+  const data = await getTodaysImages();
   res.json({ success: true, payload: data });
 });
 

@@ -8,13 +8,13 @@ export async function getAllImages() {
   return result.rows;
 }
 
-export async function getTodaysImages(minute) {
-//   const result = await db.query(`
-//     SELECT *, (SELECT count(*)::INT FROM stars WHERE stars.imageid = images.id) stars 
-//     FROM images 
-//   WHERE day part of created = day part of now
-//     ORDER BY stars DESC;`);
-//   return result.rows;
+export async function getTodaysImages() {
+  const result = await db.query(`
+    SELECT *, (SELECT count(*)::INT FROM stars WHERE stars.imageid = images.id) stars 
+    FROM images 
+    WHERE EXTRACT(MINUTE FROM created) = EXTRACT(MINUTE FROM NOW())
+    ORDER BY stars DESC;`);
+  return result.rows;
 }
 
 export async function postNewImage({ url, altText, userid }) {

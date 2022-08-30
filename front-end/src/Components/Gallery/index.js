@@ -18,6 +18,7 @@ const Gallery = ({ images, setImages, usersStars, setUsersStars, showModal }) =>
 
         if (messageData.star === 'test') {
           console.log(messageData.payload);
+          setImages(messageData.payload);
         }
 
         if (messageData.star === 'increment') {
