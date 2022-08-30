@@ -8,7 +8,7 @@ import photographer_5 from './photographer_5.png';
 import photographer_6 from './photographer_6.png';
 import photographer_7 from './photographer_7.png';
 import photographer_8 from './photographer_8.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const NavBar = ({ setDisplayUploadFormModal, setImages, setAreImagesLoading }) => {
   const [displayHamburgerMenu, setDisplayHamburgerMenu] = useState(false);
@@ -16,6 +16,17 @@ const NavBar = ({ setDisplayUploadFormModal, setImages, setAreImagesLoading }) =
   const [currentPhotographer, setCurrentPhotographer] = useState(photographerIcons[Math.floor(Math.random()*photographerIcons.length)]);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [displayInfo, setDisplayInfo] = useState(false);
+  const [theme, setTheme] = useState('Loading...');
+
+  useEffect(() => {
+    async function getTheme() {
+      const response = await fetch('https://the-wall-dan-blake.herokuapp.com/themes/today');
+      const data = await response.json();
+      setTheme(data.payload[0].theme);
+    }
+
+    getTheme();
+  }, []); 
 
   function randomisePhotographer() {
     const temp = [...photographerIcons];
@@ -28,7 +39,7 @@ const NavBar = ({ setDisplayUploadFormModal, setImages, setAreImagesLoading }) =
     <nav>
       <HamburgerMenu displayHamburgerMenu={displayHamburgerMenu} setDisplayHamburgerMenu={setDisplayHamburgerMenu} setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} setDisplayInfo={setDisplayInfo} />
       <p className="theme">
-        <span>Today's theme is.. Nature!</span>
+        <span>Today's theme is.. {theme}!</span>
         {isFirstLoad ? (
           <img src={currentPhotographer} key={currentPhotographer} className="theme-icon-first-load" onClick={() => {randomisePhotographer(); setIsFirstLoad(false);}} alt="An illustration of a person with a camera on a strap around their neck." title="Change the photographer!" />
         ) : (
