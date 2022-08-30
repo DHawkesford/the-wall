@@ -4,7 +4,9 @@ View the website [here](https://the-wall-app.netlify.app/).
 
 The Wall is an app for encouraging users to keep active by giving them a fun goal to focus on during their walk, run, cycle, etc.
 
-Each day, a new theme appears at the top of the page, such as 'Nature' or 'Statues'. The idea being that during the user's exercise, they try to find and photograph something that matches that day's theme. They can then submit their photo to the website, view other users' posts, and vote on their favourites.
+Each day*, a new theme appears at the top of the page, such as 'Nature' or 'Statues'. The idea being that during the user's exercise, they try to find and photograph something that matches that day's theme. They can then submit their photo to the website, view other users' posts, and vote on their favourites.
+
+\* In practice, the theme would change and the gallery would be reset every 24 hours. For demonstration purposes, the theme will change every 5 minutes, and the gallery will have some pre-loaded sample images matching that theme. Additionally, in practice the themes would not repeat (at least not very often), but for demonstration purposes there are currently 3 themes and the app will rotate between these every 5 minutes.
 
 ## Contents
 
@@ -378,10 +380,43 @@ Back-end: Node/Express
 - 'Manage your posts' icon in hamburger menu by [Freepik](https://www.flaticon.com/authors/freepik) from [Flaticon](https://www.flaticon.com)
 
 ### Photos:
+
+Nature:
+
 - [Johann Siemens](https://unsplash.com/photos/EPy0gBJzzZU?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/natural?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 - [Johnson Martin](https://unsplash.com/photos/zpq2DMidOY0?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/natural?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
-- [Dhru J](https://unsplash.com/photos/i1e9fGrgILg?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/natural?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 - [Laurel Balyeat](https://unsplash.com/photos/i1e9fGrgILg?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/natural?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 - [Toni Lluch](https://unsplash.com/photos/zpq2DMidOY0?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/natural?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+
+Statues and Monuments:
+- [Paul Silvan](https://unsplash.com/photos/koQG_ClP1hA?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/monuments?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Metin Celep](https://unsplash.com/photos/vOQ-M50ScXA?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/monuments?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Anton Maksimov](https://unsplash.com/photos/vOQ-M50ScXA?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/monuments?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Trac Vu](https://unsplash.com/photos/J76q1_9cnWo?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/monuments?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Paul Berry](https://unsplash.com/photos/P4Rg3buEH94?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/monuments?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Thulfiqar Ali](https://unsplash.com/photos/glsPBGSmejc?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/monuments?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Hardik Joshi](https://unsplash.com/photos/i8FJAsFODOs?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/monuments?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Javier Martinez](https://unsplash.com/photos/od-qHnPg9J8?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/monuments?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Stephen Packwood](https://unsplash.com/photos/dFLBDQQeffU?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/monuments?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [François Genon](https://unsplash.com/photos/Xh9tzlxq5qQ?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/monuments?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Pascal Bernardon](https://unsplash.com/photos/AiDRyUuRd3A?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/monuments?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Georgi Draganov](https://unsplash.com/photos/4lLuKh-50Is?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/monuments?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Mostafa Meraji](https://unsplash.com/photos/gFCU54cEk2g?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/monuments?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+
+Animals:
+
+- [Dhru J](https://unsplash.com/photos/i1e9fGrgILg?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/natural?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Edgar](https://unsplash.com/photos/nKC772R_qog?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/animals?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Laura College](https://unsplash.com/photos/K_Na5gCmh38) on [Unsplash](https://unsplash.com/s/photos/animals?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Deepak Nautiyal](https://unsplash.com/photos/Nbv7PkL_rvI?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/animals?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Thomas Oldenburger](https://unsplash.com/photos/1SQFd9_zNW4?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/animals?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Caleb Martin](https://unsplash.com/photos/Tk71SYS8UBY?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/animals?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Yuya Yoshioka](https://unsplash.com/photos/0U1TsyC7RZE) on [Unsplash](https://unsplash.com/s/photos/animals?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Satyabratasm](https://unsplash.com/photos/u_kMWN-BWyU?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/animals?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Dušan veverkolog](https://unsplash.com/photos/ah7KHxYg6Ow?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/animals?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Gary Bendig](https://unsplash.com/photos/6GMq7AGxNbE) on [Unsplash](https://unsplash.com/s/photos/animals?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Karina Vorozheeva](https://unsplash.com/photos/rW-I87aPY5Y?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/s/photos/animals?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+  
+
 
 [Back to top](#-the-wall)

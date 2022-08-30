@@ -10,13 +10,18 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal, webSock
   useEffect(() => {
     async function refreshGallery() {
       setIsLoading(true); 
-      const response = await fetch('https://the-wall-dan-blake.herokuapp.com/images');
+
+      const currentTime = new Date();
+      const currentMinute = currentTime.getMinutes();
+
+      const response = await fetch('https://the-wall-dan-blake.herokuapp.com/images/' + currentMinute);
       const data = await response.json();
       setImages(data.payload);
       setIsLoading(false);
     }
 
-    refreshGallery();
+    const intervalId = setInterval(refreshGallery, 300000);
+    return () => clearInterval(intervalId);
   }, [user, setImages]);
 
   async function star(idOfStarredItem) {

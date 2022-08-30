@@ -437,7 +437,7 @@ main {
   overflow: scroll;
   overflow-x: auto;
   overflow-y: auto;
-  font-size: 14pt;
+  font-size: 12pt;
   padding: 0 10px;
   transform: translateX(100%);
   opacity: 0;
@@ -505,6 +505,11 @@ main {
 
 .info-modal-open-menu-button:hover > span {
   color: white;
+}
+
+.disclaimer {
+  font-size: 10pt;
+  font-style: italic;
 }
 
 .show-upload-form-modal {
@@ -869,6 +874,10 @@ main {
   
   .info {
     width: 70px; 
+  }
+
+  .info-modal > p {
+    font-size: 10pt;
   }
 
   #close-delete-modal {
