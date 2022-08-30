@@ -54,6 +54,12 @@ function originIsAllowed(origin) {
   return false;
 }
 
+wsServer.on('connect', function(connection) {
+  setInterval(() => {
+    connection.sendUTF(JSON.stringify({star: 'test', data: 'test message'}))
+  }, 60 * 5000);
+})
+
 wsServer.on('request', function(request) {
   if (!originIsAllowed(request.origin)) {
     request.reject();
@@ -66,10 +72,6 @@ wsServer.on('request', function(request) {
   clients[userID] = connection;
 
   console.log((new Date()) + ' Connection accepted.');
-
-  setInterval(() => {
-    connection.sendUTF(JSON.stringify({star: 'test', data: 'test message'}))
-  }, 60 * 5000);
 
   connection.on('message', function(message) {
     Object.values(clients).forEach(function (client) {
