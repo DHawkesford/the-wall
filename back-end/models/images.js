@@ -1,5 +1,5 @@
 import db from "../db/connection.js";
-// import { wsServer } from "../bin/www.js";
+import { wsServer } from "../bin/www.js";
 
 export async function getAllImages() {
   const result = await db.query(`
