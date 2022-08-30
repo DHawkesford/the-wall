@@ -10,10 +10,10 @@ export async function getAllImages() {
 }
 
 wsServer.on('connect', function(connection) {
-  console.log('Connection accepted');
   setInterval(() => {
-    const data = await getAllImages();
-    connection.sendUTF(JSON.stringify({success: true, payload: data, star: 'test'}))
+    console.log('Connection accepted');
+    // const data = await getAllImages();
+    // connection.sendUTF(JSON.stringify({success: true, payload: data, star: 'test'}))
   }, 5000);
 })
 
