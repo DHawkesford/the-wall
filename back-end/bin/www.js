@@ -7,7 +7,7 @@
 import debugLib from "debug";
 import http from "http";
 import { server as webSocketServer } from "websocket";
-// import { getAllImages } from '../models/images';
+import { getAllImages } from '../models/images.js';
 
 import app from "../app.js";
 
