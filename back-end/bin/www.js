@@ -8,7 +8,7 @@ import debugLib from "debug";
 import http from "http";
 import { server as webSocketServer } from "websocket";
 import db from "../db/connection.js";
-// import cron from 'node-cron';
+import cron from 'node-cron';
 
 import app from "../app.js";
 
