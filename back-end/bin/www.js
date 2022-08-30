@@ -84,7 +84,7 @@ wsServer.on('connect', function(connection) {
       SELECT *
         FROM tab
         WHERE
-            cr IN ${themeNumber[0].join()}
+            cr IN ${themes[themeNumber].join()}
         ORDER BY stars DESC, id DESC;
     `);
     console.log(sqlString);
