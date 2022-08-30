@@ -63,7 +63,7 @@ wsServer.on('connect', function(connection) {
     SELECT * 
       FROM tab
 	    WHERE
-    	    cr BETWEEN (mins - mins % 5) AND (mins- mins % 5 + 4)
+    	    cr BETWEEN (mins - mins % 5) AND (mins - mins % 5 + 4)
         OR 
           cr BETWEEN ((mins - mins % 5) + 15) % 60 AND ((mins - mins % 5 + 4) + 15) % 60
         OR 
