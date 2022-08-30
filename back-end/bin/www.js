@@ -58,10 +58,19 @@ function originIsAllowed(origin) {
 wsServer.on('connect', function(connection) {
   setInterval(async () => {
     const result = await db.query(`
-    SELECT *, (SELECT count(*)::INT FROM stars WHERE stars.imageid = images.id) stars 
-    FROM images 
-    WHERE EXTRACT(MINUTES FROM created) = EXTRACT(MINUTES FROM NOW())
-    ORDER BY stars DESC;`);
+    WITH tab AS (SELECT *, EXTRACT(MINUTES FROM created)::int AS cr, EXTRACT(MINUTES FROM NOW())::int AS mins FROM images)
+    
+    SELECT * 
+      FROM tab
+	    WHERE
+    	    cr BETWEEN (mins - mins % 5) AND (mins- mins % 5 + 4)
+        OR 
+          cr BETWEEN ((mins - mins % 5) + 15) % 60 AND ((mins - mins % 5 + 4) + 15) % 60
+        OR 
+          cr BETWEEN ((mins - mins % 5) + 30) % 60 AND ((mins - mins % 5 + 4) + 30) % 60
+        OR 
+          cr BETWEEN ((mins - mins % 5) + 45) % 60 AND ((mins - mins % 5 + 4) + 45) % 60
+    `);
     const data = result.rows;
     connection.sendUTF(JSON.stringify({success: true, payload: data, star: 'test'}))
   }, 5000);
