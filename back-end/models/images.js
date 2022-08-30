@@ -9,13 +9,13 @@ export async function getAllImages() {
   return result.rows;
 }
 
-// wsServer.on('connect', function(connection) {
-//   console.log('Connection accepted');
-//   setInterval(() => {
-//     const data = await getAllImages();
-//     connection.sendUTF(JSON.stringify({success: true, payload: data, star: 'test'}))
-//   }, 5000);
-// })
+wsServer.on('connect', function(connection) {
+  console.log('Connection accepted');
+  setInterval(() => {
+    const data = await getAllImages();
+    connection.sendUTF(JSON.stringify({success: true, payload: data, star: 'test'}))
+  }, 5000);
+})
 
 export async function getTodaysImages(minute) {
 //   const result = await db.query(`
