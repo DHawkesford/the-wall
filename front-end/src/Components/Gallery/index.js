@@ -16,6 +16,10 @@ const Gallery = ({ images, setImages, usersStars, setUsersStars, showModal }) =>
       if (typeof e.data === 'string') {
         const messageData = JSON.parse(e.data)
 
+        if (messageData.star === 'test') {
+          console.log(messageData.data);
+        }
+
         if (messageData.star === 'increment') {
           setImages((previousState) => {
             return previousState.map((image) => {

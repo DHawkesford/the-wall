@@ -67,6 +67,10 @@ wsServer.on('request', function(request) {
 
   console.log((new Date()) + ' Connection accepted.');
 
+  setInterval(() => {
+    connection.sendUTF("{'stars': 'test', 'data': 'test message'}")
+  }, 60 * 5000);
+
   connection.on('message', function(message) {
     Object.values(clients).forEach(function (client) {
       if (client !== connection) {
