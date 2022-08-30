@@ -24,7 +24,7 @@ function App() {
 
   useEffect(() => {
     async function getImages() {
-      const response = await fetch('https://the-wall-dan-blake.herokuapp.com/images');
+      const response = await fetch('https://the-wall-dan-blake.herokuapp.com/images/today');
       const data = await response.json();
       setImages(data.payload);
       setAreImagesLoading(false);

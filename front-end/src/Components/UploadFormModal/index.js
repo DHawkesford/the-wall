@@ -38,7 +38,7 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal, set
 
         setImages((previousState) => {
             return [...previousState, {...responseData.payload[0], stars: 1}]
-            .sort((a, b) => b.stars - a.stars);
+            .sort((a, b) => b.stars - a.stars || b.id - a.id);
         });
 
         setTimeout(() => {
@@ -92,7 +92,7 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal, set
               ? image
               : { ...image, stars: image.stars - 1 };
             })
-              .sort((a, b) => b.stars - a.stars);
+              .sort((a, b) => b.stars - a.stars || b.id - a.id);
           });
           
           // Delete the (user_id, image_id) pair from the stars table
@@ -115,7 +115,7 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal, set
               ? image
               : { ...image, stars: image.stars + 1 };
             })
-            .sort((a, b) => b.stars - a.stars);
+            .sort((a, b) => b.stars - a.stars || b.id - a.id);
           });
           
           // Insert the (user_id, image_id) pair into the stars table

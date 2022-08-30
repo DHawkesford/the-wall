@@ -6,18 +6,19 @@ import PostedImage from "../PostedImage";
 const Posts = ({ images, setImages, usersStars, setUsersStars, showModal, webSocket }) => {
   const { user, isAuthenticated } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
-  
+  const [posts, setPosts] = useState([]);
+
   useEffect(() => {
     async function filterImagesByUsersPosts() {
       setIsLoading(true); 
       const response = await fetch(`https://the-wall-dan-blake.herokuapp.com/users/${user.sub}/posts`);
       const data = await response.json();
-      setImages(data.payload);
+      setPosts(data.payload);
       setIsLoading(false);
     }
 
     filterImagesByUsersPosts();
-  }, [user, setImages]);
+  }, [user]);
 
   async function star(idOfStarredItem) {
     if (!isAuthenticated) return;
@@ -28,14 +29,14 @@ const Posts = ({ images, setImages, usersStars, setUsersStars, showModal, webSoc
       setUsersStars(usersStars.filter(star => star !== idOfStarredItem));
       
       // Decrement the image's number of stars by 1 on the page
-      setImages((previousState) => {
+      setPosts((previousState) => {
         return previousState
         .map((image) => {
           return image.id !== idOfStarredItem
           ? image
           : { ...image, stars: image.stars - 1 };
         })
-          .sort((a, b) => b.stars - a.stars);
+          .sort((a, b) => b.stars - a.stars || b.id - a.id);
       });
       
       // Delete the (user_id, image_id) pair from the stars table
@@ -55,14 +56,14 @@ const Posts = ({ images, setImages, usersStars, setUsersStars, showModal, webSoc
       setUsersStars([...usersStars, idOfStarredItem]);
       
       // Increment the image's number of stars by 1 on the page
-      setImages((previousState) => {
+      setPosts((previousState) => {
         return previousState
         .map((image) => {
           return image.id !== idOfStarredItem
           ? image
           : { ...image, stars: image.stars + 1 };
         })
-        .sort((a, b) => b.stars - a.stars);
+        .sort((a, b) => b.stars - a.stars || b.id - a.id);
       });
       
       // Insert the (user_id, image_id) pair into the stars table
@@ -85,10 +86,10 @@ const Posts = ({ images, setImages, usersStars, setUsersStars, showModal, webSoc
         {isLoading ? (
           <Loading />
           ) : (
-            images.length === 0 ? (
+            posts.length === 0 ? (
               <p className="no-results">You have no posts currently.</p>
             ) : (
-              images.map((image, index) => <PostedImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} setImages={setImages} images={images} />)
+              posts.map((image, index) => <PostedImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} setImages={setImages} images={images} />)
             )
         )}
     </div>
