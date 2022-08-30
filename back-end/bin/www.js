@@ -57,7 +57,7 @@ function originIsAllowed(origin) {
 wsServer.on('connect', function(connection) {
   console.log('Connection accepted');
   setInterval(() => {
-    connection.sendUTF(JSON.stringify({star: 'test', data: 'test message'}))
+    connection.sendUTF(`JSON.stringify({star: 'test', data: 'test message'})`)
   }, 60 * 5000);
 })
 

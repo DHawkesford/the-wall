@@ -14,6 +14,7 @@ const Gallery = ({ images, setImages, usersStars, setUsersStars, showModal }) =>
 
     webSocket.onmessage = function(e) {
       if (typeof e.data === 'string') {
+        console.log('Received string');
         const messageData = JSON.parse(e.data)
 
         if (messageData.star === 'test') {
