@@ -57,9 +57,23 @@ function originIsAllowed(origin) {
 }
 
 wsServer.on('connect', function(connection) {
+  const themes = [[], [], []]
+  const minutes = [...Array(60).keys()]
+  for (let i = 0; i < minutes.length; i++) {
+    themes[minutes[i]%3].push(minutes[i]);
+  }
 
-  cron.schedule('0,10,20,30,40,50 0-59 * * * *', () => {
+  cron.schedule(`${themes[0].join()} * * * *`, () => {
     connection.sendUTF(JSON.stringify({message: 'hello world', star: 'test2'}))
+  });
+  cron.schedule(`${themes[1].join()} * * * *`, () => {
+    connection.sendUTF(JSON.stringify({message: 'hello world2', star: 'test2'}))
+  });
+  cron.schedule(`${themes[2].join()} * * * *`, () => {
+    connection.sendUTF(JSON.stringify({message: 'hello world3', star: 'test2'}))
+  });
+  cron.schedule(`${themes[2].join()} * * * *`, () => {
+    connection.sendUTF(JSON.stringify({message: 'hello world3', star: 'test2'}))
   });
 
   // setInterval(async () => {
