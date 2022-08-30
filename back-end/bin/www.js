@@ -74,7 +74,7 @@ wsServer.on('connect', function(connection) {
   });
 
   async function sendCurrentImages(themeNumber) {
-    const sqlString =(`
+    const sqlStringForImages =(`
       WITH tab AS (SELECT *, 
         EXTRACT(MINUTES FROM created)::int AS cr, 
         EXTRACT(MINUTES FROM NOW())::int AS mins,
@@ -87,10 +87,24 @@ wsServer.on('connect', function(connection) {
             cr IN (${themes[themeNumber].join()})
         ORDER BY stars DESC, id DESC;
     `);
-    console.log(sqlString);
-    const result = await db.query(sqlString);
-    const data = result.rows;
-    connection.sendUTF(JSON.stringify({success: true, payload: data, star: 'test'}))
+    const imageResult = await db.query(sqlStringForImages);
+    const imageData = imageResult.rows;
+
+    const sqlStringForThemes =(`
+      WITH tab AS (SELECT *, 
+        EXTRACT(MINUTES FROM created)::int AS cr, 
+        EXTRACT(MINUTES FROM NOW())::int AS mins,
+        (SELECT count(*)::INT FROM stars WHERE stars.imageid = images.id) AS stars
+      FROM images)
+      
+      SELECT *
+        FROM themes
+        WHERE id = ${themeNumber} + 1
+    `);
+    const themeResult = await db.query(sqlStringForThemes);
+    const themeData = themeResult.rows;
+
+    connection.sendUTF(JSON.stringify({ success: true, type: 'themeChange', payload: { imageData, themeData } }))
   }
 
     // const sqlString = `
