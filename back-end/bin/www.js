@@ -8,6 +8,7 @@ import debugLib from "debug";
 import http from "http";
 import { server as webSocketServer } from "websocket";
 import db from "../db/connection.js";
+import cron from 'node-cron';
 
 import app from "../app.js";
 
@@ -56,6 +57,11 @@ function originIsAllowed(origin) {
 }
 
 wsServer.on('connect', function(connection) {
+
+  cron.schedule('0-59 * * * *', () => {
+    connection.sendUTF(JSON.stringify({message: 'hello world', star: 'test2'}))
+  });
+
   setInterval(async () => {
     const result = await db.query(`
     WITH tab AS (SELECT *, 
