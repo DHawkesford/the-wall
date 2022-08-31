@@ -89,7 +89,7 @@ const Posts = ({ images, setImages, usersStars, setUsersStars, showModal, webSoc
             posts.length === 0 ? (
               <p className="no-results">You have no posts currently.</p>
             ) : (
-              posts.map((image, index) => <PostedImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} setImages={setImages} images={images} />)
+              posts.map((image, index) => <PostedImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} setImages={setImages} images={images} setPosts={setPosts} post={posts} />)
             )
         )}
     </div>

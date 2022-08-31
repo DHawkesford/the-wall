@@ -106,7 +106,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <NavBar setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} theme={theme} />
+        <NavBar setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} theme={theme} setTheme={setTheme} />
         <main>
           {areImagesLoading ? (
             <Loading />

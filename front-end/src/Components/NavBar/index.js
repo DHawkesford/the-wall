@@ -10,15 +10,34 @@ import photographer_7 from './photographer_7.png';
 import photographer_8 from './photographer_8.png';
 import { useEffect, useState } from 'react';
 
-const NavBar = ({ setDisplayUploadFormModal, setImages, setAreImagesLoading, theme }) => {
+const NavBar = ({ setDisplayUploadFormModal, setImages, setAreImagesLoading, theme, setTheme }) => {
   const [displayHamburgerMenu, setDisplayHamburgerMenu] = useState(false);
   const photographerIcons = [photographer_1, photographer_2, photographer_3, photographer_4, photographer_5, photographer_6, photographer_7, photographer_8];
   const [currentPhotographer, setCurrentPhotographer] = useState(photographerIcons[Math.floor(Math.random()*photographerIcons.length)]);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [displayInfo, setDisplayInfo] = useState(false);
-  const [time, setTime] = useState();
+  const [time, setTime] = useState(() => {
+    const now = new Date();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+
+    const newTime = (minutes % 2 === 1 && seconds > 50) ? (
+      `< 10 seconds`
+      ) : (
+      `${(minutes + 1) % 2}:${seconds > 50 ? 0 : ''}${59 - seconds}`
+    );
+    return newTime;
+  });
 
   useEffect(() => {
+    async function getTheme() {
+      const response = await fetch('https://the-wall-dan-blake.herokuapp.com/themes/today');
+      const data = await response.json();
+      setTheme(data.payload[0].theme);
+    }
+
+    getTheme();
+
     const timer = setInterval(() => {
       const now = new Date();
       const minutes = now.getMinutes();
@@ -35,7 +54,7 @@ const NavBar = ({ setDisplayUploadFormModal, setImages, setAreImagesLoading, the
     return () => {
       clearInterval(timer);
     };
-  }, []);
+  }, [setTheme]);
 
   function randomisePhotographer() {
     const temp = [...photographerIcons];
