@@ -16,6 +16,7 @@ Each day*, a new theme appears at the top of the page, such as 'Nature' or 'Stat
 
 3. [Features & lessons learned](#features--lessons-learned) (most recently added features listed first)
 
+    - [Changing the daily theme](#changing-the-daily-theme)
     - [Websockets for realtime data](#websockets-for-realtime-data)
     - [Adding routes](#adding-routes)
     - [Getting images in different sizes, to increase performance](#getting-images-in-different-sizes-to-increase-performance)
@@ -49,6 +50,30 @@ Back-end: Node/Express
 [Back to top](#-the-wall)
 
 ## Features & lessons learned:
+
+### Changing the daily theme
+
+- I wanted the 'theme of the day' in the navbar to change every 24 hours, and the images in the gallery to be reset as well. For demonstration purposes, I decided to make the theme change every 2 minutes, and for the gallery to have some pre-loaded sample images matching that theme. Additionally, in practice the themes would not repeat (at least not very often), but for demonstration purposes there are currently 3 themes and the app will rotate between these every 2 minutes. Every hour on the hour, the theme will be *Nature*, followed by *Statues and Monuments*, *Animals* and then rotating back to *Nature*.
+
+- From implementing the [websockets for realtime data](#websockets-for-realtime-data) feature below, I thought that using websockets to achieve this would be the way to go. The server could push the new theme and images data to the clients every 2 minutes. 
+
+- I thought about a few methods for doing this before coming across Cron - as this would allow me to schedule cron jobs at specific times, this seemed ideal for my purposes. I did some reading into how they work and the syntax used in Node, and eventually I got this to work.
+
+- This also involved making small updates to several parts of the app - for example, when a user submits a post, I needed to make sure a timestamp was being added to the database to track when it was added (this way the post would show on the correct 'day' - or the correct 2-minute slot in this demo).
+
+- I also created a counter in the navbar at this point for showing when the theme would next change, which required some reading into `Date` objects in JS. I initially had a counter which would count down to the next round two minutes (i.e. 00:0X where X is even), and would decrement by 1 second using a `setInterval` with an interval of 1000ms. However, I found this would quickly become out of sync with the actual UTC time (especially if the tab in the browser was switched), so instead I had the `setInterval` function obtain a new `Date` object every 5000ms, and refresh the counter based on this. This way, the counter would never become drastically out of sync with the actual UTC time.
+
+- [Reactjs: how to share a websocket between components](https://stackoverflow.com/questions/36120119/reactjs-how-to-share-a-websocket-between-components)
+
+- [Node Cron NPM package](https://www.npmjs.com/package/node-cron)
+
+- [How To Use node-cron to Run Scheduled Jobs in Node.js](https://www.digitalocean.com/community/tutorials/nodejs-cron-jobs-by-examples)
+
+- [Getting current date and time in JavaScript](https://stackoverflow.com/questions/10211145/getting-current-date-and-time-in-javascript)
+
+[Back to top](#-the-wall)
+
+---
 
 ### Websockets for realtime data
 
@@ -346,11 +371,11 @@ Back-end: Node/Express
 
 - Create a button that appears in the bottom-right corner that returns a user to the top of the page. The button should not appear if they had not scrolled down the page at all
 
-- The 'theme of the day' in the navbar should change every 24 hours, and the images in the gallery should be reset as well. I need to update both the back-end and front-end to allow for this. 
+- ✅ The 'theme of the day' in the navbar should change every 24 hours, and the images in the gallery should be reset as well. I need to update both the back-end and front-end to allow for this. 
 
-    - Include a timer to show users when the theme will next change
+    - ✅ Include a timer to show users when the theme will next change
 
-    - Include a feature for showing the final gallery from previous days 
+    - Include a feature for showing the final gallery from previous days - not yet done, but users can see images that they starred on previous days on the Favourites page
 
 - ✅ Add in mobile responsiveness - the app already scales down quite nicely on smaller screens, but there is some work needed on the navbar in particular. 
 
