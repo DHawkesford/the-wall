@@ -18,6 +18,18 @@ function App() {
   const [modalImage, setModalImage] = useState(null);
   const [areImagesLoading, setAreImagesLoading] = useState(true);
   const [theme, setTheme] = useState('Loading...');
+  const [time, setTime] = useState(() => {
+    const now = new Date();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+
+    const newTime = (minutes % 2 === 1 && seconds > 50) ? (
+      `< 10 seconds`
+      ) : (
+      `${(minutes + 1) % 2}:${seconds > 50 ? 0 : ''}${59 - seconds}`
+    );
+    return newTime;
+  });
 
   function showModal(image) {
     setModalImage(image);
@@ -43,6 +55,17 @@ function App() {
         if (messageData.type === 'themeChange') {
           setTheme(messageData.payload.themeData[0].theme);
           setImages(messageData.payload.imageData);
+          
+          const now = new Date();
+          const minutes = now.getMinutes();
+          const seconds = now.getSeconds();
+
+          const newTime = (minutes % 2 === 1 && seconds > 50) ? (
+            `< 10 seconds`
+            ) : (
+            `${(minutes + 1) % 2}:${seconds >= 50 ? 0 : ''}${59 - seconds}`
+          );
+          setTime(newTime);
         }
 
         if (messageData.star === 'increment') {
@@ -105,7 +128,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <NavBar setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} theme={theme} setTheme={setTheme} />
+        <NavBar setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} theme={theme} setTheme={setTheme} time={time} setTime={setTime} />
         <main>
           {areImagesLoading ? (
             <Loading />
