@@ -62,13 +62,13 @@ wsServer.on('connect', function(connection) {
   //     sendCurrentImagesAndTheme(i);
   //   });
   // }
-  cron.schedule(`0,1,6,7,12,13,18,19,24,25,30,31,36,37,42,43,48,49,54,55 * * * *`, () => {
+  cron.schedule(`0,6,12,18,24,30,36,42,48,54 * * * *`, () => {
     sendCurrentImagesAndTheme(0);
   });
-  cron.schedule(`2,3,8,9,14,15,20,21,26,27,32,33,38,39,44,45,50,51,56,57 * * * *`, () => {
+  cron.schedule(`2,8,14,20,26,32,38,44,50,56 * * * *`, () => {
     sendCurrentImagesAndTheme(1);
   });
-  cron.schedule(`4,5,10,11,16,17,22,23,28,29,34,35,40,41,46,47,52,53,58,59 * * * *`, () => {
+  cron.schedule(`4,10,16,22,28,34,40,46,52,58 * * * *`, () => {
     sendCurrentImagesAndTheme(2);
   });
 
