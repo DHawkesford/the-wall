@@ -57,11 +57,6 @@ function originIsAllowed(origin) {
 }
 
 wsServer.on('connect', function(connection) {
-  // for (let i = 0; i < 3; i++) {
-  //   cron.schedule(`${i}-59/6, ${i+1}-59/6 * * * *`, () => {
-  //     sendCurrentImagesAndTheme(i);
-  //   });
-  // }
   cron.schedule(`0,6,12,18,24,30,36,42,48,54 * * * *`, () => {
     sendCurrentImagesAndTheme(0);
   });
