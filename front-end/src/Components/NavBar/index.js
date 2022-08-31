@@ -67,15 +67,13 @@ const NavBar = ({ setDisplayUploadFormModal, setImages, setAreImagesLoading, the
     <nav>
       <HamburgerMenu displayHamburgerMenu={displayHamburgerMenu} setDisplayHamburgerMenu={setDisplayHamburgerMenu} setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} setDisplayInfo={setDisplayInfo} />
       <p className="theme">
-        {/* <span>Today's theme is.. {theme}!</span> */}
-        <span>Today's theme is.. Statues and Monuments!</span>
+        <span>Today's theme is.. {theme}!</span>
         {isFirstLoad ? (
           <img src={currentPhotographer} key={currentPhotographer} className="theme-icon-first-load" onClick={() => {randomisePhotographer(); setIsFirstLoad(false);}} alt="An illustration of a person with a camera on a strap around their neck." title="Change the photographer!" />
         ) : (
           <img src={currentPhotographer} key={currentPhotographer} className="theme-icon" onClick={randomisePhotographer} alt="An illustration of a person with a camera on a strap around their neck." title="Change the photographer!" />
         )}
-        {/* <span>Next theme in {time}</span> */}
-        <span className="next-theme">Next theme in - 10 seconds</span>
+        <span className="next-theme">Next theme in {time}</span>
       </p>
       <Information setDisplayHamburgerMenu={setDisplayHamburgerMenu} displayInfo={displayInfo} setDisplayInfo={setDisplayInfo} />
     </nav>
