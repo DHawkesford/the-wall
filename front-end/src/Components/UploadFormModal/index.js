@@ -26,7 +26,7 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal, set
 
         const newUpload = { ...data, url: url, userid: user.sub };
 
-        const response = await fetch('https://the-wall-dan-blake.herokuapp.com/images', {
+        const response = await fetch('https://the-wall-app1.herokuapp.com/images', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newUpload)
@@ -104,7 +104,7 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal, set
           });
           
           // Delete the (user_id, image_id) pair from the stars table
-          await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
+          await fetch(`https://the-wall-app1.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
             method: 'DELETE',
             headers: {
               'Content-Type': 'application/json'
@@ -127,7 +127,7 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal, set
           });
           
           // Insert the (user_id, image_id) pair into the stars table
-          await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
+          await fetch(`https://the-wall-app1.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

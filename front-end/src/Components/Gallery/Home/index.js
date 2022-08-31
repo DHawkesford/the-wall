@@ -10,7 +10,7 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal, webSock
   useEffect(() => {
     async function refreshGallery() {
       setIsLoading(true); 
-      const response = await fetch('https://the-wall-dan-blake.herokuapp.com/images/today');
+      const response = await fetch('https://the-wall-app1.herokuapp.com/images/today');
       const data = await response.json();
       setImages(data.payload);
       setIsLoading(false);
@@ -39,7 +39,7 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal, webSock
       });
       
       // Delete the (user_id, image_id) pair from the stars table
-      await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
+      await fetch(`https://the-wall-app1.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
@@ -66,7 +66,7 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal, webSock
       });
 
       // Insert the (user_id, image_id) pair into the stars table
-      await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
+      await fetch(`https://the-wall-app1.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

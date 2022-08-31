@@ -12,7 +12,7 @@ root.render(
       domain="dev-bpskse9l.us.auth0.com"
       clientId="CUQhOhStf6ezJ7ECMjHuRtW1KjJigfO0"
       redirectUri={window.location.origin}
-      audience="https://the-wall-dan-blake.herokuapp.com"
+      audience="https://the-wall-app1.herokuapp.com"
       scope="read:current_user_stars"
     >
       <App />

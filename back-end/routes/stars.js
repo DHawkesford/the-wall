@@ -5,7 +5,7 @@ import { getAllStars, getUsersStars, addStarTouserid , deleteStarFromuserid } fr
 const router = express.Router();
 
 const checkJwt = auth({
-  audience: 'https://the-wall-dan-blake.herokuapp.com',
+  audience: 'https://the-wall-app1.herokuapp.com',
   issuerBaseURL: `https://dev-bpskse9l.us.auth0.com/`,
 });
 
