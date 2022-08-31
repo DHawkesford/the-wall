@@ -7,6 +7,7 @@ import GalleryImageModal from '../GalleryImageModal';
 import UploadFormModal from '../UploadFormModal';
 import Loading from "../Loading";
 import { BrowserRouter as Router } from "react-router-dom";
+import webSocket from '../Socket';
 
 function App() {
   const { user, getAccessTokenSilently } = useAuth0();
@@ -16,6 +17,7 @@ function App() {
   const [displayUploadFormModal, setDisplayUploadFormModal] = useState(false);
   const [modalImage, setModalImage] = useState(null);
   const [areImagesLoading, setAreImagesLoading] = useState(true);
+  const [theme, setTheme] = useState('Loading...');
 
   function showModal(image) {
     setModalImage(image);
@@ -32,6 +34,40 @@ function App() {
 
     getImages();
   }, []);
+
+  useEffect(() => {
+    webSocket.onmessage = function(e) {
+      if (typeof e.data === 'string') {
+        const messageData = JSON.parse(e.data)
+
+        if (messageData.type === 'themeChange') {
+          console.log(messageData);
+          setTheme(messageData.payload.themeData[0].theme);
+          setImages(messageData.payload.imageData);
+        }
+
+        if (messageData.star === 'increment') {
+          setImages((previousState) => {
+            return previousState.map((image) => {
+              return image.id !== messageData.id
+              ? image
+              : { ...image, stars: image.stars + 1 };
+            })
+            .sort((a, b) => b.stars - a.stars || b.id - a.id)
+          })
+        } else if (messageData.star === 'decrement') {
+          setImages((previousState) => {
+            return previousState.map((image) => {
+              return image.id !== messageData.id
+              ? image
+              : { ...image, stars: image.stars - 1 };
+            })
+            .sort((a, b) => b.stars - a.stars || b.id - a.id)
+          })
+        }
+      }
+    }
+  }, [])
   
   useEffect(() => {
     async function getUsersStars() {
@@ -70,12 +106,12 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <NavBar setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} />
+        <NavBar setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} theme={theme} />
         <main>
           {areImagesLoading ? (
             <Loading />
           ) : (
-            <Gallery images={images} setImages={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} />
+            <Gallery images={images} setImages={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} webSocket={webSocket} />
           )}
         </main>
         <GalleryImageModal setDisplayModal={setDisplayModal} modalImage={modalImage} displayModal={displayModal} />

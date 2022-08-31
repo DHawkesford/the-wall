@@ -41,14 +41,14 @@ nav {
 
 .theme-icon {
   height: 30px;
-  margin-left: 5px;
+  margin: 0px 5px;
   cursor: pointer;
   animation: spin 0.3s linear
 }
 
 .theme-icon-first-load {
   height: 30px;
-  margin-left: 5px;
+  margin: 0px 5px;
   cursor: pointer;
 }
 

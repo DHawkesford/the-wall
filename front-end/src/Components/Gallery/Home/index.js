@@ -7,18 +7,18 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal, webSock
   const { user, isAuthenticated } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
         
-  useEffect(() => {
-    webSocket.onmessage = function(e) {
-      if (typeof e.data === 'string') {
-        const messageData = JSON.parse(e.data)
+  // useEffect(() => {
+  //   webSocket.onmessage = function(e) {
+  //     if (typeof e.data === 'string') {
+  //       const messageData = JSON.parse(e.data)
 
-        if (messageData.star === 'test') {
-          console.log(messageData.payload);
-          setImages(messageData.payload);
-        }
-      }
-    }
-  }, [setImages, webSocket])
+  //       if (messageData.star === 'test') {
+  //         console.log(messageData.payload);
+  //         setImages(messageData.payload);
+  //       }
+  //     }
+  //   }
+  // }, [setImages, webSocket])
 
   useEffect(() => {
     async function refreshGallery() {
