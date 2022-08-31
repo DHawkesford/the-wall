@@ -169,7 +169,7 @@ const images = [
     },
     {
       url: "https://res.cloudinary.com/ddmilnqpc/image/upload/v1661812426/gallery/gary-bendig-6GMq7AGxNbE-unsplash_zjiac8.jpg",
-      alt: "A raccoon on lawn grass with let paw raised.",
+      alt: "A raccoon on lawn grass with left paw raised.",
       userid: "Dan1",
       created: "2022-08-29T18:29:11.164Z"
     },

@@ -31,7 +31,7 @@ const NavBar = ({ setDisplayUploadFormModal, setImages, setAreImagesLoading, the
       const minutes = now.getMinutes();
       const seconds = now.getSeconds();
 
-      const newTime = (minutes % 2 === 1 && seconds > 50) ? (
+      const newTime = (minutes % 2 === 1 && seconds >= 50) ? (
         `< 10 seconds`
         ) : (
         `${(minutes + 1) % 2}:${seconds >= 50 ? 0 : ''}${59 - seconds}`
