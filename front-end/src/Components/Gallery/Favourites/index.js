@@ -3,10 +3,9 @@ import { useEffect, useState } from "react";
 import Loading from "../../Loading";
 import GalleryImage from "../GalleryImage";
 
-const Favourites = ({ images, setImages, usersStars, setUsersStars, showModal, webSocket }) => {
+const Favourites = ({ usersStars, setUsersStars, showModal, webSocket, favourites, setFavourites }) => {
   const { user, isAuthenticated } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
-  const [favourites, setFavourites] = useState([]);
 
   useEffect(() => {
     async function filterImagesByUsersStarred() {
@@ -18,7 +17,7 @@ const Favourites = ({ images, setImages, usersStars, setUsersStars, showModal, w
     }
 
     filterImagesByUsersStarred();
-  }, [user]);
+  }, [user, setFavourites]);
 
   async function star(idOfStarredItem) {
     if (!isAuthenticated) return;

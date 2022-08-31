@@ -3,10 +3,9 @@ import { useEffect, useState } from "react";
 import Loading from "../../Loading";
 import PostedImage from "../PostedImage";
 
-const Posts = ({ images, setImages, usersStars, setUsersStars, showModal, webSocket }) => {
+const Posts = ({ usersStars, setUsersStars, showModal, webSocket, posts, setPosts }) => {
   const { user, isAuthenticated } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
-  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     async function filterImagesByUsersPosts() {
@@ -18,7 +17,7 @@ const Posts = ({ images, setImages, usersStars, setUsersStars, showModal, webSoc
     }
 
     filterImagesByUsersPosts();
-  }, [user]);
+  }, [user, setPosts]);
 
   async function star(idOfStarredItem) {
     if (!isAuthenticated) return;
@@ -89,7 +88,7 @@ const Posts = ({ images, setImages, usersStars, setUsersStars, showModal, webSoc
             posts.length === 0 ? (
               <p className="no-results">You have no posts currently.</p>
             ) : (
-              posts.map((image, index) => <PostedImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} setImages={setImages} images={images} setPosts={setPosts} post={posts} />)
+              posts.map((image, index) => <PostedImage image={image} star={star} usersStars={usersStars} key={[image.id, index]} showModal={showModal} setUsersStars={setUsersStars} setPosts={setPosts} post={posts} />)
             )
         )}
     </div>

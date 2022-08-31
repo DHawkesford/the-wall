@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 
-const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal, setImages, usersStars, setUsersStars}) => {
+const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal, setImages, usersStars, setUsersStars, favourites, setFavourites, posts, setPosts}) => {
     const [image, setImage] = useState(null);
     const [isPending, setIsPending] = useState(false);
     const { user, isAuthenticated } = useAuth0();
@@ -37,6 +37,14 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal, set
         star(newImageId);
 
         setImages((previousState) => {
+            return [...previousState, {...responseData.payload[0], stars: 1}]
+            .sort((a, b) => b.stars - a.stars || b.id - a.id);
+        });
+        setPosts((previousState) => {
+            return [...previousState, {...responseData.payload[0], stars: 1}]
+            .sort((a, b) => b.stars - a.stars || b.id - a.id);
+        });
+        setFavourites((previousState) => {
             return [...previousState, {...responseData.payload[0], stars: 1}]
             .sort((a, b) => b.stars - a.stars || b.id - a.id);
         });

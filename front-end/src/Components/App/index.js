@@ -12,6 +12,8 @@ import webSocket from '../Socket';
 function App() {
   const { user, getAccessTokenSilently } = useAuth0();
   const [images, setImages] = useState([]);
+  const [favourites, setFavourites] = useState([]);
+  const [posts, setPosts] = useState([]);
   const [usersStars, setUsersStars] = useState(null);
   const [displayModal, setDisplayModal] = useState(false);
   const [displayUploadFormModal, setDisplayUploadFormModal] = useState(false);
@@ -134,11 +136,11 @@ function App() {
           {areImagesLoading ? (
             <Loading />
           ) : (
-            <Gallery images={images} setImages={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} webSocket={webSocket} />
+            <Gallery images={images} setImages={setImages} usersStars={usersStars} setUsersStars={setUsersStars} showModal={showModal} webSocket={webSocket} favourites={favourites} setFavourites={setFavourites} posts={posts} setPosts={setPosts} />
           )}
         </main>
         <GalleryImageModal setDisplayModal={setDisplayModal} modalImage={modalImage} displayModal={displayModal} />
-        <UploadFormModal displayUploadFormModal={displayUploadFormModal} setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} usersStars={usersStars} setUsersStars={setUsersStars} />
+        <UploadFormModal displayUploadFormModal={displayUploadFormModal} setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} usersStars={usersStars} setUsersStars={setUsersStars} favourites={favourites} setFavourites={setFavourites} posts={posts} setPosts={setPosts} />
       </div>
     </Router>
   );
