@@ -57,70 +57,49 @@ function originIsAllowed(origin) {
 }
 
 wsServer.on('connect', function(connection) {
-  const themes = [[], [], []]
-  const minutes = [...Array(60).keys()]
-  for (let i = 0; i < minutes.length; i++) {
-    themes[minutes[i]%3].push(minutes[i]);
+  for (let i = 0; i < 3; i++) {
+    cron.schedule(`${i}-59/6, ${i+1}-59/6 * * * *`, () => {
+      sendCurrentImagesAndTheme(i);
+    });
   }
+  // cron.schedule(`0-59/3 * * * *`, () => {
+  //   sendCurrentImages(0);
+  // });
+  // cron.schedule(`1-59/3 * * * *`, () => {
+  //   sendCurrentImages(1);
+  // });
+  // cron.schedule(`2-59/3 * * * *`, () => {
+  //   sendCurrentImages(2);
+  // });
 
-  cron.schedule(`${themes[0].join()} * * * *`, () => {
-    sendCurrentImages(0);
-  });
-  cron.schedule(`${themes[1].join()} * * * *`, () => {
-    sendCurrentImages(1);
-  });
-  cron.schedule(`${themes[2].join()} * * * *`, () => {
-    sendCurrentImages(2);
-  });
-
-  async function sendCurrentImages(themeNumber) {
+  async function sendCurrentImagesAndTheme(themeNumber) {
+    const minutes = [];
+    for (let i = 0; i < 60; i++) {
+      if (i % 6 === themeNumber * 2 || i % 6 === themeNumber * 2 + 1) {
+        minutes.push(i)
+      }
+    }
     const sqlStringForImages =(`
-      WITH tab AS (SELECT *, 
-        EXTRACT(MINUTES FROM created)::int AS cr, 
-        EXTRACT(MINUTES FROM NOW())::int AS mins,
+      WITH T1 AS (SELECT *, 
+        EXTRACT(MINUTES FROM created)::int AS createdMinute, 
         (SELECT count(*)::INT FROM stars WHERE stars.imageid = images.id) AS stars
       FROM images)
       
       SELECT *
-        FROM tab
+        FROM T1
         WHERE
-            cr IN (${themes[themeNumber].join()})
+            createdMinute IN (${minutes.join()})
         ORDER BY stars DESC, id DESC;
     `);
     const imageResult = await db.query(sqlStringForImages);
     const imageData = imageResult.rows;
 
-    const sqlStringForThemes =(`
-      WITH tab AS (SELECT *, 
-        EXTRACT(MINUTES FROM created)::int AS cr, 
-        EXTRACT(MINUTES FROM NOW())::int AS mins,
-        (SELECT count(*)::INT FROM stars WHERE stars.imageid = images.id) AS stars
-      FROM images)
-      
-      SELECT *
-        FROM themes
-        WHERE id = ${themeNumber} + 1
-    `);
+    const sqlStringForThemes = `SELECT * FROM themes WHERE id = ${themeNumber} + 1`;
     const themeResult = await db.query(sqlStringForThemes);
     const themeData = themeResult.rows;
 
     connection.sendUTF(JSON.stringify({ success: true, type: 'themeChange', payload: { imageData, themeData } }))
   }
-
-    // const sqlString = `
-    // WITH tab AS (SELECT *, EXTRACT(MINUTES FROM NOW())::int AS mins FROM themes)
-      
-  //   SELECT * 
-  //     FROM tab
-  //       WHERE id =
-  //         CASE
-  //           WHEN mins BETWEEN 0 AND 4 OR mins BETWEEN 15 AND 19 OR mins BETWEEN 30 AND 34 OR mins BETWEEN 45 AND 49 THEN 1
-  //           WHEN mins BETWEEN 5 AND 9 OR mins BETWEEN 20 AND 24 OR mins BETWEEN 35 AND 39 OR mins BETWEEN 50 AND 54 THEN 2
-  //           WHEN mins BETWEEN 10 AND 14 OR mins BETWEEN 25 AND 29 OR mins BETWEEN 40 AND 44 OR mins BETWEEN 55 AND 59 THEN 3
-  //         END;
-  //   `;
-  //   const themeResponse = await db.query(sqlString);
-
 })
 
 wsServer.on('request', function(request) {
