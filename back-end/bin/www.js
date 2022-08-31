@@ -57,20 +57,20 @@ function originIsAllowed(origin) {
 }
 
 wsServer.on('connect', function(connection) {
-  for (let i = 0; i < 3; i++) {
-    cron.schedule(`${i}-59/6, ${i+1}-59/6 * * * *`, () => {
-      sendCurrentImagesAndTheme(i);
-    });
-  }
-  // cron.schedule(`0-59/3 * * * *`, () => {
-  //   sendCurrentImages(0);
-  // });
-  // cron.schedule(`1-59/3 * * * *`, () => {
-  //   sendCurrentImages(1);
-  // });
-  // cron.schedule(`2-59/3 * * * *`, () => {
-  //   sendCurrentImages(2);
-  // });
+  // for (let i = 0; i < 3; i++) {
+  //   cron.schedule(`${i}-59/6, ${i+1}-59/6 * * * *`, () => {
+  //     sendCurrentImagesAndTheme(i);
+  //   });
+  // }
+  cron.schedule(`0,1,6,7,12,13,18,19,24,25,30,31,36,37,42,43,48,49,54,55 * * * *`, () => {
+    sendCurrentImages(0);
+  });
+  cron.schedule(`2,3,8,9,14,15,20,21,26,27,32,33,38,39,44,45,50,51,56,57 * * * *`, () => {
+    sendCurrentImages(1);
+  });
+  cron.schedule(`4,5,10,11,16,17,22,23,28,29,34,35,40,41,46,47,52,53,58,59 * * * *`, () => {
+    sendCurrentImages(2);
+  });
 
   async function sendCurrentImagesAndTheme(themeNumber) {
     const minutes = [];
