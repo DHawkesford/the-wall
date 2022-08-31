@@ -7,6 +7,8 @@
 import debugLib from "debug";
 import http from "http";
 import { server as webSocketServer } from "websocket";
+import db from "../db/connection.js";
+import cron from 'node-cron';
 
 import app from "../app.js";
 
@@ -33,7 +35,7 @@ server.listen(port);
 server.on("error", onError);
 server.on("listening", onListening);
 
-const wsServer = new webSocketServer({
+export const wsServer = new webSocketServer({
   httpServer: server,
   autoAcceptConnections: false
 })
@@ -53,6 +55,52 @@ function originIsAllowed(origin) {
   }
   return false;
 }
+
+wsServer.on('connect', function(connection) {
+  // for (let i = 0; i < 3; i++) {
+  //   cron.schedule(`${i}-59/6, ${i+1}-59/6 * * * *`, () => {
+  //     sendCurrentImagesAndTheme(i);
+  //   });
+  // }
+  cron.schedule(`0,6,12,18,24,30,36,42,48,54 * * * *`, () => {
+    sendCurrentImagesAndTheme(0);
+  });
+  cron.schedule(`2,8,14,20,26,32,38,44,50,56 * * * *`, () => {
+    sendCurrentImagesAndTheme(1);
+  });
+  cron.schedule(`4,10,16,22,28,34,40,46,52,58 * * * *`, () => {
+    sendCurrentImagesAndTheme(2);
+  });
+
+  async function sendCurrentImagesAndTheme(themeNumber) {
+    const minutes = [];
+    for (let i = 0; i < 60; i++) {
+      if (i % 6 === themeNumber * 2 || i % 6 === themeNumber * 2 + 1) {
+        minutes.push(i)
+      }
+    }
+    const sqlStringForImages =(`
+      WITH T1 AS (SELECT *, 
+        EXTRACT(MINUTES FROM created)::int AS createdMinute, 
+        (SELECT count(*)::INT FROM stars WHERE stars.imageid = images.id) AS stars
+      FROM images)
+      
+      SELECT *
+        FROM T1
+        WHERE
+            createdMinute IN (${minutes.join()})
+        ORDER BY stars DESC, id DESC;
+    `);
+    const imageResult = await db.query(sqlStringForImages);
+    const imageData = imageResult.rows;
+
+    const sqlStringForThemes = `SELECT * FROM themes WHERE id = ${themeNumber} + 1`;
+    const themeResult = await db.query(sqlStringForThemes);
+    const themeData = themeResult.rows;
+
+    connection.sendUTF(JSON.stringify({ success: true, type: 'themeChange', payload: { imageData, themeData } }))
+  }
+})
 
 wsServer.on('request', function(request) {
   if (!originIsAllowed(request.origin)) {

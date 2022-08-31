@@ -6,7 +6,7 @@ The Wall is an app for encouraging users to keep active by giving them a fun goa
 
 Each day*, a new theme appears at the top of the page, such as 'Nature' or 'Statues'. The idea being that during the user's exercise, they try to find and photograph something that matches that day's theme. They can then submit their photo to the website, view other users' posts, and vote on their favourites.
 
-\* In practice, the theme would change and the gallery would be reset every 24 hours. For demonstration purposes, the theme will change every 5 minutes, and the gallery will have some pre-loaded sample images matching that theme. Additionally, in practice the themes would not repeat (at least not very often), but for demonstration purposes there are currently 3 themes and the app will rotate between these every 5 minutes.
+\* In practice, the theme would change and the gallery would be reset every 24 hours. For demonstration purposes, the theme will change every 2 minutes, and the gallery will have some pre-loaded sample images matching that theme. Additionally, in practice the themes would not repeat (at least not very often), but for demonstration purposes there are currently 3 themes and the app will rotate between these every 2 minutes. Every hour on the hour, the theme will be *Nature*, followed by *Statues and Monuments*, *Animals* and then rotating back to *Nature*.
 
 ## Contents
 

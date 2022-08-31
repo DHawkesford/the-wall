@@ -4,7 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
 
-const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setImages, images }) => {
+const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setImages, images, setPosts, posts }) => {
   const smallImageUrl = image.url.slice(0, image.url.indexOf('upload') + 7) + 'f_webp/c_scale,h_300/' + image.url.slice(image.url.indexOf('upload') + 7);
   const { user, isAuthenticated, loginWithRedirect, getAccessTokenSilently } = useAuth0();
   const [displayAltTextModal, setDisplayAltTextModal] = useState(false);
@@ -56,7 +56,7 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setIma
     });
 
     setDisplayAltTextModal(false);
-    setImages(curr => curr.map(
+    setPosts(curr => curr.map(
       item => {return (
         item.id === image.id ? (
           item = {...item, alt: data.altText}
@@ -77,7 +77,7 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setIma
     });
    
     setDeleteImage(true);
-    setImages(images.filter(
+    setPosts(posts.filter(
       item => (item.id !== image.id)
     ))
     setIsPending(false);

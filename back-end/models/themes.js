@@ -6,13 +6,13 @@ export async function getAllThemes() {
 }
 
 export async function getTodaysTheme() {
-  const sqlString = `SELECT id, theme 
-    FROM (
-      SELECT *, EXTRACT(DAY FROM NOW()) daypart, (
-        SELECT MAX(id) maxid 
-          FROM themes AS max) 
-        FROM themes) AS dateswithmax
-    WHERE id = (daypart::int % maxid::int) + 1`
+  const sqlString = `
+  WITH T1 AS (SELECT *, EXTRACT(MINUTES FROM NOW())::int AS currentMinute FROM themes)
+    
+  SELECT * 
+    FROM T1
+    WHERE currentMinute % 6 = id * 2 - 2 OR currentMinute % 6 = id * 2 - 1
+  `;
   const result = await db.query(sqlString);
   return result.rows;
 }

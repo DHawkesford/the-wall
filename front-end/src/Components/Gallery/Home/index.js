@@ -10,7 +10,7 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal, webSock
   useEffect(() => {
     async function refreshGallery() {
       setIsLoading(true); 
-      const response = await fetch('https://the-wall-dan-blake.herokuapp.com/images');
+      const response = await fetch('https://the-wall-dan-blake.herokuapp.com/images/today');
       const data = await response.json();
       setImages(data.payload);
       setIsLoading(false);
@@ -35,7 +35,7 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal, webSock
           ? image
           : { ...image, stars: image.stars - 1 };
         })
-          .sort((a, b) => b.stars - a.stars);
+          .sort((a, b) => b.stars - a.stars || b.id - a.id);
       });
       
       // Delete the (user_id, image_id) pair from the stars table
@@ -62,7 +62,7 @@ const Home = ({ images, setImages, usersStars, setUsersStars, showModal, webSock
           ? image
           : { ...image, stars: image.stars + 1 };
         })
-        .sort((a, b) => b.stars - a.stars);
+        .sort((a, b) => b.stars - a.stars || b.id - a.id);
       });
 
       // Insert the (user_id, image_id) pair into the stars table
