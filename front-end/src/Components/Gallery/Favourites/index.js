@@ -10,7 +10,7 @@ const Favourites = ({ usersStars, setUsersStars, showModal, webSocket, favourite
   useEffect(() => {
     async function filterImagesByUsersStarred() {
       setIsLoading(true); 
-      const response = await fetch(`https://the-wall-app1.herokuapp.com/users/${user.sub}/favourites`);
+      const response = await fetch(`https://the-wall-dan-blake.herokuapp.com/users/${user.sub}/favourites`);
       const data = await response.json();
       setFavourites(data.payload);
       setIsLoading(false);
@@ -38,7 +38,7 @@ const Favourites = ({ usersStars, setUsersStars, showModal, webSocket, favourite
       });
       
       // Delete the (user_id, image_id) pair from the stars table
-      await fetch(`https://the-wall-app1.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
+      await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ const Favourites = ({ usersStars, setUsersStars, showModal, webSocket, favourite
       });
       
       // Insert the (user_id, image_id) pair into the stars table
-      await fetch(`https://the-wall-app1.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
+      await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

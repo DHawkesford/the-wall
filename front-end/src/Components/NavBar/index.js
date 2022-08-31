@@ -19,7 +19,7 @@ const NavBar = ({ setDisplayUploadFormModal, setImages, setAreImagesLoading, the
 
   useEffect(() => {
     async function getTheme() {
-      const response = await fetch('https://the-wall-app1.herokuapp.com/themes/today');
+      const response = await fetch('https://the-wall-dan-blake.herokuapp.com/themes/today');
       const data = await response.json();
       setTheme(data.payload[0].theme);
     }

@@ -10,7 +10,7 @@ const Posts = ({ usersStars, setUsersStars, showModal, webSocket, posts, setPost
   useEffect(() => {
     async function filterImagesByUsersPosts() {
       setIsLoading(true); 
-      const response = await fetch(`https://the-wall-app1.herokuapp.com/users/${user.sub}/posts`);
+      const response = await fetch(`https://the-wall-dan-blake.herokuapp.com/users/${user.sub}/posts`);
       const data = await response.json();
       setPosts(data.payload);
       setIsLoading(false);
@@ -39,7 +39,7 @@ const Posts = ({ usersStars, setUsersStars, showModal, webSocket, posts, setPost
       });
       
       // Delete the (user_id, image_id) pair from the stars table
-      await fetch(`https://the-wall-app1.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
+      await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
@@ -66,7 +66,7 @@ const Posts = ({ usersStars, setUsersStars, showModal, webSocket, posts, setPost
       });
       
       // Insert the (user_id, image_id) pair into the stars table
-      await fetch(`https://the-wall-app1.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
+      await fetch(`https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}/${idOfStarredItem}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

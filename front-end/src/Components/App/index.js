@@ -40,7 +40,7 @@ function App() {
 
   useEffect(() => {
     async function getImages() {
-      const response = await fetch('https://the-wall-app1.herokuapp.com/images/today');
+      const response = await fetch('https://the-wall-dan-blake.herokuapp.com/images/today');
       const data = await response.json();
       setImages(data.payload);
       setAreImagesLoading(false);
@@ -98,11 +98,11 @@ function App() {
     async function getUsersStars() {
       try {
         const accessToken = await getAccessTokenSilently({
-          audience: `https://the-wall-app1.herokuapp.com`,
+          audience: `https://the-wall-dan-blake.herokuapp.com`,
           scope: "read:current_user_stars",
         });
 
-        const userStarsByIDURL = `https://the-wall-app1.herokuapp.com/stars/${user.sub}`;
+        const userStarsByIDURL = `https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}`;
 
         const starsResponse = await fetch(userStarsByIDURL, {
           headers: {

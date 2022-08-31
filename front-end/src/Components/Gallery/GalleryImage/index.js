@@ -11,11 +11,11 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars }) => {
   async function getUsersStars() {
     try {
       const accessToken = await getAccessTokenSilently({
-        audience: `https://the-wall-app1.herokuapp.com`,
+        audience: `https://the-wall-dan-blake.herokuapp.com`,
         scope: "read:current_user_stars",
       });
 
-      const userStarsByIDURL = `https://the-wall-app1.herokuapp.com/stars/${user.sub}`;
+      const userStarsByIDURL = `https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}`;
 
       const starsResponse = await fetch(userStarsByIDURL, {
         headers: {

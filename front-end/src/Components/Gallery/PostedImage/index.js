@@ -18,11 +18,11 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setPos
   async function getUsersStars() {
     try {
       const accessToken = await getAccessTokenSilently({
-        audience: `https://the-wall-app1.herokuapp.com`,
+        audience: `https://the-wall-dan-blake.herokuapp.com`,
         scope: "read:current_user_stars",
       });
 
-      const userStarsByIDURL = `https://the-wall-app1.herokuapp.com/stars/${user.sub}`;
+      const userStarsByIDURL = `https://the-wall-dan-blake.herokuapp.com/stars/${user.sub}`;
 
       const starsResponse = await fetch(userStarsByIDURL, {
         headers: {
@@ -49,7 +49,7 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setPos
     setIsPending(true);
 
     const newAltText = { ...data };
-    await fetch(`https://the-wall-app1.herokuapp.com/images/${image.id}`, {
+    await fetch(`https://the-wall-dan-blake.herokuapp.com/images/${image.id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newAltText)
@@ -71,7 +71,7 @@ const PostedImage = ({ image, star, usersStars, showModal, setUsersStars, setPos
   const onSubmitDeleteForm = async () => {
     setIsPending(true);
 
-    await fetch(`https://the-wall-app1.herokuapp.com/images/${image.id}`, {
+    await fetch(`https://the-wall-dan-blake.herokuapp.com/images/${image.id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
     });
