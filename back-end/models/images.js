@@ -31,43 +31,6 @@ export async function getTodaysImages() {
     WHERE createdMinute % 6 = themeid * 2 - 2 OR createdMinute % 6 = themeid * 2 - 1
   ORDER BY stars DESC, id DESC;
   `);
-      // WHERE EXTRACT(MINUTES FROM created)::int % 6 = 
-    // WITH T1 AS (SELECT *, 
-      // EXTRACT(MINUTES FROM created)::int AS createdMinute, 
-    //   EXTRACT(MINUTES FROM NOW())::int AS currentMinute,
-    //   (SELECT count(*)::INT FROM stars WHERE stars.imageid = images.id) AS stars
-    // FROM images)
-    
-    // SELECT *
-    //   FROM T1
-	  //   WHERE
-    // 	    cr BETWEEN (mins - mins % 5) AND (mins- mins % 5 + 4)
-    //     OR 
-    //       cr BETWEEN ((mins - mins % 5) + 15) % 60 AND ((mins - mins % 5 + 4) + 15) % 60
-    //     OR 
-    //       cr BETWEEN ((mins - mins % 5) + 30) % 60 AND ((mins - mins % 5 + 4) + 30) % 60
-    //     OR 
-    //       cr BETWEEN ((mins - mins % 5) + 45) % 60 AND ((mins - mins % 5 + 4) + 45) % 60
-    //   ORDER BY stars DESC, id DESC;
-  // const result = await db.query(`
-  //   WITH tab AS (SELECT *, 
-  //     EXTRACT(MINUTES FROM created)::int AS cr, 
-  //     EXTRACT(MINUTES FROM NOW())::int AS mins,
-  //     (SELECT count(*)::INT FROM stars WHERE stars.imageid = images.id) AS stars
-  //   FROM images)
-    
-  //   SELECT *
-  //     FROM tab
-	//     WHERE
-  //   	    cr BETWEEN (mins - mins % 5) AND (mins- mins % 5 + 4)
-  //       OR 
-  //         cr BETWEEN ((mins - mins % 5) + 15) % 60 AND ((mins - mins % 5 + 4) + 15) % 60
-  //       OR 
-  //         cr BETWEEN ((mins - mins % 5) + 30) % 60 AND ((mins - mins % 5 + 4) + 30) % 60
-  //       OR 
-  //         cr BETWEEN ((mins - mins % 5) + 45) % 60 AND ((mins - mins % 5 + 4) + 45) % 60
-  //     ORDER BY stars DESC, id DESC;
-  // `);
   return result.rows;
 }
 
