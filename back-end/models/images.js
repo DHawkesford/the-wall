@@ -35,7 +35,7 @@ export async function getTodaysImages() {
 }
 
 export async function postNewImage({ url, altText, userid }) {
-  const sqlString = `INSERT INTO images (url, alt, userid) VALUES ($1, $2, $3) RETURNING *;`;
+  const sqlString = `INSERT INTO images (url, alt, userid, created) VALUES ($1, $2, $3, NOW()) RETURNING *;`;
   const result = await db.query(sqlString, [url, altText, userid]);
   return result.rows;
 }
