@@ -46,7 +46,7 @@ const NavBar = ({ setDisplayUploadFormModal, setImages, setAreImagesLoading, the
       const newTime = (minutes % 2 === 1 && seconds > 50) ? (
         `< 10 seconds`
         ) : (
-        `${(minutes + 1) % 2}:${seconds > 50 ? 0 : ''}${59 - seconds}`
+        `${(minutes + 1) % 2}:${seconds >= 50 ? 0 : ''}${59 - seconds}`
       );
       setTime(newTime);
     }, 5000);
