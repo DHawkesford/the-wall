@@ -15,6 +15,15 @@ const UploadFormModal = ({displayUploadFormModal, setDisplayUploadFormModal, set
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = async (data) => {
+        const now = new Date();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+
+        if (minutes % 2 === 1 && seconds > 50) {
+            alert('Sorry, posts cannot be submitted within 10 seconds of the theme changing.');
+            return;
+        }
+
         if (!image) {
             alert('An image is needed.');
             return;
