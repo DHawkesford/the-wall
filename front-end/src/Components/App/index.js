@@ -53,6 +53,7 @@ function App() {
         const messageData = JSON.parse(e.data)
 
         if (messageData.type === 'themeChange') {
+          console.log(messageData);
           setTheme(messageData.payload.themeData[0].theme);
           setImages(messageData.payload.imageData);
           
