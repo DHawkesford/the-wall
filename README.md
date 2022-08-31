@@ -367,21 +367,29 @@ Back-end: Node/Express
 
 ## Future plans
 
-- ✅ Each image has a counter for how many users have 'starred' (favourited) it. I would like to figure out the best way to make this a live figure. I could imagine that sending a fetch request to the server every few seconds would be a possible solution. Currently there is a 'refresh' button in the hamburger menu for fetching the latest data from the server.
+- ✅ *Done - see the ["Websockets for realtime data"](#websockets-for-realtime-data) section.*
+
+    Each image has a counter for how many users have 'starred' (favourited) it. I would like to figure out the best way to make this a live figure. I could imagine that sending a fetch request to the server every few seconds would be a possible solution. Currently there is a 'refresh' button in the hamburger menu for fetching the latest data from the server.
 
 - Create a button that appears in the bottom-right corner that returns a user to the top of the page. The button should not appear if they had not scrolled down the page at all
 
-- ✅ The 'theme of the day' in the navbar should change every 24 hours, and the images in the gallery should be reset as well. I need to update both the back-end and front-end to allow for this. 
+- ✅ *Done - see the [Changing the daily theme](#changing-the-daily-theme) section.*
+    
+    The 'theme of the day' in the navbar should change every 24 hours, and the images in the gallery should be reset as well. I need to update both the back-end and front-end to allow for this. 
 
     - ✅ Include a timer to show users when the theme will next change
 
     - Include a feature for showing the final gallery from previous days - not yet done, but users can see images that they starred on previous days on the Favourites page
 
-- ✅ Add in mobile responsiveness - the app already scales down quite nicely on smaller screens, but there is some work needed on the navbar in particular. 
+- ✅ *Done - see the [Mobile responsiveness](#mobile-responsiveness) section.*
+
+    Add in mobile responsiveness - the app already scales down quite nicely on smaller screens, but there is some work needed on the navbar in particular. 
 
 - Incorporate lazy loading of the images, or pagination, or some such alternative to reduce the initial page load time 
 
-- ✅ Create pages where users can see their starred posts, and see/edit/delete their own posts
+- ✅ *Done - see the [Adding routes](#adding-routes) section.*
+
+    Create pages where users can see their starred posts, and see/edit/delete their own posts
 
 - Design and write a loader using CSS (see the [loader feature section](#loading-animation))
 
