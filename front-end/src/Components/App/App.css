@@ -701,6 +701,98 @@ main {
   left: calc(50% - 5vw);
 }
 
+.loading-box {
+  /* width: 15vw; */
+  height: 10vw;
+  z-index: 4;
+  position: fixed;
+  top: calc(50% - 90px);
+  left: calc(50% - 105px);
+}
+
+.loading-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.brick {
+  height: 50px;
+  background-color: #333;
+  float: left;
+  border-radius: 4px;
+  animation: brickdrop 2.3s infinite linear;
+  transform: translate(0px, -250px) rotate(-40deg); 
+  opacity: 0;
+}
+
+.brick1 {
+  width: 100px;
+  background-color: #0CE5F5;
+  animation-delay: 1.2s;
+  margin: 0 3px 3px 0;
+}
+
+.brick2 {
+  background-color: #0CE5F5;
+  margin: 0 0px 3px 3px;
+  width: 100px;
+  animation-delay: 1.4s;
+}
+
+.brick3 {
+  margin: 3px 3px 3px 0px;
+  width: 50px;
+  background-color: #FCD02F;
+  animation-delay: 0.6s;
+}
+
+.brick4 {
+  margin: 3px 3px 3px 3px;
+  width: 100px;
+  background-color: #FCD02F;
+  animation-delay: 0.8s;
+}
+
+.brick5 {
+  margin: 3px 0px 3px 3px;
+  width: 50px;
+  background-color: #FCD02F;
+  animation-delay: 1s;
+}
+
+.brick6 {
+  margin: 3px 3px 0px 0;
+  width: 100px;
+  background-color: #88F50C;
+}
+
+.brick7 {
+  margin: 3px 0px 0px 3px;
+  width: 100px;
+  background-color: #88F50C;
+  animation-delay: 0.2s;
+}
+
+@keyframes brickdrop {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    transform: translate(0px, 0px) rotate(-50deg);
+  }
+  22% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+    opacity: 0;
+  } 
+}
+
 .text-link {
   color: inherit;
   text-decoration: inherit;

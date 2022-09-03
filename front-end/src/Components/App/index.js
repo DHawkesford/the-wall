@@ -133,6 +133,7 @@ function App() {
       <div className="App">
         <NavBar setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} setAreImagesLoading={setAreImagesLoading} theme={theme} setTheme={setTheme} time={time} setTime={setTime} />
         <main>
+            <Loading />
           {areImagesLoading ? (
             <Loading />
           ) : (
