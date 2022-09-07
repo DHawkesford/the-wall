@@ -875,6 +875,35 @@ main {
   padding: 3px;
 }
 
+.scroll-to-top {
+  background: url(../ScrollToTop/scroll_icon.png) no-repeat;
+  background-size: cover;
+  position: fixed;
+  bottom: 15px;
+  right: 13px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border: none;
+  z-index: 5;
+}
+
+.scroll-to-top:hover {
+  filter: brightness(150%);
+}
+
+.show-scroll-to-top {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: transform 1s, opacity 0.8s linear 0.2s;
+}
+
+.hide-scroll-to-top {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: transform 1s, opacity 0.5s;
+}
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

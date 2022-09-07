@@ -6,6 +6,7 @@ import NavBar from "../NavBar/";
 import GalleryImageModal from '../GalleryImageModal';
 import UploadFormModal from '../UploadFormModal';
 import Loading from "../Loading";
+import ScrollToTop from "../ScrollToTop";
 import { BrowserRouter as Router } from "react-router-dom";
 import webSocket from '../Socket';
 
@@ -141,6 +142,7 @@ function App() {
         </main>
         <GalleryImageModal setDisplayModal={setDisplayModal} modalImage={modalImage} displayModal={displayModal} />
         <UploadFormModal displayUploadFormModal={displayUploadFormModal} setDisplayUploadFormModal={setDisplayUploadFormModal} setImages={setImages} usersStars={usersStars} setUsersStars={setUsersStars} favourites={favourites} setFavourites={setFavourites} posts={posts} setPosts={setPosts} />
+        <ScrollToTop />
       </div>
     </Router>
   );
