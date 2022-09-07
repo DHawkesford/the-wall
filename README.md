@@ -375,7 +375,9 @@ Back-end: Node/Express
 
     Each image has a counter for how many users have 'starred' (favourited) it. I would like to figure out the best way to make this a live figure. I could imagine that sending a fetch request to the server every few seconds would be a possible solution. Currently there is a 'refresh' button in the hamburger menu for fetching the latest data from the server.
 
-- Create a button that appears in the bottom-right corner that returns a user to the top of the page. The button should not appear if they had not scrolled down the page at all
+- ✅ *Done.*
+
+    Create a button that appears in the bottom-right corner that returns a user to the top of the page. The button should not appear if they had not scrolled down the page at all
 
 - ✅ *Done - see the [Changing the daily theme](#changing-the-daily-theme) section.*
     
@@ -403,6 +405,8 @@ Back-end: Node/Express
 
 ## Acknowledgements
 
+[gifcap](https://gifcap.dev/) by [@joaomoreno](https://github.com/joaomoreno), for making easy gifs from screen recordings.
+
 ### Icons:
 - Star icon (light and dark) by [Hilmy Abiyyu Asad](https://freeicons.io/profile/75801) on [freeicons.io](https://freeicons.io)
 - [Zoom-in icon (magnifying glass)](https://icons8.com/icon/rYBLHXYrJyUN/zoom-in) by [Icons8](https://icons8.com)
@@ -417,6 +421,7 @@ Back-end: Node/Express
 - [Loading icon (two green arrows) in hamburger menu](https://www.flaticon.com/authors/creative-stall-premium) by Creative Stall Premium from [Flaticon](https://www.flaticon.com)
 - 'Go to gallery' icon in hamburger menu by [Fauzidea](https://www.flaticon.com/authors/fauzidea) from [Flaticon](https://www.flaticon.com)
 - 'Manage your posts' icon in hamburger menu by [Freepik](https://www.flaticon.com/authors/freepik) from [Flaticon](https://www.flaticon.com)
+- 'Scroll to top' icon by [Evan Gerard K](https://www.flaticon.com/authors/evan-gerard-k) from [Flaticon](https://www.flaticon.com)
 
 ### Photos:
 
