@@ -377,7 +377,7 @@ Back-end: Node/Express
 
 - ✅ *Done.*
 
-    Create a button that appears in the bottom-right corner that returns a user to the top of the page. The button should not appear if they had not scrolled down the page at all
+    Create a button that appears in the bottom-right corner that returns a user to the top of the page. The button should not appear if they had not scrolled down the page at all.
 
 - ✅ *Done - see the [Changing the daily theme](#changing-the-daily-theme) section.*
     
@@ -421,7 +421,7 @@ Back-end: Node/Express
 - [Loading icon (two green arrows) in hamburger menu](https://www.flaticon.com/authors/creative-stall-premium) by Creative Stall Premium from [Flaticon](https://www.flaticon.com)
 - 'Go to gallery' icon in hamburger menu by [Fauzidea](https://www.flaticon.com/authors/fauzidea) from [Flaticon](https://www.flaticon.com)
 - 'Manage your posts' icon in hamburger menu by [Freepik](https://www.flaticon.com/authors/freepik) from [Flaticon](https://www.flaticon.com)
-- 'Scroll to top' icon by [Evan Gerard K](https://www.flaticon.com/authors/evan-gerard-k) from [Flaticon](https://www.flaticon.com)
+- 'Scroll to top' icon by [Ilham Fitrotul Hayat](https://www.flaticon.com/authors/ilham-fitrotul-hayat) from [Flaticon](https://www.flaticon.com)
 
 ### Photos:
 
