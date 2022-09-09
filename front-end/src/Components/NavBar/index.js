@@ -8,11 +8,12 @@ import photographer_5 from './photographer_5.png';
 import photographer_6 from './photographer_6.png';
 import photographer_7 from './photographer_7.png';
 import photographer_8 from './photographer_8.png';
+import photographer_9 from './photographer_9.png';
 import { useEffect, useState } from 'react';
 
 const NavBar = ({ setDisplayUploadFormModal, setImages, setAreImagesLoading, theme, setTheme, time, setTime }) => {
   const [displayHamburgerMenu, setDisplayHamburgerMenu] = useState(false);
-  const photographerIcons = [photographer_1, photographer_2, photographer_3, photographer_4, photographer_5, photographer_6, photographer_7, photographer_8];
+  const photographerIcons = [photographer_1, photographer_2, photographer_3, photographer_4, photographer_5, photographer_6, photographer_7, photographer_8, photographer_9];
   const [currentPhotographer, setCurrentPhotographer] = useState(photographerIcons[Math.floor(Math.random()*photographerIcons.length)]);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [displayInfo, setDisplayInfo] = useState(false);
