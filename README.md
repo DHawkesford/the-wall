@@ -397,7 +397,7 @@ Back-end: Node/Express
 
     Create pages where users can see their starred posts, and see/edit/delete their own posts
 
-- ✅ *Done - see the bottom of the [Loader feature section](#loading-animation) section.*
+- ✅ *Done - see the bottom of the [Loader feature](#loading-animation) section.*
     
     Design and write a custom loader using CSS.
 
