@@ -234,7 +234,7 @@ Back-end: Node/Express
 
 - Later on, I reused the `Loader` component as part of the main fetch request that obtains all of the images on the front page. Using state and conditional rendering, the `Loader` component is rendered initially, and is then replaced by all of the images once they're received from the server/Cloudinary. From looking into the [Vue docs](https://vuejs.org/guide/essentials/conditional.html#v-if-vs-v-show) when I was making the [hamburger menu](#hamburger-menu), I now knew that conditional rendering would be the 'cheapest' option in this situation, as the main fetch request should only occur once for each visit, and so the state that controls the conditional render should only be toggled once.
 
-- I later wrote a custom loading animation similar to the examples below, just with `div`s and CSS. It matches the site logo, and it was good to practice CSS animations.
+- I later wrote a custom loading animation similar to the examples below, just with `div`s and CSS. It matches the site logo, and it was good to practise CSS animations.
 
     ![An animation of a brick wall falling into place brick-by-brick.](./loading_gif.gif)
 
